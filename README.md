@@ -1,2 +1,2 @@
-# Advent of Code Solutions
+# Advent of Code Solutions 🎄
 https://adventofcode.com/
