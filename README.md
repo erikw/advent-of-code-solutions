@@ -1,2 +1,7 @@
 # Advent of Code Solutions 🎄
-https://adventofcode.com/
+My solutions to puzzles at https://adventofcode.com/
+
+See also:
+* [erikw/hackerrank-solutions](https://github.com/erikw/hackerrank-solutions/)
+* [erikw/kattis-solutions](https://github.com/erikw/kattis-solutions/)
+* [erikw/leetcode-solutions](https://github.com/erikw/leetcode-solutions/)
