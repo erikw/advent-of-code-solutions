@@ -4,7 +4,7 @@ class Array
     if size.even?
       (sorted[size / 2 - 1] + sorted[size / 2]) / 2.0
     else
-      sort[size / 2]
+      sorted[size / 2]
     end
   end
 
