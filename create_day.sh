@@ -21,6 +21,7 @@ printf "Created\n%s\n" $path
 
 cd $path
 touch ${FILES[@]}
+chmod u+x *.rb
 
 # Input is different per user -- neds login.
 #curl -OJs "https://adventofcode.com/${year}/day/${day}/input"
