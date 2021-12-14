@@ -2,13 +2,13 @@
 
 ITERATIONS = 40
 
-pair_counts = Hash.new(0) # "char1+char2" -> count
+pair_counts = Hash.new(0) # pair -> count
 char_counts = Hash.new(0) # "char" ->count
 polymer = ARGF.readline.chomp.chars
 polymer.each_cons(2) { |a, b| pair_counts[a + b] += 1 }
 polymer.each { |c| char_counts[c] += 1 }
 
-prod = {}
+prod = {}  # pair -> char
 ARGF.readline
 ARGF.each_line do |line|
   prod.merge! [line.chomp.split(' -> ')].to_h
