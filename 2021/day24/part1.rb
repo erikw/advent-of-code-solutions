@@ -110,7 +110,7 @@ def monad_search(program, model_no)
   loop do
     break if model_no.to_s.length < 14
     unless model_no.to_s.include? '0'
-      #puts "[#{Thread.current.name}] Trying input #{model_no}"
+      puts "[#{Thread.current.name}] Trying input #{model_no}"
       input = StringIO.new(model_no.to_s.chars.join('\n')+ "abc")
       computer.execute(program, input)
       break if computer.state('z') == 0
