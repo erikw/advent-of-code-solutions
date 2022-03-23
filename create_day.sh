@@ -16,11 +16,11 @@ if [ $# -eq 1 ]; then
 	day=${ym_split[1]}
 fi
 
-path=$(date +%Y/day%d)
+path="$year/$day"
 mkdir -p $path
-printf "Created\n%s\n" $path
+printf "Created\n%s\n" "$path"
 
-cd $path
+cd "$path"
 touch ${FILES[@]}
 chmod u+x *.rb
 
