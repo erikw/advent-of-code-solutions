@@ -14,6 +14,9 @@ if [ $# -eq 1 ]; then
 	ym_split=(${ym//\// })
 	year=${ym_split[0]}
 	day=${ym_split[1]}
+
+	test ${#year} -eq 4  || year="20$year"
+	day=$(printf "%02d" $day)
 fi
 
 path="$year/$day"
