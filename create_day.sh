@@ -21,7 +21,7 @@ fi
 
 path="$year/$day"
 mkdir -p $path
-printf "Created\n%s\n" "$path"
+printf 'git add %s && git commit -m "Add %s"\n' "$path" "$path"
 
 cd "$path"
 touch ${FILES[@]}
