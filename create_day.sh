@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Usage
 # ./create_day.sh
+# ./create_day.sh yy/d
 # ./create_day.sh yyyy/dd
 # TODO consider using https://github.com/GreenLightning/advent-of-code-downloader next year instead.
-# TODO or even better https://pypi.org/project/advent-of-code-data/
+#      Or even better https://pypi.org/project/advent-of-code-data/
 
 FILES=(README.txt part1.rb part2.rb input0)
 
