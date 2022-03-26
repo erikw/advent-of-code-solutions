@@ -6,7 +6,7 @@
 # TODO consider using https://github.com/GreenLightning/advent-of-code-downloader next year instead.
 #      Or even better https://pypi.org/project/advent-of-code-data/
 
-FILES=(README.txt part1.rb part2.rb input1.0 output1.0)
+FILES=(README.txt part1.rb input1.0 output1.0 part2.rb)
 
 year=$(date +%Y)
 day=$(date +%d)
