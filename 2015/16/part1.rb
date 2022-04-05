@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+DETECTED = {
+  'children:' => 3,
+  'cats:' => 7,
+  'samoyeds:' => 2,
+  'pomeranians:' => 3,
+  'akitas:' => 0,
+  'vizslas:' => 0,
+  'goldfish:' => 5,
+  'trees:' => 3,
+  'cars:' => 2,
+  'perfumes:' => 1
+}.freeze
+
+nbr = ARGF.each_line.each_with_index.select do |l, nbr|
+  l.split[2..].each_slice(2).to_h.all? { |k, v| DETECTED[k] == v.to_i }
+end.first.last + 1
+puts nbr
