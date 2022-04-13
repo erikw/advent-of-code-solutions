@@ -6,7 +6,37 @@
 # TODO consider using https://github.com/GreenLightning/advent-of-code-downloader next year instead.
 #      Or even better https://pypi.org/project/advent-of-code-data/
 
-FILES=(README.txt part1.rb input1.0 output1.0 part2.rb)
+set -eu
+
+FILES=(README.txt part1.rb input input1.0 output1.0 part2.rb)
+
+enter_today() {
+	local year=$1
+	local day=$2
+	local files_arrayname=$3[@]
+	local files=("${!files_arrayname}")
+
+	path="$year/$day"
+	mkdir -p $path
+	cd "$path"
+
+	touch ${files[@]}
+	chmod u+x *.rb
+}
+
+fetch_input() {
+	local year=$1
+	local day=$2
+
+	local url_fmt="https://adventofcode.com/%d/day/%d/input"
+	local url="$(printf "$url_fmt" $year $day)"
+
+	if [ -z "${AOC_SESSION+x}" ]; then
+		echo -e "\$AOC_SESSION not set.\nMaybe fetch the session cookie value from your browser and put it in to \$XDG_DATA_HOME/secrets.sh" >&2
+		exit 2
+	fi
+	curl --remote-name --remote-header-name --silent --fail --cookie "session=$AOC_SESSION" "$url"
+}
 
 year=$(date +%Y)
 day=$(date +%d)
@@ -20,15 +50,7 @@ if [ $# -eq 1 ]; then
 	day=$(printf "%02d" $day)
 fi
 
-path="$year/$day"
-mkdir -p $path
-printf 'git add %s && git commit -m "Add %s" && git push && tig\n' "$path" "$path"
-
-cd "$path"
-touch ${FILES[@]}
-chmod u+x *.rb
-
-# Input is different per user -- neds login.
-#curl -OJs "https://adventofcode.com/${year}/day/${day}/input"
-
+enter_today $year $day FILES
+fetch_input $year $(echo $day | bc)
 nvim -p ${FILES[@]}
+printf 'git add %s && git commit -m "Add %s" && git push && tig\n' "$path" "$path"
