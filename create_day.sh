@@ -56,5 +56,5 @@ fi
 enter_today $year $day FILES
 fetch_input $year $(echo $day | bc)
 #nvim -p ${FILES[@]}
-nvim -c "tabedit part1.rb | sp input | tabedit input1.0 | vsp output1.0 | tabedit part2.rb | normal 2gt " README.txt
+nvim -c "tabedit part1.rb | sp input | tabedit input1.0 | sp output1.0 | tabedit part2.rb | normal 2gt " README.txt
 printf 'git add %s && git commit -m "Add %s" && git push && tig\n' "$path" "$path"
