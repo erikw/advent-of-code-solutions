@@ -10,7 +10,7 @@ set -eu
 
 FILES=(README.txt part1.rb input input1.0 output1.0 part2.rb)
 
-enter_today() {
+enter_day() {
 	local year=$1
 	local day=$2
 	local files_arrayname=$3[@]
@@ -25,6 +25,11 @@ enter_today() {
 	for r in *.rb; do
 		printf "#!/usr/bin/env ruby\n\n" > $r
 	done
+}
+
+# Ref: https://www.cicoria.com/loading-env-dotenv-using-bash-or-zsh/
+load_dotenv() {
+	set -o allexport; source .env; set +o allexport
 }
 
 fetch_input() {
@@ -53,7 +58,8 @@ if [ $# -eq 1 ]; then
 	day=$(printf "%02d" $day)
 fi
 
-enter_today $year $day FILES
+load_dotenv
+enter_day $year $day FILES
 fetch_input $year $(echo $day | bc)
 #nvim -p ${FILES[@]}
 nvim -c "tabedit part1.rb | sp input | tabedit input1.0 | sp output1.0 | tabedit part2.rb | normal 2gt " README.txt
