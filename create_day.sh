@@ -40,7 +40,8 @@ fetch_input() {
 	local url="$(printf "$url_fmt" $year $day)"
 
 	if [ -z "${AOC_SESSION+x}" ]; then
-		echo -e "\$AOC_SESSION not set.\nMaybe fetch the session cookie value from your browser and put it in to \$XDG_DATA_HOME/secrets.sh" >&2
+		printf "\$AOC_SESSION is not set. Fetch the 'session' cookie value from your browser and put it in to .env:\n" >&2
+		printf '$ echo AOC_SESSION=value > .env\n' >&2
 		exit 2
 	fi
 	curl --remote-name --remote-header-name --silent --fail --cookie "session=$AOC_SESSION" "$url"
