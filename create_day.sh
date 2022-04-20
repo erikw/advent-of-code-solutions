@@ -56,7 +56,8 @@ if [ $# -eq 1 ]; then
 	day=${ym_split[1]}
 
 	test ${#year} -eq 4  || year="20$year"
-	day=$(printf "%02d" $day)
+        test ${#day} -eq 2   || day="0$day"
+	#day=$(printf "%02d" $day)
 fi
 
 load_dotenv
