@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Usage
-# ./create_day.sh
-# ./create_day.sh yy/d
-# ./create_day.sh yyyy/dd
+# Usage:
+# $ create_day.sh
+# $ create_day.sh yy/d
+# $ create_day.sh yyyy/dd
 # TODO consider using https://github.com/GreenLightning/advent-of-code-downloader next year instead.
 #      Or even better https://pypi.org/project/advent-of-code-data/
 
