@@ -50,12 +50,12 @@ fetch_input() {
 year=$(date +%Y)
 day=$(date +%d)
 if [ $# -eq 1 ]; then
-	ym=(${1//\// })
+	ym=(${1//\// })  # Format: yyyy/dd
 	year=${ym[0]}
 	day=${ym[1]}
 
 	test ${#year} -eq 4 || year="20$year"
-        test ${#day} -eq 2  || day="0$day"
+	test ${#day}  -eq 2 || day="0$day"
 fi
 
 load_dotenv
