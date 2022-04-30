@@ -7,6 +7,20 @@
 
 My solutions to puzzles at [adventofcode.com](https://adventofcode.com/).
 
+
+
+
+```perl
+                                      `}-'       `}-'
+ ___                    `}-' `}-'  ____/`-,  _____/`-,
+"-_/}__             `}-'_/`-, /`-,( _,,.{-,_(__,,,.(
+  [(_.-'`--,__   ____/`-,.(,-`}-'_,>___\/`-, >|`---\
+  [(__\___\  _`-(--...(..-'_`./`-,/(--,,.(  //    / >
+  |_______/-'    >`---\ / (   `{    >`---\ 
+  __|___|__)    / \  / \  /`--/<   / \   /|
+                         /  \/  \
+```
+
 See also:
 * [erikw/hackerrank-solutions](https://github.com/erikw/hackerrank-solutions/)
 * [erikw/kattis-solutions](https://github.com/erikw/kattis-solutions/)
