@@ -18,6 +18,8 @@ GEM
     method_source (1.0.0)
     nokogiri (1.13.5-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.5-x86_64-linux)
+      racc (~> 1.4)
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
@@ -69,6 +71,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   algorithms (~> 1.0)
@@ -78,4 +81,4 @@ DEPENDENCIES
   solargraph
 
 BUNDLED WITH
-   2.3.3
+   2.3.14
