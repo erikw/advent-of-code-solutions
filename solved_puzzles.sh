@@ -12,9 +12,7 @@ nbr_solved() {
 years=$(find . -type d -regex "\./*[0-9]*" -maxdepth 1 | grep -oE "\d+" | sort)
 for year in $years; do
 	solved=$(nbr_solved $year)
-	if [ $solved  = "25" ]; then
-		solved="25 ⭐️"
-	fi
+	test $solved  = "25" && solved="25 ⭐️"
 	printf "%s: %s\n" $year "$solved"
 done
 
