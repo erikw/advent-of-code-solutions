@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Assumption: commited README.txt means a solved puzzle.
+# Assumption: a README.txt means a solved puzzle.
 
 nbr_solved() {
 	local path="$1"
