@@ -15,5 +15,5 @@ for year in $years; do
 	test $solved  = "25" && solved="25 ⭐️"
 	printf "%s: %s\n" $year "$solved"
 done
-
-printf "\nTotal: %d\n" $(nbr_solved)
+printf "===========\n"
+printf "Total: %d\n" $(nbr_solved)
