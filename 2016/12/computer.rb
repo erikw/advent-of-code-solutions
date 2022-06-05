@@ -1,8 +1,8 @@
 class Computer
   attr_accessor :registers
 
-  def initialize
-    @registers = { 'a' => 0, 'b' => 0, 'c' => 0, 'd' => 0 }
+  def initialize(a: 0, b: 0, c: 0, d: 0)
+    @registers = { 'a' => a, 'b' => b, 'c' => c, 'd' => d }
   end
 
   def execute(program)
