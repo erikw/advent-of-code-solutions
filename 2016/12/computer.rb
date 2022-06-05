@@ -7,7 +7,7 @@ class Computer
 
   def execute(program)
     i = 0
-    while i.between?(0, program.length-1)
+    while i.between?(0, program.length - 1)
       case program[i]
       in ['cpy', x, y]
         @registers[y] = value(x)
@@ -19,16 +19,13 @@ class Computer
         @registers[x] -= 1
         i += 1
       in ['jnz', x, y]
-        if value(x).zero?
-          i += 1
-        else
-          i += y.to_i
-        end
+        i += value(x).zero? ? 1 : value(y)
       end
     end
   end
 
   private
+
   def value(x)
     x.match?(/-?\d+/) ? x.to_i : @registers[x]
   end
