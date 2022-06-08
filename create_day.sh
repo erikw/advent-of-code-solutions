@@ -70,5 +70,8 @@ fetch_input $year $(echo $day | bc)
 # vim alias not set to nvim, assume $EDITOR is a proper editor (=vi-like).
 $EDITOR -c "tabedit part1.rb | sp input | tabedit input1.0 | sp output1.0 | tabedit part2.rb | normal 2gt " README.txt
 
-printf 'git add %s && git commit -m "Add %s" && git push && tig\n' "$path" "$path"
+
+cd -
 ./solved_puzzles.sh
+
+printf '\ngit add %s && git commit -m "Add %s" && git push && tig\n' "$path" "$path"
