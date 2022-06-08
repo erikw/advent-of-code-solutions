@@ -58,14 +58,17 @@ if [ $# -eq 1 ]; then
 	test ${#day}  -eq 2 || day="0$day"
 fi
 
+
+load_dotenv
+enter_day $year $day FILES
+fetch_input $year $(echo $day | bc)
+
+
 if [ -n "${TMUX+x}" ]; then
 	tmux split-window -h
 	tmux last-pane
 fi
 
-load_dotenv
-enter_day $year $day FILES
-fetch_input $year $(echo $day | bc)
 #nvim -p ${FILES[@]}
 # vim alias not set to nvim, assume $EDITOR is a proper editor (=vi-like).
 $EDITOR -c "tabedit part1.rb | sp input | tabedit input1.0 | sp output1.0 | tabedit part2.rb | normal 2gt " README.txt
