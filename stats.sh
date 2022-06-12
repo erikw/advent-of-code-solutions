@@ -9,6 +9,7 @@ nbr_solved() {
 	find "$path" -name README.txt -exec printf %c {} + | wc -c | tr -d ' '
 }
 
+printf "Number of solved puzzles:\n"
 years=$(find . -type d -regex "\./*[0-9]*" -maxdepth 1 | grep -oE "\d+" | sort)
 for year in $years; do
 	solved=$(nbr_solved $year)
