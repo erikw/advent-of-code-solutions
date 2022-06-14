@@ -6,20 +6,20 @@ class Computer
   end
 
   def execute(program)
-    i = 0
-    while i.between?(0, program.length - 1)
-      case program[i]
+    pc = 0
+    while pc.between?(0, program.length - 1)
+      case program[pc]
       in ['cpy', x, y]
         @registers[y] = value(x)
-        i += 1
+        pc += 1
       in ['inc', x]
         @registers[x] += 1
-        i += 1
+        pc += 1
       in ['dec', x]
         @registers[x] -= 1
-        i += 1
+        pc += 1
       in ['jnz', x, y]
-        i += value(x).zero? ? 1 : value(y)
+        pc += value(x).zero? ? 1 : value(y)
       end
     end
   end

@@ -7,9 +7,9 @@ class Computer
   end
 
   def execute(program)
-    i = 0
-    while i.between?(0, program.length - 1)
-      case program[i]
+    pc = 0
+    while pc.between?(0, program.length - 1)
+      case program[pc]
       when /(\w+) (inc|dec) (-?\d+) if (\w+) ([<>]=?|[!=]=) (-?\d+)/
         reg = Regexp.last_match(1)
         op = Regexp.last_match(2)
@@ -19,7 +19,7 @@ class Computer
         cond_val = Regexp.last_match(6).to_i
         increment(reg, op, amount, cond_reg, cond_op, cond_val)
       end
-      i += 1
+      pc += 1
     end
 
     self
