@@ -1,0 +1,18 @@
+b = 106500
+c = b + 17000
+for i in range(c)
+	bc = 0
+	f = 1
+	d = 2
+	for i in range(b + 1 + bc * 17)
+		e = 2
+		for i in range(106497 + 1) do;
+			g = 2 * e - (106500 + bc * 17)
+			if g == 0
+				f = 0
+			e++
+	if f == 0
+		h++
+
+	b += 17
+	bc++
