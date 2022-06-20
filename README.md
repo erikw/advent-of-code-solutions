@@ -26,3 +26,6 @@ See also:
 * [erikw/kattis-solutions](https://github.com/erikw/kattis-solutions/)
 * [erikw/leetcode-solutions](https://github.com/erikw/leetcode-solutions/)
 * [erikw/project-euler-solutions](https://github.com/erikw/project-euler-solutions)
+
+
+<!--- advent_readme_stars table --->
