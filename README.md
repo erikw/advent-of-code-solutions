@@ -62,3 +62,9 @@ See also:
 | [Day 24](https://adventofcode.com/2021/day/24) | ⭐ | ⭐ |
 | [Day 25](https://adventofcode.com/2021/day/25) | ⭐ | ⭐ |
 <!--- advent_readme_stars table --->
+
+## Session Cookie Expired?
+Update
+* `AOC_SESSION` at `.env`
+* `AOC_SESSION` at [Action Secret](https://github.com/erikw/advent-of-code-solutions/settings/secrets/actions) for [.github/workflows/readme-stars.yml](.github/workflows/readme-stars.yml)
+* `SESSION` at [Vercel Envvar](https://vercel.com/erikw/adventofcode-badge/settings/environment-variables) for [stackcats/adventofcode-badge](https://github.com/stackcats/adventofcode-badge)
