@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-SKIP_ITERATIONS = 20_000_000
+FAST_FORWARD_ITERS = 20_000_000
 
 input = ARGF.gets.to_i
 input_len = input.to_s.length
@@ -12,7 +12,7 @@ elf_pos = [0, 1]
 # until recepies.length >= input_len && (recepies[-input_len..] == input_digits || recepies[-input_len - 1..] == input_digits)
 # takes forever. Instead: do enough iterations then look for the answer.
 # Also lesson learned: goes a lot faster working on int array than string in Ruby, see part2_str.rb
-SKIP_ITERATIONS.times do
+FAST_FORWARD_ITERS.times do
   sum = recepies[elf_pos[0]] + recepies[elf_pos[1]]
   recepies << sum / 10 if sum > 9
   recepies << sum % 10
