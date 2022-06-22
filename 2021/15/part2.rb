@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# inpu1 is what this program should produced when fed with input input0.
+# input1 is what this program should produced when fed with input input0.
 
 DEST_MAP_FILE = 'input_full_map'
 def create_tile(tile1, _nbr)
