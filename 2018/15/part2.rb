@@ -14,8 +14,7 @@ loop do
   units = create_units(map, attack)
   elfs_before = nbr_elfs(units)
   begin
-    outcome = play_game(map, units, elf_quit: true)
-    puts outcome
+    puts play_game(map, units, elf_quit: true)
     break
   rescue ElfDied
   end
