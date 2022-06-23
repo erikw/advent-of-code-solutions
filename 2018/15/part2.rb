@@ -2,12 +2,8 @@
 
 require_relative 'game'
 
-require 'set'
-
-require 'lazy_priority_queue'
-
 def nbr_elfs(units)
-  units.values.count { |unit| unit.instance_of?(Elf) }
+  units.count { |unit| unit.instance_of?(Elf) }
 end
 
 map_orig = read_input
@@ -21,7 +17,7 @@ loop do
     outcome = play_game(map, units, elf_quit: true)
     puts outcome
     break
-  rescue StandardError
+  rescue ElfDied
   end
 
   attack += 1

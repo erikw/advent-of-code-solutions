@@ -1,3 +1,6 @@
+require 'set'
+require 'lazy_priority_queue'
+
 DEBUG = false
 # DEBUG = true
 def dbg(msg = '')
@@ -8,6 +11,8 @@ SYM_WALL = '#'
 SYM_OPEN = '.'
 SYM_GOBLIN = 'G'
 SYM_ELF = 'E'
+
+class ElfDied < StandardError; end
 
 class Unit
   attr_reader :attack
@@ -22,7 +27,7 @@ class Unit
     @attack = attack
   end
 
-  def pos # TODO: move out coordinates from class and have only as key in hash?
+  def pos
     [@x, @y]
   end
 
@@ -34,52 +39,42 @@ class Unit
     @hp <= 0
   end
 
-  def attack?(map, units, elf_quit = false)
-    enemies = units.values.select do |unit|
-      in_range = false
-      if unit.is_a?(enemy)
-        dist_diff = [@x, @y].zip([unit.x, unit.y]).map { |a, b| (a - b).abs }
-        in_range = [[1, 0], [0, 1]].include?(dist_diff)
-      end
-      in_range
-    end
-    # dbg "Enemies of #{self}: #{enemies}"
-    enemy = enemies.sort_by { |enemy| [enemy.hp, enemy.x, enemy.y] }.first
+  def try_attack(map, units, elf_quit = false)
+    enemies = units.select { |u| u.is_a?(enemy) && next_to_me?(u) }
+    enemy = enemies.sort_by { |e| [e.hp, e.x, e.y] }.first
     unless enemy.nil?
-      enemy.hp -= @attack unless enemy.nil?
+      enemy.hp -= @attack
       if enemy.hp <= 0
-        raise 'Elf dies!' if enemy.is_a?(Elf) && elf_quit
+        raise ElfDied if enemy.is_a?(Elf) && elf_quit
 
         dbg "#{self} killed #{enemy}"
-        units.delete(enemy.pos)
+        units.delete(enemy)
         map[enemy.x][enemy.y] = SYM_OPEN
       end
     end
     !enemy.nil?
   end
 
-  def move(map, units)
-    in_range = units.values.select { |u| u.is_a?(enemy) }.map do |enemy|
+  def try_move(map, units)
+    in_range_pos = units.select { |u| u.is_a?(enemy) }.map do |enemy|
       NEIGHBORS_DELTAS.map do |dx, dy|
         map[enemy.x + dx][enemy.y + dy] == SYM_OPEN ? [enemy.x + dx, enemy.y + dy] : nil
       end
     end.flatten(1).compact.uniq
 
-    path = shortest_path_to_a_target(map, units, in_range)
+    path = shortest_path_to_a_target(map, in_range_pos)
     unless path.nil?
-      next_pos = path[1]
-      map[next_pos[0]][next_pos[1]] = map[@x][@y]
+      x_next, y_next = path[1]
+      map[x_next][y_next] = map[@x][@y]
       map[@x][@y] = SYM_OPEN
-      units.delete(pos)
-      units[next_pos] = self
-      @x = next_pos[0]
-      @y = next_pos[1]
+      @x = x_next
+      @y = y_next
     end
     !path.nil?
   end
 
   def eql?(other)
-    other.class = self.class && other.state == state
+    other.class == self.class && other.state == state
   end
   alias == eql?
 
@@ -95,6 +90,14 @@ class Unit
 
   private
 
+  def next_to_me?(other)
+    dist_diff = [@x, @y].zip([other.x, other.y]).map { |a, b| (a - b).abs }
+    [[1, 0], [0, 1]].include?(dist_diff)
+  end
+
+  # Modified Dijkstra's algorithm:
+  # - Saves all shortest paths in prev
+  # - Only adds nodes to queue as they are discovered, to avoid having to BFS all currently available positions before the algoritm.
   def dijksta(map)
     dist = Hash.new(Float::INFINITY)
     dist[pos] = 0
@@ -126,16 +129,13 @@ class Unit
     [dist, prev]
   end
 
+  # Recursive back-tracking of Dijkstra's algorithm's "prev" output to find all shortests path from self to target.
   def all_paths_to(cur_pos, prev)
     paths = []
     if cur_pos == pos
       paths << [pos]
-    elsif prev.key?(cur_pos)
+    elsif prev.key?(cur_pos) || cur_pos == pos
       prev[cur_pos].each do |prev_pos|
-        # paths << all_paths_to(prev_pos, prev) + [cur_pos]
-        # all_paths_to(prev_pos, prev).each do |path|
-        #  paths << path + [cur_pos]
-        # end
         all_paths = all_paths_to(prev_pos, prev)
         all_paths.each do |path|
           paths << path + [cur_pos]
@@ -145,10 +145,9 @@ class Unit
     paths
   end
 
-  # Dijkstra's algorithm finding all shortest paths to given targets.
-  def shortest_path_to_a_target(map, _units, targets)
+  # Find the in-order shortest path to one of the targets.
+  def shortest_path_to_a_target(map, targets)
     dist, prev = dijksta(map)
-    # min_dist_target = targets.min_by { |target| dist[target] }
     min_dist_target = targets.sort_by { |target| [dist[target], target] }.first
     if dist[min_dist_target] == Float::INFINITY
       nil
@@ -183,7 +182,7 @@ end
 
 def print_map(map, units)
   map.each.with_index do |row, x|
-    hp_row = units.values.select do |unit|
+    hp_row = units.select do |unit|
       unit.x == x
     end.sort_by { |unit| unit.y }.map { |u| "#{u.class.name[0]}(#{u.hp})" }.join(', ')
     dbg "#{row.join}   #{hp_row}"
@@ -195,13 +194,13 @@ def read_input
 end
 
 def create_units(map, elf_attack = 3)
-  units = {}
+  units = []
   (0...map.length).each do |x|
     (0...map[0].length).each do |y|
       if map[x][y] == SYM_ELF
-        units[[x, y]] = Elf.new(x, y, elf_attack)
+        units << Elf.new(x, y, elf_attack)
       elsif map[x][y] == SYM_GOBLIN
-        units[[x, y]] = Goblin.new(x, y)
+        units << Goblin.new(x, y)
       end
     end
   end
@@ -216,13 +215,13 @@ def play_game(map, units, elf_quit: false)
       print_map(map, units)
       sleep 0.4 if DEBUG
 
-      units.sort_by { |p, _u| p }.each do |_pos, unit|
-        throw :game_ended if units.values.map(&:class).uniq.length == 1
-        next if unit.dead? || unit.attack?(map, units, elf_quit)
+      units.sort_by { |u| u.pos }.each do |unit|
+        throw :game_ended if units.map(&:class).uniq.length == 1
+        next if unit.dead? || unit.try_attack(map, units, elf_quit)
 
-        next unless unit.move(map, units)
+        next unless unit.try_move(map, units)
 
-        unit.attack?(map, units, elf_quit)
+        unit.try_attack(map, units, elf_quit)
       end
       round += 1
     end
@@ -232,5 +231,5 @@ def play_game(map, units, elf_quit: false)
   print_map(map, units)
   dbg
 
-  round * units.values.map { |u| u.hp }.sum
+  round * units.map { |u| u.hp }.sum
 end
