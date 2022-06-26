@@ -1,0 +1,31 @@
+reg[1] = 123
+here2: reg[1] = reg[1] & 456 = 72
+reg[1] = reg[1] == 72 ? 1 : 0 = 1
+reg[3] = reg[1] + reg[3] = 1 + 3 = 4, goto here1
+reg[3] = 0, goto here2
+here1: reg[1] = 0
+here12: reg[2] = reg[1] | 65536 = 0 | 65536 = 65536
+reg[1] = 10605201
+here9: reg[5] = reg[2] | 255 = 65536 | 255 = 65791
+reg[1] = reg[1] + reg[5] = 10605201 + 65791 = 10670992
+reg[1] = reg[1] & 16777215 = 10670992 & 16777215 = 10670992
+reg[1] = reg[1] * 65899 = 10670992 * 65899 = 703207701808
+reg[1] = reg[1] & 16777215 = 703207701808 & 16777215 = 7470384
+reg[5] = 256 > reg[2] ? 1 : 0 = 256 > 65536 ? 1 : 0  = 0
+reg[3] = reg[5] + reg[3] = 0 + 14 = 14, goto here3, else goto here10
+here3: reg[3] = reg[3] + 1 = 15 + 1 = 16, goto here4
+here10: reg[3] = 27, goto here11
+here4: reg[5] = 0
+here7: reg[4] = reg[5] + 1 = 0 + 1 = 1
+reg[4] = reg[4] * 256 = 256
+reg[4] = reg[4] > reg[2] ? 1 : 0 = 256 > 65536 ? 1 : 0 = 0
+reg[3] = reg[4] + reg[3] = 0 + 21 = 21, goto here5, else goto here7
+here5: reg[3] = reg[3] + 1 = 22 + 1 = 23, goto here6
+here7: reg[3] = 25, goto here8
+here6: reg[5] = reg[5] + 1 = 0 + 1 = 1
+reg[3] = 17, goto here7
+here8: reg[2] = reg[5]
+reg[3] = 7, goto here9
+here11: reg[5] = reg[1] == reg[0] = (0 == X) = ~X
+reg[3] = reg[5] + reg[3] = ~X + 29 , goto END, else here12
+here12: reg[3] = 5, goto here12
