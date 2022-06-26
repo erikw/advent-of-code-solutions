@@ -1,8 +1,6 @@
 class Computer
   attr_reader :registers
 
-  OPCODES = 16
-
   def initialize(registers = [0, 0, 0, 0, 0, 0])
     @registers = registers[...6]
     @ip = 0
