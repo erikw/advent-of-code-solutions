@@ -13,7 +13,7 @@ printf "Number of solved puzzles:\n"
 years=$(find . -type d -regex "\./*[0-9]*" -maxdepth 1 | grep -oE "\d+" | sort)
 for year in $years; do
 	solved=$(nbr_solved $year)
-	test $solved  = "25" && solved="25 ⭐️"
+	test $solved = "25" && solved="25 ⭐️"
 	printf "%s: %s\n" $year "$solved"
 done
 printf "===========\n"
