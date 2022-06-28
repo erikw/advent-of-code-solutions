@@ -9,6 +9,14 @@ SYM_DOORS = [SYM_DOOR_VERTI, SYM_DOOR_HORIZ]
 
 NEIGHBORS_DELTAS = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
+class LazyPriorityQueue
+  def upsert(element, key)
+    change_priority(element, key)
+  rescue StandardError
+    enqueue(element, key)
+  end
+end
+
 class RegexMapParser
   DIERCTIONS = %w[N E S W]
   attr_reader :map
@@ -96,11 +104,7 @@ def dijksta(map, start_pos = [0, 0])
 
       dist[pos_room] = alt
       prev[pos_room] = pos
-      begin
-        q.change_priority(pos_room, alt)
-      rescue StandardError
-        q.push(pos_room, alt)
-      end
+      q.upsert(pos_room, alt)
     end
   end
   [dist, prev]

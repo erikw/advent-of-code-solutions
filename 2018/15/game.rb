@@ -12,6 +12,14 @@ SYM_OPEN = '.'
 SYM_GOBLIN = 'G'
 SYM_ELF = 'E'
 
+class LazyPriorityQueue
+  def upsert(element, key)
+    change_priority(element, key)
+  rescue StandardError
+    enqueue(element, key)
+  end
+end
+
 class ElfDied < StandardError; end
 
 class Unit
@@ -119,11 +127,7 @@ class Unit
 
         dist[npos] = alt
         prev[npos] << u
-        begin
-          q.change_priority(npos, alt)
-        rescue StandardError
-          q.push(npos, alt)
-        end
+        q.upsert(npos, alt)
       end
     end
     [dist, prev]
