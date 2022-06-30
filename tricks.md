@@ -9,6 +9,9 @@ Some collected tricks after solving the puzzles.
 		line.scan(/-?\d+/).map(&:to_i)
    ``` 
   * Examples: [2018/10](2018/10/part1.rb)
+* Load as YAML
+  * Does the input look like YAML? Massage it an load it!
+  * Examples [2017/25](https://www.reddit.com/r/adventofcode/comments/7lzo3l/comment/drqk1wu/)
 
 
 ## Grids
