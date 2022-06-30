@@ -53,7 +53,7 @@ def dijksta(erosions, target, depth)
       q.upsert([pos, other_tool], dist[[pos, other_tool]])
     end
 
-    NEIGHBORS_DELTAS.map do |delta|
+    NEIGHBORS_DELTAS.each do |delta|
       pos_n = pos + delta
       next if pos_n.real.negative? || pos_n.imag.negative?
 
