@@ -8,7 +8,7 @@
 [![SLOC](https://img.shields.io/tokei/lines/github/erikw/advent-of-code-solutions?logo=codefactor&logoColor=lightgrey)](#)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/erikw/advent-of-code-solutions/main)](#)
 
-My solutions to puzzles at [adventofcode.com](https://adventofcode.com/).
+My solutions to puzzles at [adventofcode.com](https://adventofcode.com/). Check out my collection of [tricks](tricks.md).
 
 
 
