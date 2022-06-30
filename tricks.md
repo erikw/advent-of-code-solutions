@@ -25,7 +25,7 @@ Some collected tricks after solving the puzzles.
         ...
       end
    ``` 
-  * Storing a direction is just the numbers `-1, +1i, +1, -1i` instead of up/right/down/left or north/east/south/west. Rotating the direction is just multiplying with `-1i`` (clockwise) or `+1i`` (counter-clockwise). In this example `x == real == row` and `y == imag == col`. When x and y are swapped, the rotation goes in the other direction.
+  * Storing a direction is just the numbers `-1, +1i, +1, -1i` instead of up/right/down/left or north/east/south/west. Rotating the direction is just multiplying with `-1i`(clockwise) or `+1i` (counter-clockwise). In this example `x == real == row` and `y == imag == col`. When x and y are swapped, the rotation goes in the other direction.
    ```ruby
       position = 5 + 7j
       direction = 1i
