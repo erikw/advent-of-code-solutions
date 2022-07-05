@@ -52,7 +52,7 @@ Some collected tricks after solving the puzzles.
 
 ## Algorithms
 * Dijkstra's Algorithm
-  * Instead of spending time in a grid to discover all nodes (cells) before Dijkstra as it is input, instead add new nodes as they are discovered. If you're lucky, some time could be saved but not considering all cells.
+  * Instead of spending time in a grid to discover all nodes (cells) before Dijkstra as its input, instead add new nodes as they are discovered. If you're lucky, some time could be saved but not considering all cells.
   * Examples: [2018/15](2018/15/game.rb)
 
 
