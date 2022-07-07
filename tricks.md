@@ -19,9 +19,9 @@ Some collected tricks after solving the puzzles.
   * For two-dimensional grids, using complex numbers x+yi instead of (x,y) can be beneficial
   * Looking at neighbours by applying a delta is easy:
    ```ruby
-      NEIGHBORS_DELTAS = [-1, 1, -1i, 1i]
+      NEIGHBOURS_DELTAS = [-1, 1, -1i, 1i]
       pos = 1 + 2i
-      NEIGHBORS_DELTAS.each do |delta|
+      NEIGHBOURS_DELTAS.each do |delta|
         pos_neighbour = pos + delta
         ...
       end
