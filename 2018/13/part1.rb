@@ -7,6 +7,7 @@ DIRECTION_DELTA = {
   '>' => [1, 0]
 }
 
+# [dir, curve] => dir_new
 CURVES = {
   ['^', '/'] => '>',
   ['<', '/'] => 'v',
@@ -18,6 +19,7 @@ CURVES = {
   ['<', '\\'] => '^'
 }
 
+# [dir, rot_mod] => dir_new
 TURNS = {
   ['^', 0] => '<',
   ['^', 1] => '^',
@@ -70,7 +72,7 @@ def print_map(map, carts)
 end
 
 map = ARGF.each_line.map(&:chomp)
-carts = {}
+carts = {}  # [cart_sym, rotation_mod]
 (0...map.length).each do |y|
   (0...map[0].length).each do |x|
     next unless ['^', 'v', '<', '>'].include?(map[y][x])
