@@ -3,4 +3,4 @@
 require_relative 'lib'
 
 constraints = find_constraints(ARGF)
-puts solve(constraints)[0]
+puts solve(constraints)[1]
