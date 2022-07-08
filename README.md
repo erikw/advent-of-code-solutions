@@ -71,6 +71,6 @@ Update:
 
 ## Development Setup
 ```console
-$ brew bundle install --file Brewfile
+$ brew bundle install
 $ bundle install
 ```
