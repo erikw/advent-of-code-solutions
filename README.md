@@ -79,5 +79,5 @@ and now solve today's puzzle or a specific one
 
 ```console
 $ bin/solve_day.sh
-$ bin/empty_readmes.sh 19/5  # 2019 day 5
+$ bin/solve_day.sh 19/5  # 2019 day 5
 ```
