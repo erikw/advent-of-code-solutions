@@ -29,7 +29,7 @@ NEIGHBORS_DELTAS = [-1, 1, -1i, 1i]
 # - Quit early when finding target, as the cave could be infinite
 # - Each node defined by positon and tool type when entring it.
 # - Adding self-edge to each node for a change of tool.
-def dijksta(erosions, target, depth)
+def dijkstra(erosions, target, depth)
   dist = Hash.new(Float::INFINITY)
   dist[[POS_MOUTH, :tool_torch]] = 0
   prev = {}
@@ -84,7 +84,7 @@ end
 
 depth, target = read_input
 erosions = erosion_levels(target, depth)
-dist, prev = dijksta(erosions, target, depth)
+dist, prev = dijkstra(erosions, target, depth)
 
 # path = construct_path(prev, POS_MOUTH, target)
 # print_cave(erosions, target, depth, path)

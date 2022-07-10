@@ -83,7 +83,7 @@ end
 
 # Modified Dijkstra's algorithm from given starting coordinate:
 # - Only adds nodes to queue as they are discovered, to avoid having to BFS all currently available positions before the algoritm.
-def dijksta(map, start_pos = [0, 0])
+def dijkstra(map, start_pos = [0, 0])
   dist = Hash.new(Float::INFINITY)
   dist[start_pos] = 0
   prev = {}

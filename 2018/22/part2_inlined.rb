@@ -29,7 +29,7 @@ NEIGHBORS_DELTAS = [-1, 1, -1i, 1i]
 # Modified Dijkstra's algorithm from given starting coordinate:
 # - Only adds nodes to queue as they are discovered, to avoid having to BFS all currently available positions before the algoritm.
 # - Quit early when finding target, as the cave could be infinite
-def dijksta(erosions, target, depth)
+def dijkstra(erosions, target, depth)
   dist = Hash.new(Float::INFINITY)
   dist[POS_MOUTH] = 0
   prev = {}
@@ -79,7 +79,7 @@ end
 
 depth, target = read_input
 erosions = erosion_levels(target, depth)
-dist, prev = dijksta(erosions, target, depth)
+dist, prev = dijkstra(erosions, target, depth)
 
 # path = construct_path(prev, POS_MOUTH, target)
 # print_cave(erosions, target, depth, path)

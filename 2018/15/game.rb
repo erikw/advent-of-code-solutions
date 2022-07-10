@@ -106,7 +106,7 @@ class Unit
   # Modified Dijkstra's algorithm:
   # - Saves all shortest paths in prev
   # - Only adds nodes to queue as they are discovered, to avoid having to BFS all currently available positions before the algoritm.
-  def dijksta(map)
+  def dijkstra(map)
     dist = Hash.new(Float::INFINITY)
     dist[pos] = 0
     prev = Hash.new { |h, k| h[k] = [] }
@@ -151,7 +151,7 @@ class Unit
 
   # Find the in-order shortest path to one of the targets.
   def shortest_path_to_a_target(map, targets)
-    dist, prev = dijksta(map)
+    dist, prev = dijkstra(map)
     min_dist_target = targets.sort_by { |target| [dist[target], target] }.first
     if dist[min_dist_target] == Float::INFINITY
       nil
