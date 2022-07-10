@@ -8,6 +8,10 @@
 
 set -eu
 
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+. $SCRIPT_DIR/lib.sh
+cd_git_root
+
 FILES=(README.txt part1.rb input input1.0 output1.0 part2.rb)
 
 enter_day() {
@@ -74,7 +78,7 @@ fi
 $EDITOR -c "tabedit part1.rb | sp input | tabedit input1.0 | sp output1.0 | tabedit part2.rb | normal 2gt " README.txt
 
 
-cd -
-./stats.sh
+cd_git_root
+bin/stats.sh
 
 printf '\ngit add %s && git commit -m "Add %s" && git push && tig\n' "$path" "$path"

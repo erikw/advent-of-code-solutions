@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Assumption: a README.txt means a solved puzzle.
 
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+. $SCRIPT_DIR/lib.sh
+cd_git_root
+
 nbr_solved() {
 	local path="$1"
 	test -z ${path} && path=.
