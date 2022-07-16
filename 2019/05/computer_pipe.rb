@@ -1,16 +1,18 @@
 class Computer
-  attr_reader :memory, :stdin, :stdout
+  attr_reader :memory
 
   def initialize
     @memory = nil
     @ip = 0
-    @stdin = []
-    @stdout = []
+    @stdin_r, @stdin_w = IO.pipe
+    @stdout_r = nil
+    @stdout_w = nil
   end
 
   def execute(intcode)
     @memory = intcode.dup
     @ip = 0
+    @stdout_r, @stdout_w = IO.pipe
     params = nil
     while @ip.between?(0, @memory.length - 1)
       opint = @memory[@ip]
@@ -26,12 +28,21 @@ class Computer
       when 7 then op_lt(modeint)
       when 8 then op_eq(modeint)
       when 99
+        @stdout_w.close
         break
       else
         raise "Unknown opcode #{opcode}!"
       end
     end
     self
+  end
+
+  def stdin
+    @stdin_w
+  end
+
+  def stdout
+    @stdout_r
   end
 
   private
@@ -60,13 +71,13 @@ class Computer
 
   def op_input(_modeint)
     dest = @memory[@ip + 1]
-    @memory[dest] = @stdin.shift
+    @memory[dest] = @stdin_r.gets.chomp.to_i
     @ip += 2
   end
 
   def op_output(_modeint)
     src = @memory[@ip + 1]
-    @stdout << @memory[src]
+    @stdout_w.write(@memory[src].to_s + "\n")
     @ip += 2
   end
 

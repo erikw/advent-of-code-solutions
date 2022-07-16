@@ -4,6 +4,6 @@ require_relative 'computer'
 
 intcode = ARGF.readline.split(',').map(&:to_i)
 computer = Computer.new
-computer.stdin << "1\n"
+computer.stdin << 1
 computer.execute(intcode)
-puts computer.stdout.readlines.last
+puts computer.stdout.last
