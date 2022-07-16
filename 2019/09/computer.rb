@@ -23,17 +23,17 @@ class Computer
     while @ip.between?(0, @memory.length - 1)
       opint = @memory[@ip]
       opcode = opint % 100
-      modes = extract_modes(opint / 100)
+      @modes = extract_modes(opint / 100)
       case opcode
-      when 1 then op_add(modes)
-      when 2 then op_mul(modes)
-      when 3 then op_input(modes)
-      when 4 then op_output(modes)
-      when 5 then op_jit(modes)
-      when 6 then op_jif(modes)
-      when 7 then op_lt(modes)
-      when 8 then op_eq(modes)
-      when 9 then op_relbase(modes)
+      when 1 then op_add
+      when 2 then op_mul
+      when 3 then op_input
+      when 4 then op_output
+      when 5 then op_jit
+      when 6 then op_jif
+      when 7 then op_lt
+      when 8 then op_eq
+      when 9 then op_relbase
       when 99 then break
       else
         raise "Unknown opcode #{opcode}!"
@@ -45,12 +45,12 @@ class Computer
   private
 
   def extract_modes(modeint)
-    modes = modeint.to_s.rjust(3, '0').reverse.chars.map(&:to_i)
+    modeint.to_s.rjust(3, '0').reverse.chars.map(&:to_i)
   end
 
-  def value(modes, num)
+  def value(num)
     param = @memory[@ip + num + 1]
-    case modes[num]
+    case @modes[num]
     when MODE_IMMEDIATE
       param
     when MODE_POSITION
@@ -60,9 +60,9 @@ class Computer
     end
   end
 
-  def addr(modes, num)
+  def addr(num)
     param = @memory[@ip + num + 1]
-    case modes[num]
+    case @modes[num]
     when MODE_IMMEDIATE
       raise 'Non-supported address mode'
     when MODE_POSITION
@@ -72,59 +72,59 @@ class Computer
     end
   end
 
-  def op_add(modes)
-    dest = addr(modes, 2)
-    @memory[dest] = value(modes, 0) + value(modes, 1)
+  def op_add
+    dest = addr(2)
+    @memory[dest] = value(0) + value(1)
     @ip += 4
   end
 
-  def op_mul(modes)
-    dest = addr(modes, 2)
-    @memory[dest] = value(modes, 0) * value(modes, 1)
+  def op_mul
+    dest = addr(2)
+    @memory[dest] = value(0) * value(1)
     @ip += 4
   end
 
-  def op_input(modes)
-    dest = addr(modes, 0)
+  def op_input
+    dest = addr(0)
     @memory[dest] = @stdin.pop
     @ip += 2
   end
 
-  def op_output(modes)
-    @stdout << value(modes, 0)
+  def op_output
+    @stdout << value(0)
     @ip += 2
   end
 
-  def op_jit(modes)
-    if value(modes, 0).zero?
+  def op_jit
+    if value(0).zero?
       @ip += 3
     else
-      @ip = value(modes, 1)
+      @ip = value(1)
     end
   end
 
-  def op_jif(modes)
-    if value(modes, 0).zero?
-      @ip = value(modes, 1)
+  def op_jif
+    if value(0).zero?
+      @ip = value(1)
     else
       @ip += 3
     end
   end
 
-  def op_lt(modes)
-    dest = addr(modes, 2)
-    @memory[dest] = value(modes, 0) < value(modes, 1) ? 1 : 0
+  def op_lt
+    dest = addr(2)
+    @memory[dest] = value(0) < value(1) ? 1 : 0
     @ip += 4
   end
 
-  def op_eq(modes)
-    dest = addr(modes, 2)
-    @memory[dest] = value(modes, 0) == value(modes, 1) ? 1 : 0
+  def op_eq
+    dest = addr(2)
+    @memory[dest] = value(0) == value(1) ? 1 : 0
     @ip += 4
   end
 
-  def op_relbase(modes)
-    @relative_base += value(modes, 0)
+  def op_relbase
+    @relative_base += value(0)
     @ip += 2
   end
 end
