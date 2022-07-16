@@ -15,10 +15,8 @@ class Computer
   end
 
   def execute(intcode)
-    @memory = Hash.new(0)
-    intcode.each_with_index do |intc, i|
-      @memory[i] = intc
-    end
+    @memory = intcode.each_with_index.to_a.map(&:reverse).to_h
+    @memory.default = 0
     @ip = 0
     @relative_base = 0
     params = nil
