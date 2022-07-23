@@ -10,5 +10,5 @@ end
 
 gem 'algorithms', '~> 1.0'
 gem 'lazy_priority_queue', '~> 0.1.1'
-# gem "PriorityQueue", "~> 0.1.2"  # Required Ruby 1.8
+# gem "PriorityQueue", "~> 0.1.2"  # Requires Ruby 1.8
 gem 'z3'
