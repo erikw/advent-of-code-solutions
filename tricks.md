@@ -34,7 +34,7 @@ Some collected tricks after solving the puzzles.
       direction *= 1i
       position += direction
    ``` 
-  * Examples: [2018/13](2018/13/part1_complex.rb), [2018/22](2018/22/), [2019/03](2019/03/part1_complex.rb)
+  * Examples: [2018/13](2018/13/part1_complex.rb), [2018/22](2018/22/), [2019/03](2019/03/part1_complex.rb), [2019/11](2019/11/part1.rb)
 * Cell neighbours
   * When needing to check/recurse on all neighbhours of a cell (e.g including diagonal neighbours), just loop on the deltas:
   *
