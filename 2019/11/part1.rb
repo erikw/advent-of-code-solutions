@@ -20,8 +20,7 @@ comp_thr = Thread.new { computer.execute(intcode) }
 while comp_thr.alive?
   computer.stdin << panels[pos]
   panels[pos] = computer.stdout.pop
-  dir *= DIRECTION[computer.stdout.pop]
-  pos += dir
+  pos += dir *= DIRECTION[computer.stdout.pop]
 end
 
 puts panels.size

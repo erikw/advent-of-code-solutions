@@ -23,13 +23,11 @@ comp_thr = Thread.new { computer.execute(intcode) }
 while comp_thr.alive?
   computer.stdin << panels[pos]
   panels[pos] = computer.stdout.pop
-  dir *= DIRECTION[computer.stdout.pop]
-  pos += dir
+  pos += dir *= DIRECTION[computer.stdout.pop]
 end
 
 xmin, xmax = panels.keys.map(&:real).minmax
 ymin, ymax = panels.keys.map(&:imag).minmax
-
 (xmin..xmax).each do |x|
   (ymin..ymax).each do |y|
     print COLOR[panels[Complex(x, y)]]
