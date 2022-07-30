@@ -4,10 +4,19 @@ Some collected tricks after solving the puzzles.
 ## Input Parsing
 * Integer scanning
   * If the input are just integers, instead of parsing or using a complex regex, just scan each integer.
-  *
+  * Example of input: a list of coordinates
    ```ruby
-		line.scan(/-?\d+/).map(&:to_i)
-   ``` 
+    <x=-1, y=0, z=2>
+    <x=2, y=-10, z=-7>
+    <x=4, y=-8, z=8>
+    <x=3, y=5, z=-1>
+   ```
+  * Then just:
+   ```ruby
+    input = ARGF.each_line.map do |line|
+		  line.scan(/-?\d+/).map(&:to_i)
+		end
+   ```
   * Examples: [2018/10](2018/10/part1.rb)
 * Load as YAML
   * Does the input look like YAML? Massage it an load it!
@@ -25,7 +34,7 @@ Some collected tricks after solving the puzzles.
         pos_neighbour = pos + delta
         ...
       end
-   ``` 
+   ```
   * Storing a direction is just the numbers `-1, +1i, +1, -1i` instead of up/right/down/left or north/east/south/west. Rotating the direction is just multiplying with `-1i`(clockwise) or `+1i` (counter-clockwise). In this example `x == real == row` and `y == imag == col`. When x and y are swapped, the rotation goes in the other direction.
    ```ruby
       position = 5 + 7j
@@ -33,7 +42,7 @@ Some collected tricks after solving the puzzles.
 
       direction *= 1i
       position += direction
-   ``` 
+   ```
   * Examples: [2018/13](2018/13/part1_complex.rb), [2018/22](2018/22/), [2019/03](2019/03/part1_complex.rb), [2019/11](2019/11/part1.rb)
 * Cell neighbours
   * When needing to check/recurse on all neighbhours of a cell (e.g including diagonal neighbours), just loop on the deltas:
@@ -45,7 +54,7 @@ Some collected tricks after solving the puzzles.
         end
       end
    end
-   ``` 
+   ```
   * Examples: [2018/18](2018/18/lib.rb)
 
 
@@ -65,7 +74,7 @@ Some collected tricks after solving the puzzles.
 * throw-catch
   * Break out of nested code with throw and catch [SO](https://stackoverflow.com/a/3716921/265508).
   * Examples: [2018/13](2018/13/part1.rb), [2018/15](2018/15/game.rb)
-* Deep cloning next state version 
+* Deep cloning next state version
   * In recursions that need a complete copy of a state, or when we iterate on something like a grid that needs to be updated in multiple steps using current values, make a complete copy of the state with deep cloining.
   *
    ```ruby
@@ -79,5 +88,5 @@ Some collected tricks after solving the puzzles.
 
       map = map_next
   end
-   ``` 
+   ```
   * Examples: [2018/18](2018/18), [2015/18](2015/18/part1.rb)
