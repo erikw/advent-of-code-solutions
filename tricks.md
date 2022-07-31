@@ -22,6 +22,25 @@ Some collected tricks after solving the puzzles.
   * Does the input look like YAML? Massage it an load it!
   * Examples [2017/25](https://www.reddit.com/r/adventofcode/comments/7lzo3l/comment/drqk1wu/)
 
+## Testing
+The problem instructions often includes several examples with expected results. Sometimes directly and some times after a few hand-calculations. To make the solution development easier to develop and test, save these in some files. The convention that I've landed in is
+* `input` - the raw input `curl(1)`'d from the website
+* `input1.X` - Input example number X for part 1
+* `output1.X` - Output expected for `input1.X`
+* `input2.X` - Input example number X for part 2
+* `output2.X` - Output expected for `input2.X`
+
+Being precise and following this convention, it's now super easy to run all tests for one part. Let's say there were 4 examples for part 1, then we can simply do (an old trick from a University professor in algorithms that I had) in a Bourne-like shell:
+```console
+$ for i in {0..4}; do ./part1.rb input1.$i | diff -y - output1.$i; done
+31                 31
+165             |  168
+13312           |  23312
+180697             180697
+2210736            2210736
+```
+
+to get side-by-side comparison between expected (column 1) and actual (column 2)! In the above example, two test cases were wrong.
 
 ## Grids
 * Complex Numbers
