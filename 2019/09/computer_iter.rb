@@ -6,19 +6,20 @@ class Computer
   MODE_IMMEDIATE = 1
   MODE_RELATIVE = 2
 
-  def initialize(stdin: Thread::Queue.new, stdout: Thread::Queue.new)
-    @memory = nil
+  STATUS_DONE = 0
+  STATUS_INPUT_NEEDED = 1
+  STATUS_OUTPUT = 3
+
+  def initialize(intcode, stdin: Thread::Queue.new, stdout: Thread::Queue.new)
+    @memory = intcode.each_with_index.to_a.map(&:reverse).to_h
+    @memory.default = 0
     @ip = 0
     @relative_base = 0
     @stdin = stdin
     @stdout = stdout
   end
 
-  def execute(intcode)
-    @memory = intcode.each_with_index.to_a.map(&:reverse).to_h
-    @memory.default = 0
-    @ip = 0
-    @relative_base = 0
+  def execute
     while @ip.between?(0, @memory.length - 1)
       opint = @memory[@ip]
       opcode = opint % 100
@@ -26,8 +27,13 @@ class Computer
       case opcode
       when 1 then op_add
       when 2 then op_mul
-      when 3 then op_input
-      when 4 then op_output
+      when 3
+        return STATUS_INPUT_NEEDED if @stdin.empty?
+
+        op_input
+      when 4
+        op_output
+        return STATUS_OUTPUT
       when 5 then op_jit
       when 6 then op_jif
       when 7 then op_lt
@@ -38,7 +44,7 @@ class Computer
         raise "Unknown opcode #{opcode}!"
       end
     end
-    self
+    STATUS_DONE
   end
 
   private
