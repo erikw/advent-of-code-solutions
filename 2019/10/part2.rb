@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # Algorithm
 # 1. Find the asteroid to put the monitoring station with laser gun on.
 # 2. Group the other asteroid by it's polar coordniate's angle

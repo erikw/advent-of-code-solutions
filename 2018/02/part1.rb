@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 checksum = ARGF.each_line.map do |line|
   tally = line.chomp.chars.tally

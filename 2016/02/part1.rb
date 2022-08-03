@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 KEYPAD = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 code = []

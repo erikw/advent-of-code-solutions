@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 CHIP_LO = 17
 CHIP_HI = 61

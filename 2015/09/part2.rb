@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 distance = Hash.new { |h, k| h[k] = {} }
 ARGF.each_line.map(&:split).each do |city1, _, city2, _, dist|

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # This solution was too memory consuming to generate all paths. The better solution, part1.rb, is to creat the map as we parse instead of storing all paths explicilty.
 
 require 'set'

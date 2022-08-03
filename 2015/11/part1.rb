@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 def pw_valid(password)
   triplet = password.chars.each_cons(3).map { |chrs| chrs.map(&:ord) }.any? do |a, b, c|

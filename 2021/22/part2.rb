@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 class Cuboid
   attr_reader :range_x, :range_y, :range_z

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # GRID_LEN = 6
 # STEPS = 5

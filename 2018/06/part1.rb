@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 def manhattan_distance(p1, p2)
   p1.zip(p2).map { |a, b| (a - b).abs }.sum

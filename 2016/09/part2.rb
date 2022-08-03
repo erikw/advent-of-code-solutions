@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 MARKER = /\((\d+)x(\d+)\)/
 compressed = ARGF.readline.chomp.chars

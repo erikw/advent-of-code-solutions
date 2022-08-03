@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # input1 is what this program should produced when fed with input input0.
 
 DEST_MAP_FILE = 'input_full_map'

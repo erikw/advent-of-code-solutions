@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 def s1
   gamma = ARGF.each_line.map { |line| line.chomp.split('').map(&:to_i) }.transpose.map do |colchars|

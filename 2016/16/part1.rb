@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 #DISK_LEN = 20
 DISK_LEN=272

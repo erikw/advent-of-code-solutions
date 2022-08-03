@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 paper = ARGF.each_line.map { |l| l.split('x').map(&:to_i) }.map do |l, w, h|
   lw = l * w

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 nice = 0
 ARGF.each_line.map(&:chomp).each do |string|

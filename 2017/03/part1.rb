@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # https://oeis.org/A016754
 def odd_squares(n)

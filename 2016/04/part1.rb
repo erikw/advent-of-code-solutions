@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 pattern = /((?:[a-z]+-)+)(\d+)\[([a-z]+)\]/
 a = ARGF.each_line.map { |l| l.match(pattern).captures }.select do |ename, _sector_id, checksum|

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 class Reindeer
   attr_reader :name, :speed, :fly, :rest
