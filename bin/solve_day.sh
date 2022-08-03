@@ -27,7 +27,8 @@ enter_day() {
 	touch ${files[@]}
 	chmod u+x *.rb
 	for r in *.rb; do
-		printf "#!/usr/bin/env ruby\n\n" > $r
+		printf "#!/usr/bin/env ruby\n" >> $r
+		printf "# frozen_string_literal: true\n\n" >> $r
 	done
 }
 
