@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 captcha = ARGF.readline.chomp.split('').map(&:to_i)
 

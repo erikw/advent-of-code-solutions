@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # Distance is the same as multi-dim manhattan distance, but half.
 # Ref: https://www.redblobgames.com/grids/hexagons/#distances

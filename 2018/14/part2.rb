@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 FAST_FORWARD_ITERS = 20_000_000
 

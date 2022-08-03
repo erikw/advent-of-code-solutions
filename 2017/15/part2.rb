@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 PAIRS = 5_000_000
 FACTOR_A = 16_807

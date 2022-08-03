@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 grid = Array.new(1000) { Array.new(1000, 0) }
 ARGF.each_line.map { |l| l.delete_prefix('turn').split }.each do |cmd, pt1, _, pt2|

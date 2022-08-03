@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # MAX_DIST = 32
 MAX_DIST = 10_000

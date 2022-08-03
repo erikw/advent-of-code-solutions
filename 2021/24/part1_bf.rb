@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # Brute-forcing 9^14 = 23 trillion posible solutions is not going to work...
 
 require 'stringio'

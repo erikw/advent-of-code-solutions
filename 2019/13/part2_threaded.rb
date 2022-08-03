@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # Unresolved concurrency issues currently, TBI (to be investigated)
 
 require_relative '../09/computer'

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 discs = ARGF.each_line.map { |l| l.scan(/ \d+/).map(&:to_i) }
 discs << [11, 0]

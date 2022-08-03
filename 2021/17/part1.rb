@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 x_range, y_range = ARGF.readline.chomp.delete_prefix!('target area: ').gsub!(/.=/, '').split(', ').map do |part|
   part.split('..').map(&:to_i)

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 ribbon = ARGF.each_line.map { |l| l.split('x').map(&:to_i) }.map do |l, w, h|
   lw = 2 * l + 2 * w

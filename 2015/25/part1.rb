@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 CODE_ONE = 20_151_125
 TERM = 252_533

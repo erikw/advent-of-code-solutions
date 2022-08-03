@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # Re-implementation of part1.rb with Complex numbers.
 
 require 'set'

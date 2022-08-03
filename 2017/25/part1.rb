@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 state = ARGF.readline.chomp.split.last.delete('.')
 check_steps = ARGF.readline.chomp.split[-2].to_i

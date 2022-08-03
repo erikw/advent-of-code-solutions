@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 def update_neighbour(octopi, row, col)
   octopi[row][col] += 1 if row.between?(0, octopi.length - 1) &&
                            col.between?(0, octopi[0].length - 1) &&

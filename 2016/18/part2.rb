@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 ROWS = 400_000
 TILE_SAFE = '.'

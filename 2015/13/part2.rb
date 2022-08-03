@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 happiness = Hash.new { |h, k| h[k] = {} }
 ARGF.each_line.map do |l|

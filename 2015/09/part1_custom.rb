@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # NOTE this algorithm worked by luck. See part1.rb for correct BF solution.
 
 require 'set'

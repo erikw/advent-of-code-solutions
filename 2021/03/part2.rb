@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 def most_common(array, col)
   array.transpose.map { |colchars| (colchars.sum / colchars.length.to_f).round }[col]

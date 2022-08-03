@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 KEYPAD = [
   %w[x x x x x x x],

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # My original attempt: instead of adding a self-edge, add the cost of changing tool as an edge to the target.
 # This solution gives shortest paths that are too short. Still not sure why this happens.
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # ITERATIONS = 100
 ITERATIONS = 10_000_000

@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 nbr_elfs = ARGF.readline.to_i
 

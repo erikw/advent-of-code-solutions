@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 def metadata_sum(numbers, pos = -1)
   children = numbers[pos += 1]

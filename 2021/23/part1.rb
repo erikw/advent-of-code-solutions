@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # start = ARGF.each_line.map do |line|
 # line.chomp.delete(' .#').chars
 # end.delete_if(&:empty?).transpose

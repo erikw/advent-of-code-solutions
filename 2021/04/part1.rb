@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 def bingo(board, row, col)
   board[row].all?(&:negative?) || board.transpose[col].all?(&:negative?)

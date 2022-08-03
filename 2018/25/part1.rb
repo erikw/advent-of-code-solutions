@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # https://cp-algorithms.com/data_structures/disjoint_set_union.html
 class DisjointSetUnion

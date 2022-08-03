@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 def consume_digits(digitstring, length)
   digitstring.slice!(0, length)

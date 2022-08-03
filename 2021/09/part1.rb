@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 def smaller_than(values, row1, col1, row2, col2)
   # puts "Testing values[#{row1}][#{col1}]=#{values[row1][col1]} against values[#{row2}][#{col2}]=#{values[row2][col2]}"

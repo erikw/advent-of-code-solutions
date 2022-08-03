@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # PAIRS = 5
 PAIRS = 40_000_000

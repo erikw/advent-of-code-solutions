@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # Returns [min_items_first_group, quantum_entanglements]
 def pack_sleigh(items, i,
