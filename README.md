@@ -71,9 +71,9 @@ Update:
   * Then [redeploy](https://vercel.com/erikw/adventofcode-badge/deployments) to restart the service.
 
 ## Development Setup
-```console
-$ brew bundle install
-$ bundle install
+```shell
+brew bundle install
+bundle install
 ```
 
 and now solve today's puzzle or a specific one
