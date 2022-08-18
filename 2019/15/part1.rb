@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 # Algorithm
 # 1. Recursively discover the whole reachable map
 #   * Backtrack when recursion returns to step the robot back to the original position.

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'set'
 require 'lazy_priority_queue'
 
