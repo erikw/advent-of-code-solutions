@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 # Algorithm:
 # * Find the map
 # * Flood oxygen with a modifed BFS that goes ring by ring to count the depth/level (= minutes).
