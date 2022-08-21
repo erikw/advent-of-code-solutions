@@ -104,7 +104,7 @@ class Unit
   end
 
   # Modified Dijkstra's algorithm:
-  # - Saves all shortest paths in prev
+  # - Saves *all* shortest paths in prev
   # - Only adds nodes to queue as they are discovered, to avoid having to BFS all currently available positions before the algoritm.
   def dijkstra(map)
     dist = Hash.new(Float::INFINITY)
@@ -133,10 +133,10 @@ class Unit
     [dist, prev]
   end
 
-  # Recursive back-tracking of Dijkstra's algorithm's "prev" output to find all shortests path from self to target.
+  # Recursive back-tracking of Dijkstra's algorithm's "prev" output to find *all* shortests path from self to target.
   def all_paths_to(cur_pos, prev)
     paths = []
-    if cur_pos == pos
+    if cur_pos == pos # NOTE: self.pos is called
       paths << [pos]
     elsif prev.key?(cur_pos) || cur_pos == pos
       prev[cur_pos].each do |prev_pos|
