@@ -4,7 +4,6 @@
 MARKER = /\((\d+)x(\d+)\)/
 compressed = ARGF.readline.chomp.chars
 
-
 # Too slow.
 # i = 0
 # while i < compressed.length
@@ -22,8 +21,6 @@ compressed = ARGF.readline.chomp.chars
 # puts compressed.join
 # len = compressed.join.each_char.count { |c| c != ' ' }
 # puts len
-
-
 
 # Too deep recursion stack.
 # def decompressed_len(str, cache={})
@@ -47,8 +44,8 @@ compressed = ARGF.readline.chomp.chars
 # end
 
 # Recurse on individual parts and multiply the repeat.
-# Props to https://www.reddit.com/r/adventofcode/comments/5hbygy/comment/daz2o0d/
-def decompressed_len(str, cache={})
+# Hats off to https://www.reddit.com/r/adventofcode/comments/5hbygy/comment/daz2o0d/
+def decompressed_len(str, cache = {})
   unless cache.key? str
     pos = str.join.index(MARKER)
     if pos.nil?
@@ -59,7 +56,7 @@ def decompressed_len(str, cache={})
       end
 
       i = pos + jump
-      cache[str] = str[...pos].length + decompressed_len(str[i, len]) * rep + decompressed_len(str[i+len...])
+      cache[str] = str[...pos].length + decompressed_len(str[i, len]) * rep + decompressed_len(str[i + len...])
     end
   end
   cache[str]
@@ -67,5 +64,4 @@ end
 
 puts decompressed_len(compressed)
 
-
-# NOTE coolest algo is probably https://www.reddit.com/r/adventofcode/comments/5hbygy/comment/dazentu/
+# NOTE: coolest algo is probably https://www.reddit.com/r/adventofcode/comments/5hbygy/comment/dazentu/
