@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
 # My original attempt: instead of adding a self-edge, add the cost of changing tool as an edge to the target.
 # This solution gives shortest paths that are too short. Still not sure why this happens.
 
@@ -25,7 +26,7 @@ TYPE_TOOLS = {
   TYPE_NARROW => %i[tool_torch tool_neither]
 }
 
-NEIGHBORS_DELTAS = [-1, 1, -1i, 1i]
+NEIGHBOURS_DELTAS = [-1, 1, -1i, 1i]
 
 # Modified Dijkstra's algorithm from given starting coordinate:
 # - Only adds nodes to queue as they are discovered, to avoid having to BFS all currently available positions before the algoritm.
@@ -45,7 +46,7 @@ def dijkstra(erosions, target, depth)
     visited << [pos, tool]
     type_cur = type(erosions, target, depth, pos)
 
-    NEIGHBORS_DELTAS.map do |delta|
+    NEIGHBOURS_DELTAS.map do |delta|
       pos_n = pos + delta
       next if pos_n.real.negative? || pos_n.imag.negative?
 

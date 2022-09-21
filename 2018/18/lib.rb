@@ -17,14 +17,14 @@ def neighbours_count(acres, x, y)
 end
 
 def acre_next(acres, x, y)
-  neighbors = neighbours_count(acres, x, y)
+  neighbours = neighbours_count(acres, x, y)
   case acres[x][y]
   when SYM_OPEN
-    neighbors[SYM_TREES] >= 3 ? SYM_TREES : SYM_OPEN
+    neighbours[SYM_TREES] >= 3 ? SYM_TREES : SYM_OPEN
   when SYM_TREES
-    neighbors[SYM_LUMBER] >= 3 ? SYM_LUMBER : SYM_TREES
+    neighbours[SYM_LUMBER] >= 3 ? SYM_LUMBER : SYM_TREES
   when SYM_LUMBER
-    neighbors[SYM_LUMBER] >= 1 && neighbors[SYM_TREES] >= 1 ? SYM_LUMBER : SYM_OPEN
+    neighbours[SYM_LUMBER] >= 1 && neighbours[SYM_TREES] >= 1 ? SYM_LUMBER : SYM_OPEN
   end
 end
 

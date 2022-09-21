@@ -12,7 +12,7 @@ SYM_POS_CUR = '@'
 PORTAL_START = 'AA'
 PORTAL_END = 'ZZ'
 
-NEIGHBORS_DELTAS = [-1 + 0i, 1 + 0i, 0 - 1i, 0 + 1i]
+NEIGHBOURS_DELTAS = [-1 + 0i, 1 + 0i, 0 - 1i, 0 + 1i]
 
 def print_map(map, pos_cur = nil)
   xmin, xmax = map.keys.map(&:real).minmax
@@ -36,7 +36,7 @@ def find_portals(map)
       pos = Complex(x, y)
       next unless map[pos].match(SYM_PORTAL)
 
-      ndelta = NEIGHBORS_DELTAS.select { |d| map[pos + d].match(SYM_PORTAL) }.first
+      ndelta = NEIGHBOURS_DELTAS.select { |d| map[pos + d].match(SYM_PORTAL) }.first
       next unless map[pos + ndelta * 2] == SYM_OPEN
 
       # Portal names are apparently read from left-to-right like reading.
@@ -62,7 +62,7 @@ def find_portals(map)
 end
 
 def visitable_neighbours(map, portals, visited, pos)
-  pos_neighbours = NEIGHBORS_DELTAS.map { |d| pos + d }.select { |p| map[p] == SYM_OPEN }
+  pos_neighbours = NEIGHBOURS_DELTAS.map { |d| pos + d }.select { |p| map[p] == SYM_OPEN }
   pos_neighbours << portals[pos] if portals.include?(pos)
   pos_neighbours.reject { |posn| visited.include?(posn) }
 end
