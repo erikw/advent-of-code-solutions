@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
 # This solution was too memory consuming to generate all paths. The better solution, part1.rb, is to creat the map as we parse instead of storing all paths explicilty.
 
 require 'set'
@@ -11,7 +12,7 @@ SYM_DOOR_VERTI = '|'
 SYM_DOOR_HORIZ = '-'
 SYM_DOORS = [SYM_DOOR_VERTI, SYM_DOOR_HORIZ]
 
-NEIGHBORS_DELTAS = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+NEIGHBOURS_DELTAS = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
 class LazyPriorityQueue
   def upsert(element, key)
@@ -110,7 +111,7 @@ def dijkstra(map, start_pos = [0, 0])
     pos = q.pop
     visited << pos
 
-    NEIGHBORS_DELTAS.map do |dx, dy|
+    NEIGHBOURS_DELTAS.map do |dx, dy|
       pos_door = [pos[0] + dx, pos[1] + dy]
       dxr, dyr = [dx, dy].map { |n| n * 2 }
       pos_room = [pos[0] + dxr, pos[1] + dyr]
