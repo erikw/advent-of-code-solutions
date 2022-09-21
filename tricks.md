@@ -23,6 +23,27 @@ Some collected tricks after solving the puzzles.
   * Examples [2017/25](https://www.reddit.com/r/adventofcode/comments/7lzo3l/comment/drqk1wu/)
 
 ## Testing
+### Performance testing
+Typically you will have seveal competing ideas, implementation and data structures for your solution. Big-o-theory is one thing, reality might be another. It's easy tog get some runtime stats with `time(1)`. However just a single run is not reliable to make a call about the performance. You need to run it multiple times and take an average. This is where the exellent program [`multitime(1)`](https://tratt.net/laurie/src/multitime/) comes in! Just give it the number of times it should execute your program and it will give you the time stats:
+
+```console
+$ multitime -n 5 ./part2.rb input  # Here running solution for 2019/24 for my input.
+2031
+2031
+2031
+2031
+2031
+===> multitime results
+1: ./part2.rb input
+            Mean        Std.Dev.    Min         Median      Max
+real        12.623      1.343       11.405      12.093      14.958
+user        11.808      0.817       11.032      11.640      13.282
+sys         0.284       0.051       0.239       0.248       0.369
+```
+
+Now just do the same with your alternative soltuion and compare!
+
+### File naming
 The problem instructions often includes several examples with expected results. Sometimes directly and some times after a few hand-calculations. To make the solution development easier to develop and test, save these in some files. The convention that I've landed in is
 * `input` - the raw input `curl(1)`'d from the website
 * `input1.X` - Input example number X for part 1
