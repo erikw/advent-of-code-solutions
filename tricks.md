@@ -75,7 +75,7 @@ to get side-by-side comparison between expected (column 1) and actual (column 2)
         ...
       end
    ```
-  * Storing a direction is just the numbers `-1, +1i, +1, -1i` instead of up/right/down/left or north/east/south/west. Rotating the direction is just multiplying with `-1i`(clockwise) or `+1i` (counter-clockwise). In this example `x == real == row` and `y == imag == col`. When x and y are swapped, the rotation goes in the other direction.
+  * Storing a direction is just the numbers `-1, +1i, +1, -1i` instead of up/right/down/left or north/east/south/west. Rotating the direction is just multiplying with `-1i` (clockwise) or `+1i` (counter-clockwise). In this example `x == real == row` and `y == imag == col`. When x and y are swapped, the rotation goes in the other direction.
    ```ruby
       position = 5 + 7j
       direction = 1i
@@ -83,7 +83,7 @@ to get side-by-side comparison between expected (column 1) and actual (column 2)
       direction *= 1i
       position += direction
    ```
-  * Examples: [2018/13](2018/13/part1_complex.rb), [2018/22](2018/22/), [2019/03](2019/03/part1_complex.rb), [2019/11](2019/11/part1.rb)
+  * Examples:[2020/2](2020/12/part1.rb), [2018/13](2018/13/part1_complex.rb), [2018/22](2018/22/), [2019/03](2019/03/part1_complex.rb), [2019/11](2019/11/part1.rb)
 * Cell neighbours
   * When needing to check/recurse on all neighbhours of a cell (e.g including diagonal neighbours), just loop on the deltas:
   *
