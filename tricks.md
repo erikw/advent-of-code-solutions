@@ -84,19 +84,52 @@ to get side-by-side comparison between expected (column 1) and actual (column 2)
       position += direction
    ```
   * Examples:[2020/2](2020/12/part1.rb), [2018/13](2018/13/part1_complex.rb), [2018/22](2018/22/), [2019/03](2019/03/part1_complex.rb), [2019/11](2019/11/part1.rb)
-* Cell neighbours
+* Cell neighbours (2 dim)
   * When needing to check/recurse on all neighbhours of a cell (e.g including diagonal neighbours), just loop on the deltas:
   *
    ```ruby
-    [-1, 0, 1].each do |dx|
-      [-1, 0, 1].each do |dy|
+   deltas = [-1, 0, 1]
+    deltas.each do |dx|
+      deltas.each do |dy|
         if grid[x + dx][y + dy] == ...
         end
       end
    end
    ```
   * Examples: [2018/18](2018/18/lib.rb)
+* Cell neighbours (multi dim)
+  * With more than 2 dimensions the abmove method becomes clumsy. Say that you're solving puzzle variant of Convay's Game of Life or some maze/grid problem with multiple dimensions. Then a method to calculate the direct neighbours in 4 dimentions might look like this using the above method:
+   ```ruby
+   DELTAS = [-1, 0, 1]
 
+   def neighbour_positions(pos)
+     positions = []
+     DELTAS.each do |dx|
+       DELTAS.each do |dy|
+         DELTAS.each do |dz|
+           DELTAS.each do |dw|
+             delta = [dx, dy, dz, dw]
+             pos_n = pos.zip(delta).map { |a, b| a + b }
+             next if pos_n == pos
+
+             positions << pos_n
+           end
+         end
+       end
+     end
+     positions
+   end
+   ```
+  * This is rather clumsy, so let's make the dimensions a parameter to the method instead.
+   ```ruby
+   def neighbour_positions(pos, dimensions)
+     deltas = dimensions.times.map { [-1, 0, 1] }.inject(&:product).map(&:flatten).reject { |d| d == [0] * dimensions }
+     deltas.map do |delta|
+       pos.zip(delta).map { |a, b| a + b }
+     end
+   end
+   ```
+  * Examples: [2020/17 part2](2020/17/part2.rb) with [2020/17 lib](2020/17/lib.rb)
 
 
 ## Algorithms
