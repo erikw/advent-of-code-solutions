@@ -7,7 +7,7 @@ SYM_DOOR_VERTI = '|'
 SYM_DOOR_HORIZ = '-'
 SYM_DOORS = [SYM_DOOR_VERTI, SYM_DOOR_HORIZ]
 
-NEIGHBOURS_DELTAS = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+NEIGHBOUR_DELTAS = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
 class LazyPriorityQueue
   def upsert(element, key)
@@ -95,7 +95,7 @@ def dijkstra(map, start_pos = [0, 0])
     pos = q.pop
     visited << pos
 
-    NEIGHBOURS_DELTAS.map do |dx, dy|
+    NEIGHBOUR_DELTAS.map do |dx, dy|
       pos_door = [pos[0] + dx, pos[1] + dy]
       dxr, dyr = [dx, dy].map { |n| n * 2 }
       pos_room = [pos[0] + dxr, pos[1] + dyr]
