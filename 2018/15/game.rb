@@ -26,7 +26,7 @@ class Unit
   attr_reader :attack
   attr_accessor :x, :y, :hp
 
-  NEIGHBOURS_DELTAS = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+  NEIGHBOUR_DELTAS = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
   def initialize(x, y, attack = 3)
     @x = x
@@ -65,7 +65,7 @@ class Unit
 
   def try_move(map, units)
     in_range_pos = units.select { |u| u.is_a?(enemy) }.map do |enemy|
-      NEIGHBOURS_DELTAS.map do |dx, dy|
+      NEIGHBOUR_DELTAS.map do |dx, dy|
         map[enemy.x + dx][enemy.y + dy] == SYM_OPEN ? [enemy.x + dx, enemy.y + dy] : nil
       end
     end.flatten(1).compact.uniq
@@ -118,7 +118,7 @@ class Unit
       u = q.pop
       visited << u
 
-      NEIGHBOURS_DELTAS.map do |dx, dy|
+      NEIGHBOUR_DELTAS.map do |dx, dy|
         npos = [u[0] + dx, u[1] + dy]
         next if visited.include?(npos) || map[npos[0]][npos[1]] != SYM_OPEN
 

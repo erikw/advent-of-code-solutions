@@ -23,7 +23,7 @@ TYPE_TOOLS = {
   TYPE_NARROW => %i[tool_torch tool_neither]
 }
 
-NEIGHBOURS_DELTAS = [-1, 1, -1i, 1i]
+NEIGHBOUR_DELTAS = [-1, 1, -1i, 1i]
 
 # Modified Dijkstra's algorithm from given starting coordinate:
 # - Only adds nodes to queue as they are discovered, to avoid having to BFS all currently available positions before the algoritm.
@@ -54,7 +54,7 @@ def dijkstra(erosions, target, depth)
       q.upsert([pos, other_tool], dist[[pos, other_tool]])
     end
 
-    NEIGHBOURS_DELTAS.each do |delta|
+    NEIGHBOUR_DELTAS.each do |delta|
       pos_n = pos + delta
       next if pos_n.real.negative? || pos_n.imag.negative?
 

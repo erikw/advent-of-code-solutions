@@ -13,7 +13,7 @@ SYM_WALL = '#'
 SYM_KEY = /[a-z]/
 SYM_DOOR = /[A-Z]/
 
-NEIGHBOURS_DELTAS = [-1 + 0i, 1 + 0i, 0 - 1i, 0 + 1i]
+NEIGHBOUR_DELTAS = [-1 + 0i, 1 + 0i, 0 - 1i, 0 + 1i]
 
 class LazyPriorityQueue
   def upsert(element, key)
@@ -60,7 +60,7 @@ def dijkstra(map, doors, keys_collected, source)
       next # Don't go beyond this key to keep it simple. Avoid multi-key collection paths.
     end
 
-    NEIGHBOURS_DELTAS.map do |delta|
+    NEIGHBOUR_DELTAS.map do |delta|
       npos = pos + delta
       next if map[npos] == SYM_WALL || doors.keys.include?(map[npos]) && !keys_collected.include?(map[npos].downcase)
 
@@ -126,7 +126,7 @@ ARGF.each_line.with_index do |line, row|
 end
 
 map[pos_entrance] = SYM_WALL
-(NEIGHBOURS_DELTAS + [-1 - 1i, -1 + 1i, 1 - 1i, 1 + 1i]).each do |delta|
+(NEIGHBOUR_DELTAS + [-1 - 1i, -1 + 1i, 1 - 1i, 1 + 1i]).each do |delta|
   map[pos_entrance + delta] = SYM_WALL
 end
 pos_entrances = [-1 - 1i, -1 + 1i, 1 - 1i, 1 + 1i].map do |delta|

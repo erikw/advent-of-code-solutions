@@ -18,7 +18,7 @@ PTYPE_OUTER = :outer
 # Notes from input2.2: not only can you enter the same portal twice, but also coming from the same portal. Thus saving visited portals is not a way to detect infinite recursion.
 MAX_LEVELS = 25 # Empirically found and not by chance coinciding with christmas. Set to 15 for input2.2.
 
-NEIGHBOURS_DELTAS = [-1 + 0i, 1 + 0i, 0 - 1i, 0 + 1i]
+NEIGHBOUR_DELTAS = [-1 + 0i, 1 + 0i, 0 - 1i, 0 + 1i]
 
 def print_map(map, pos_cur = nil)
   xmin, xmax = map.keys.map(&:real).minmax
@@ -42,7 +42,7 @@ def find_portals(map)
       pos = Complex(x, y)
       next unless map[pos].match(SYM_PORTAL)
 
-      ndelta = NEIGHBOURS_DELTAS.select { |d| map[pos + d].match(SYM_PORTAL) }.first
+      ndelta = NEIGHBOUR_DELTAS.select { |d| map[pos + d].match(SYM_PORTAL) }.first
       next unless map[pos + ndelta * 2] == SYM_OPEN
 
       # Portal names are apparently read from left-to-right like reading.
@@ -68,7 +68,7 @@ end
 
 # All visitable neighbours and what level, as neighbours via portals are considerd a neighbour as well.
 def visitable_neighbours(map, portals, visited, pos, level)
-  pos_neighbours = NEIGHBOURS_DELTAS.map { |d| [pos + d, level] }.select { |p, _l, _pn| map[p] == SYM_OPEN }
+  pos_neighbours = NEIGHBOUR_DELTAS.map { |d| [pos + d, level] }.select { |p, _l, _pn| map[p] == SYM_OPEN }
 
   if portals.include?(pos)
     port_pos, ptype = portals[pos]
