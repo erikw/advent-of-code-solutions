@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
+NEIGHBOUR_DELTAS = [-1, 0, 1]
+
 def update_neighbour(octopi, row, col)
   octopi[row][col] += 1 if row.between?(0, octopi.length - 1) &&
                            col.between?(0, octopi[0].length - 1) &&
@@ -7,14 +10,13 @@ def update_neighbour(octopi, row, col)
 end
 
 def update_neighbours(octopi, row, col)
-  update_neighbour(octopi, row, col - 1)
-  update_neighbour(octopi, row - 1, col - 1)
-  update_neighbour(octopi, row - 1, col)
-  update_neighbour(octopi, row - 1, col + 1)
-  update_neighbour(octopi, row, col + 1)
-  update_neighbour(octopi, row + 1, col + 1)
-  update_neighbour(octopi, row + 1, col)
-  update_neighbour(octopi, row + 1, col - 1)
+  NEIGHBOUR_DELTAS.each do |dr|
+    NEIGHBOUR_DELTAS.each do |dc|
+      next if dr == 0 && dc == 0
+
+      update_neighbour(octopi, row + dr, col + dc)
+    end
+  end
 end
 
 octopi = ARGF.each_line.map do |line|
