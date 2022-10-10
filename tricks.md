@@ -187,6 +187,7 @@ to get side-by-side comparison between expected (column 1) and actual (column 2)
     * create a new directory for the selected puzzle day
     * downloads the `input` for the selected puzzle day
     * populate empty source files, README.txt etc for the puzzle day
+    * `$ chmod o+x` on the executables
     * opens up a tmux split pane with my editor + shell to execute and debug in
     * open my editor with the right tabs and split windows
     * after the editor closes -> assumes the puzzle is solved -> print command ready to copy and paste that git commits with a git message formatted for today's date.
