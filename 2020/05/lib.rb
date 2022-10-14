@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ROWS = 128
 COLS = 8
 SEG1_LEN = 7

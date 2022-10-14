@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'set'
 
 DIRECTIONS_DELTA = [[-1, 0], [1, 0], [0, -1], [0, 1]]

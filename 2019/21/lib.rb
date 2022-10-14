@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def read(computer)
   answer = [[]]
   until computer.stdout.empty?

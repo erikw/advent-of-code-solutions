@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Component
   attr_reader :port1, :port2
 

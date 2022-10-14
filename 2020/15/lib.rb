@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def nth_spoken(nums_start, _nth)
   turn = 0
   num_last = nil

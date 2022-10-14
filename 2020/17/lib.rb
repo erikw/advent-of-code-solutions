@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'set'
 
 BOOT_CYCLES = 6

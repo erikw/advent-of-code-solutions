@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SYM_OPEN = '.'
 SYM_TREE = '#'
 SYM_CHECK_OPEN = 'O'

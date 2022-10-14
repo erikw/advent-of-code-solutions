@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def react(polymer)
   stack = []
   polymer.each do |p|

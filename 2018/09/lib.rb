@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Marble
   attr_accessor :next, :prev
   attr_reader :value

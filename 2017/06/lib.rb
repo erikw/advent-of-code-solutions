@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def largest_bank(banks)
   banks.index(banks.max)
 end

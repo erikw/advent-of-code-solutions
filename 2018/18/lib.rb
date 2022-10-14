@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SYM_OPEN = '.'
 SYM_TREES = '|'
 SYM_LUMBER = '#'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def inv_reactions_from_input
   inv_reactions = {}
   ARGF.each_line do |line|
