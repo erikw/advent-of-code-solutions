@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 CHAR_HEIGHT = 6
 
 def print_message(points)

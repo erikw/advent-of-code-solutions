@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 PATTERN_LEN = 5
 POT_EMPTY = '.'
 POT_PLANT = '#'

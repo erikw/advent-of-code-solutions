@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def scanner_pos(range, time)
   time %= 2 * range - 2
   if time >= range

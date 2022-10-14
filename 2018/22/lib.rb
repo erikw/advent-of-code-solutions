@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SYM_ROCKY = '.'
 SYM_WET = '='
 SYM_NARROW = '|'

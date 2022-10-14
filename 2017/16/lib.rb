@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def dance(programs, moves)
   moves.each do |move|
     case move

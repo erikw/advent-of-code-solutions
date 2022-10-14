@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SYM_CLAY = '#'
 SYM_SAND = '.'
 SYM_WATER_FLOW = '|'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The flipped tile's edges represent can always be flipped to the other side
 # => it's enough to save one edge and always select on the min one.
 def edge_id(edge)

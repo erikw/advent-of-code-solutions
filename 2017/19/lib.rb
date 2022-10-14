@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ANSI_CLEAR_SCREEN = "\033c"
 ANSI_RED = "\033[31;1m"
 ANSI_CLEAR = "\033[0m"
