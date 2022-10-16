@@ -169,6 +169,9 @@ to get side-by-side comparison between expected (column 1) and actual (column 2)
     end
    ```
   * Examples: [2019/20](2019/20/part2.rb)
+* [Hex grids](https://en.wikipedia.org/wiki/Hexagonal_tiling)
+  * When the problem is about hex grids, using [Cube Coordinates](https://www.redblobgames.com/grids/hexagons/#coordinates-cube) can make the problems trivial to solve, as we can use standard vector operations and distance calculations we're used to in cartesian coordinate systems.
+  * Examples: [2017/11](2017/11/part1.rb), [2020/24](2020/24/part1.rb)
 
 
 ## Algorithms
