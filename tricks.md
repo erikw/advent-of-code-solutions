@@ -195,6 +195,7 @@ to get side-by-side comparison between expected (column 1) and actual (column 2)
     * open my editor with the right tabs and split windows
     * after the editor closes -> assumes the puzzle is solved -> print command ready to copy and paste that git commits with a git message formatted for today's date.
     * prints some simple stats over solved puzzles [`stats.sh`](bin/stats.sh)
+  * Python users have a lot of [helper libs](https://pypi.org/search/?q=advent&o=) to automate e.g. input download, parsing and even solution submission.
 
 ## Misc
 * Constraint solver
