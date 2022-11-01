@@ -1,0 +1,14 @@
+{
+  "name": "advent-of-code-solutions",
+  "version": "0.1.0",
+  "description": "Advent of Code Solutions",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/erikw/advent-of-code-solutions.git"
+  },
+  "author": "Erik Westrup",
+  "homepage": "https://github.com/erikw/advent-of-code-solutions#readme"
+}
