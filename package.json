@@ -10,5 +10,8 @@
     "url": "git+ssh://git@github.com/erikw/advent-of-code-solutions.git"
   },
   "author": "Erik Westrup",
-  "homepage": "https://github.com/erikw/advent-of-code-solutions#readme"
+  "homepage": "https://github.com/erikw/advent-of-code-solutions#readme",
+  "devDependencies": {
+    "eslint": "^8.26.0"
+  }
 }
