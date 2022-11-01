@@ -1,3 +1,8 @@
-octave-workspace
-.byebug_history
 .env
+octave-workspace
+
+# Ruby
+.byebug_history
+
+# JavaScript
+node_modules/
