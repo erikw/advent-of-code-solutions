@@ -71,11 +71,18 @@ Update:
   * Then [redeploy](https://vercel.com/erikw/adventofcode-badge/deployments) to restart the service.
 
 ## Development Setup
+### Env: Ruby
 ```shell
 brew bundle install
 bundle install
 ```
 
+### Env: JavaScript
+```shell
+npm install
+```
+
+### Solve puzzle
 and now solve today's puzzle or a specific one
 
 ```console
