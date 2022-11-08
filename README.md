@@ -85,7 +85,7 @@ npm install
 ### Solve puzzle
 and now solve today's puzzle or a specific one
 
-```console
-$ bin/solve_day.sh
-$ bin/solve_day.sh 19/5  # 2019 day 5
+```shell
+bin/solve_day.sh
+bin/solve_day.sh 19/5  # 2019 day 5
 ```
