@@ -5,8 +5,6 @@ def most_common(array, col)
   array.transpose.map { |colchars| (colchars.sum / colchars.length.to_f).round }[col]
 end
 
-gamma = ''
-epsilon = ''
 report = ARGF.each_line.map { |line| line.chomp.split('').map(&:to_i) }
 
 i = 0
