@@ -120,7 +120,7 @@ to get side-by-side comparison between expected (column 1) and actual (column 2)
      positions
    end
    ```
-  * This is rather clumsy, so let's make the dimensions a parameter to the method instead.
+  * This is rather clumsy, so let's make the number of dimensions a parameter to the method instead.
    ```ruby
    def neighbour_positions(pos, dimensions)
      deltas = dimensions.times.map { [-1, 0, 1] }.inject(&:product).map(&:flatten).reject { |d| d == [0] * dimensions }
