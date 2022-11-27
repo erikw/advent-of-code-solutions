@@ -24,7 +24,7 @@ Some collected tricks after solving the puzzles.
 
 ## Testing
 ### Performance testing
-Typically you will have several competing ideas, implementation and data structures for your solution. Big-o-theory is one thing, reality might be another. It's easy tog get some runtime stats with `time(1)`. However just a single run is not reliable to make a call about the performance. You need to run it multiple times and take an average. This is where the excellent program [`multitime(1)`](https://tratt.net/laurie/src/multitime/) comes in! Just give it the number of times it should execute your program and it will give you the time stats:
+Typically you will have several competing ideas, implementation and data structures for your solution. Big-o-theory is one thing, reality might be another. It's easy to get some runtime stats with `time(1)`. However just a single run is not reliable to make a call about the performance. You need to run it multiple times and take an average. This is where the excellent program [`multitime(1)`](https://tratt.net/laurie/src/multitime/) comes in! Just give it the number of times it should execute your program and it will give you the time stats:
 
 ```console
 $ multitime -n 5 ./part2.rb input  # Here running solution for 2019/24 for my input.
