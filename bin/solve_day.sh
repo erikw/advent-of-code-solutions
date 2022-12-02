@@ -27,6 +27,7 @@ HEADER
 )
 HEADERS[js]=$(cat <<'HEADER'
 #!/usr/bin/env node
+"use strict";
 
 HEADER
 )
