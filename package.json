@@ -2,6 +2,7 @@
   "name": "advent-of-code-solutions",
   "version": "0.1.0",
   "description": "Advent of Code Solutions",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +13,7 @@
   "author": "Erik Westrup",
   "homepage": "https://github.com/erikw/advent-of-code-solutions#readme",
   "devDependencies": {
-    "eslint": "^8.26.0"
+    "eslint": "^8.28.0",
+    "prettier": "^2.8.0"
   }
 }
