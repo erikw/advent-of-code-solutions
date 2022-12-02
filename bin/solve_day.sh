@@ -3,7 +3,7 @@
 set -o errexit
 set -o nounset
 set -o pipefail
-[[ "${TRACE-0}" =~ ^1|true|yes$ ]] && set -o xtrace
+[[ "${TRACE-0}" =~ ^1|t|y|true|yes$ ]] && set -o xtrace
 
 SCRIPT_NAME=${0##*/}
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -66,7 +66,8 @@ fetch_input() {
 		printf '$ echo AOC_SESSION=value > .env\n' >&2
 		exit 2
 	fi
-	curl --remote-name --remote-header-name --silent --fail --cookie "session=$AOC_SESSION" "$url"
+	# Include contact method in user agent as requested by @topaz: https://www.reddit.com/r/adventofcode/comments/z9dhtd/please_include_your_contact_info_in_the_useragent/
+	curl --remote-name --remote-header-name --silent --fail -A 'https://erikw.me/contact' --cookie "session=$AOC_SESSION" "$url"
 }
 
 
@@ -102,7 +103,7 @@ files+=("part2.${arg_lang}")
 cd_git_root
 load_dotenv
 enter_day $year $day $arg_lang files
-#fetch_input $year $(echo $day | bc)
+fetch_input $year $(echo $day | bc)
 
 
 if [ -n "${TMUX+x}" ]; then
