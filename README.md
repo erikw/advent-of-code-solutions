@@ -40,12 +40,6 @@ See also:
 | [Day 2](https://adventofcode.com/2022/day/2) | ⭐ | ⭐ |
 <!--- advent_readme_stars table --->
 
-## Session Cookie Expired?
-Update:
-* `AOC_SESSION` in local `.env`
-* `AOC_SESSION` at [Action Secret](https://github.com/erikw/advent-of-code-solutions/settings/secrets/actions) for [.github/workflows/readme-stars.yml](.github/workflows/readme-stars.yml)
-* `SESSION` at [Vercel Envvar](https://vercel.com/erikw/adventofcode-badge/settings/environment-variables) for [stackcats/adventofcode-badge](https://github.com/stackcats/adventofcode-badge)
-  * Then [redeploy](https://vercel.com/erikw/adventofcode-badge/deployments) to restart the service.
 
 ## Development Setup
 ### Env: Ruby
@@ -67,3 +61,12 @@ bin/solve_day.sh
 bin/solve_day.sh 19/5  # 2019 day 5
 bin/solve_day.sh -l rb # Solve with language, here ruby 
 ```
+
+
+## Session Cookie Expired?
+Update:
+* `AOC_SESSION` in local `.env`
+* `AOC_SESSION` at [Action Secret](https://github.com/erikw/advent-of-code-solutions/settings/secrets/actions) for [.github/workflows/readme-stars.yml](.github/workflows/readme-stars.yml)
+* `SESSION` at [Vercel Envvar](https://vercel.com/erikw/adventofcode-badge/settings/environment-variables) for [stackcats/adventofcode-badge](https://github.com/stackcats/adventofcode-badge)
+  * Then [redeploy](https://vercel.com/erikw/adventofcode-badge/deployments) to restart the service.
+
