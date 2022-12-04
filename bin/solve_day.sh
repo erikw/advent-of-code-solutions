@@ -29,6 +29,9 @@ HEADERS[js]=$(cat <<'HEADER'
 #!/usr/bin/env node
 "use strict";
 
+import { readFileSync } from "node:fs";
+
+let input = readFileSync(process.argv[2]).toString().trim().split("\n");
 HEADER
 )
 
