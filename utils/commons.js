@@ -1,17 +1,25 @@
 // Common JavaScript helpers
+// TODO add vim fold markers?
 // NOTE arrow functions does not bind 'this': https://www.w3schools.com/js/js_arrow_function.asp
 //
 // Import like this:
-// * Just prototypes
-//   import "../../utils/commons.js";
-// * classes
-//   import { DefaultObject } from "../../utils/commons.js";
+// * Just prototypes:
+//import "../../utils/commons.js";
+// * prototypes + exports (classes, functions):
+//import { DefaultObject } from "../../utils/commons.js";
 
 // ===== Object =====
 // Filter on key/value like Array.filter.
 // Ref: https://stackoverflow.com/a/37616104/265508
 Object.filter = function (obj, predicate) {
   return Object.fromEntries(Object.entries(obj).filter(predicate));
+};
+
+// ===== Number =====
+
+// Inclusive range check.
+Number.prototype.inRange = function (a, b) {
+  return this >= a && this <= b;
 };
 
 // ===== Array =====
@@ -34,11 +42,37 @@ Array.prototype.transpose = function () {
   return this[0].map((x, i) => this.map((y) => y[i]));
 };
 
+// Ref: https://stackoverflow.com/a/1669222
+Array.prototype.max = function () {
+  return Math.max.apply(null, this);
+};
+
+// Ref: https://stackoverflow.com/a/1669222
+Array.prototype.min = function () {
+  return Math.min.apply(null, this);
+};
+
+// Count number of element for which the predicate is true.
+Array.prototype.count = function (predicate) {
+  return this.filter(predicate).length;
+};
+
+// Sum elements.
+Array.prototype.sum = function () {
+  return this.reduce((sum, e) => sum + e, 0);
+};
+
+// Multiply elements.
+Array.prototype.mul = function () {
+  return this.reduce((prod, e) => prod * e, 1);
+};
+
 // ===== Set =====
 Set.prototype.intersection = function (other) {
   return new Set([...this].filter((e) => other.has(e)));
 };
 
+// ===== Classes =====
 // A map/dict/hash with default value.
 // Ref: https://stackoverflow.com/a/44622467/265508
 export class DefaultObject {
@@ -51,3 +85,12 @@ export class DefaultObject {
     );
   }
 }
+
+// ===== Utility functions =====
+
+// Create integer range with start (inclusive), end (exclusive)
+// Ref: https://stackoverflow.com/a/44957114/265508
+export const range = (start, stop, step = 1) =>
+  Array(Math.ceil((stop - start) / step))
+    .fill(start)
+    .map((x, y) => x + y * step);
