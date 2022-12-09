@@ -52,6 +52,10 @@ Array.prototype.min = function () {
   return Math.min.apply(null, this);
 };
 
+Array.prototype.minmax = function () {
+  return [this.min(), this.max()];
+};
+
 // Count number of element for which the predicate is true.
 Array.prototype.count = function (predicate) {
   return this.filter(predicate).length;
@@ -94,3 +98,10 @@ export const range = (start, stop, step = 1) =>
   Array(Math.ceil((stop - start) / step))
     .fill(start)
     .map((x, y) => x + y * step);
+
+// Repeated function invocations.
+export const repeat = function (times, func) {
+  for (let t = 0; t < times; t++) {
+    func(t);
+  }
+};
