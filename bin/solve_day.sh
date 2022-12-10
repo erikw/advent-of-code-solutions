@@ -122,4 +122,5 @@ $EDITOR -c "tabedit part1.${arg_lang} | sp input | tabedit input1.0 | sp output1
 cd_git_root
 bin/stats.sh
 
-printf "\ngit add %s && git commit -m \"Add %s ${arg_lang}\" && git push && tig\n" "$path" "$path"
+printf "\ngit add %s && git commit -m \"Add %s ${arg_lang}\" && git push && tig\n\n" "$path" "$path"
+git status
