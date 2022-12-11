@@ -15,6 +15,18 @@ Object.filter = function (obj, predicate) {
   return Object.fromEntries(Object.entries(obj).filter(predicate));
 };
 
+Object.prototype.values = function (a, b) {
+  return Object.values(this);
+};
+
+Object.prototype.keys = function (a, b) {
+  return Object.keys(this);
+};
+
+Object.prototype.entries = function (a, b) {
+  return Object.entries(this);
+};
+
 // ===== Number =====
 
 // Inclusive range check.
