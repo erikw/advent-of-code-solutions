@@ -89,19 +89,71 @@ Set.prototype.intersection = function (other) {
 };
 
 // ===== Classes =====
-// A map/dict/hash with default value.
+// An object with default value.
 // Ref: https://stackoverflow.com/a/44622467/265508
 export class DefaultObject {
-  constructor(defaultVal) {
+  constructor(defaultValue) {
     return new Proxy(
       {},
       {
-        get: (target, name) => (name in target ? target[name] : defaultVal),
+        get: (target, name) => (name in target ? target[name] : defaultValue),
       }
     );
   }
 }
 
+// A map with default value.
+// Modified https://stackoverflow.com/a/51321724/265508
+// that does not populate all keys that were unset when getting.
+export class DefaultMap extends Map {
+  constructor(defaultFunc, entries) {
+    super(entries);
+    this.default = defaultFunc;
+  }
+
+  get(key) {
+    return this.has(key) ? super.get(key) : this.default();
+  }
+}
+
+//// A map with default value.
+//// Modified https://stackoverflow.com/a/51321724/265508 that
+//// * does not populate all keys that were unset when getting
+//// * support key function to e.g. use objects as keys
+//export class DefaultMap extends Map {
+//  constructor(
+//    defaultFunc,
+//    keySerFunc = (k) => k,
+//    keyDeserFunc = (k) => k,
+//    entries
+//  ) {
+//    super(entries);
+//    this.default = defaultFunc;
+//    this.keySetFunc = keySerFunc;
+//    this.keyDeserFunc = keyDeserFunc;
+//  }
+
+//  get(key) {
+//    key = this.keySerFunc(key);
+//    if (!this.has(key)) {
+//      return this.default();
+//    } else {
+//      return super.get(key);
+//    }
+//  }
+
+//  set(key, value) {
+//    return super.set(this.keySerFunc(key), value);
+//  }
+
+//  delete(key) {
+//    return super.delete(this.keySerFunc(key));
+//  }
+
+//  has(key) {
+//    return super.has(this.keySerFunc(key));
+//  }
+//}
 // ===== Utility functions =====
 
 // Create integer range with start (inclusive), end (exclusive)
