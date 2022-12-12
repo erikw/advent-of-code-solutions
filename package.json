@@ -17,6 +17,7 @@
     "prettier": "^2.8.0"
   },
   "dependencies": {
+    "algorithms": "^0.10.0",
     "js-yaml": "^4.1.0",
     "mathjs": "^11.5.0"
   }
