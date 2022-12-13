@@ -58,6 +58,7 @@ load_dotenv() {
 	set -o allexport; source .env; set +o allexport
 }
 
+# TODO fetch input1.x from problem description's all <pre><code>...
 fetch_input() {
 	local year=$1
 	local day=$2
