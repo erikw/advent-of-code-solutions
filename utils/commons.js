@@ -15,15 +15,15 @@ Object.filter = function (obj, predicate) {
   return Object.fromEntries(Object.entries(obj).filter(predicate));
 };
 
-Object.prototype.values = function (a, b) {
+Object.prototype.values = function () {
   return Object.values(this);
 };
 
-Object.prototype.keys = function (a, b) {
+Object.prototype.keys = function () {
   return Object.keys(this);
 };
 
-Object.prototype.entries = function (a, b) {
+Object.prototype.entries = function () {
   return Object.entries(this);
 };
 
@@ -116,44 +116,6 @@ export class DefaultMap extends Map {
   }
 }
 
-//// A map with default value.
-//// Modified https://stackoverflow.com/a/51321724/265508 that
-//// * does not populate all keys that were unset when getting
-//// * support key function to e.g. use objects as keys
-//export class DefaultMap extends Map {
-//  constructor(
-//    defaultFunc,
-//    keySerFunc = (k) => k,
-//    keyDeserFunc = (k) => k,
-//    entries
-//  ) {
-//    super(entries);
-//    this.default = defaultFunc;
-//    this.keySetFunc = keySerFunc;
-//    this.keyDeserFunc = keyDeserFunc;
-//  }
-
-//  get(key) {
-//    key = this.keySerFunc(key);
-//    if (!this.has(key)) {
-//      return this.default();
-//    } else {
-//      return super.get(key);
-//    }
-//  }
-
-//  set(key, value) {
-//    return super.set(this.keySerFunc(key), value);
-//  }
-
-//  delete(key) {
-//    return super.delete(this.keySerFunc(key));
-//  }
-
-//  has(key) {
-//    return super.has(this.keySerFunc(key));
-//  }
-//}
 // ===== Utility functions =====
 
 // Create integer range with start (inclusive), end (exclusive)
