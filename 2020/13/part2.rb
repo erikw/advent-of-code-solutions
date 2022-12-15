@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Hatts off to https://www.reddit.com/r/adventofcode/comments/kc4njx/comment/gfnbwzc/?utm_source=share&utm_medium=web2x&context=3
+# Hats off to https://www.reddit.com/r/adventofcode/comments/kc4njx/comment/gfnbwzc/?utm_source=share&utm_medium=web2x&context=3
 
 def ext_gcd(a, b, values)
   d = a
