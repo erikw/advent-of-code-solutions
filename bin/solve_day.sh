@@ -31,7 +31,7 @@ HEADERS[js]=$(cat <<'HEADER'
 
 import { readFileSync } from "node:fs";
 
-let input = readFileSync(process.argv[2]).toString().trimEnd().split("\n");
+const input = readFileSync(process.argv[2]).toString().trimEnd().split("\n");
 HEADER
 )
 
