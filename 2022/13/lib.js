@@ -11,6 +11,8 @@ export const readInput = () => {
 };
 
 export const cmp = (left, right) => {
+  left = [left].flat();
+  right = [right].flat();
   let i = 0;
   while (i < left.length && i < right.length) {
     if (Number.isInteger(left[i]) && Number.isInteger(right[i])) {
