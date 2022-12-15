@@ -34,6 +34,18 @@ Number.prototype.inRange = function (a, b) {
   return this >= a && this <= b;
 };
 
+Number.prototype.abs = function () {
+  return Math.abs(this);
+};
+
+Number.prototype.floor = function () {
+  return Math.floor(this);
+};
+
+Number.prototype.ceil = function () {
+  return Math.ceil(this);
+};
+
 // ===== Array =====
 // Ref: https://stackoverflow.com/a/10249772/265508
 Array.prototype.eachSlice = function (size, callback) {
