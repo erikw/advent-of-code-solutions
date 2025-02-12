@@ -51,6 +51,9 @@ bundle install
 npm install
 ```
 
+### Env: Python
+TODO
+
 ### Solve puzzle
 and now solve today's puzzle or a specific one
 
