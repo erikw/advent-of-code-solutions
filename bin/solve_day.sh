@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-set -o errexit
 set -o nounset
 set -o pipefail
 [[ "${TRACE-0}" =~ ^1|t|y|true|yes$ ]] && set -o xtrace
@@ -11,11 +10,11 @@ cd "$SCRIPT_DIR"
 
 IFS= read -rd '' USAGE <<EOF || :
 Solve a puzzle day.
-Usage: $ ${SCRIPT_NAME} -h | [-l (rb|js)] [ datefmt ]
+Usage: $ ${SCRIPT_NAME} -h | [-l (rb|js|py)] [ datefmt ]
 
 Options:
-datefmt\t\t yy/d, yy/dd, yyyy/dd
 -l lang\t\t Language to use. Default: rb
+datefmt\t\t yy/d, yy/dd, yyyy/dd. Default: today's date.
 EOF
 
 declare -A HEADERS
@@ -32,6 +31,16 @@ HEADERS[js]=$(cat <<'HEADER'
 import { readFileSync } from "node:fs";
 
 const input = readFileSync(process.argv[2]).toString().trimEnd().split("\n");
+HEADER
+)
+HEADERS[py]=$(cat <<'HEADER'
+#!/usr/bin/env python3
+
+def main():
+	...
+
+if __name__ == '__main__':
+	main()	
 HEADER
 )
 
@@ -53,8 +62,10 @@ enter_day() {
 	done
 }
 
+# Load .env if it exist.
 # Ref: https://www.cicoria.com/loading-env-dotenv-using-bash-or-zsh/
 load_dotenv() {
+	test -f .env || return	
 	set -o allexport; source .env; set +o allexport
 }
 
@@ -111,13 +122,17 @@ enter_day $year $day $arg_lang files
 fetch_input $year $(echo $day | bc)
 
 
-if [ -n "${TMUX+x}" ]; then
-	tmux split-window -h
-	tmux last-pane
-fi
+if [ "$CODESPACES" = true ]; then
+	code part1.${arg_lang} input input1.0 output1.0 part2.${arg_lang}
+else
+	if [ -n "${TMUX+x}" ]; then
+		tmux split-window -h
+		tmux last-pane
+	fi
 
-# vim alias not set to nvim, assume $EDITOR is a proper editor (=vi-like).
-$EDITOR -c "tabedit part1.${arg_lang} | sp input | tabedit input1.0 | sp output1.0 | tabedit part2.${arg_lang} | normal 2gt " README.txt
+	# vim alias not set to nvim, assume $EDITOR is a proper editor (=vi-like).
+	$EDITOR -c "tabedit part1.${arg_lang} | sp input | tabedit input1.0 | sp output1.0 | tabedit part2.${arg_lang} | normal 2gt " README.txt
+fi
 
 
 cd_git_root
