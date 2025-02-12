@@ -53,7 +53,9 @@ npm install
 ```
 
 ### Env: Python
-TODO
+```shell
+pip install -r requirements.txt
+```
 
 ### Solve puzzle
 and now solve today's puzzle or a specific one
