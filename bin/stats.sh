@@ -14,7 +14,7 @@ nbr_solved() {
 }
 
 printf "Number of solved puzzle days:\n"
-years=$(find . -type d -regex "\./*[0-9]*" -maxdepth 1 | grep -oE "\d+" | sort)
+years=$(find . -maxdepth 1 -type d -regex "\./*[0-9]*" | grep -oE "[0-9]+" | sort)
 for year in $years; do
 	solved=$(nbr_solved $year)
 	test $solved = "25" && solved="25 ⭐️"
