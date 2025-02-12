@@ -63,8 +63,8 @@ bin/solve_day.sh -l rb # Solve with language, here ruby
 
 ## Session Cookie Expired?
 Update:
-* `AOC_SESSION` in local `.env`
+* `AOC_SESSION` in local `.env` for local development.
+* `AOC_SESSION` at [Codespaces secrets](https://github.com/erikw/advent-of-code-solutions/settings/secrets/codespaces) for GitHub Codespaces development.
 * `AOC_SESSION` at [Action Secret](https://github.com/erikw/advent-of-code-solutions/settings/secrets/actions) for [.github/workflows/readme-stars.yml](.github/workflows/readme-stars.yml)
 * `SESSION` at [Vercel Envvar](https://vercel.com/erikw/adventofcode-badge/settings/environment-variables) for [stackcats/adventofcode-badge](https://github.com/stackcats/adventofcode-badge)
   * Then [redeploy](https://vercel.com/erikw/adventofcode-badge/deployments) to restart the service.
-
