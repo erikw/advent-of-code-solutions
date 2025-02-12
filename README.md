@@ -6,7 +6,7 @@
 [![GitHub language count](https://img.shields.io/github/languages/count/erikw/advent-of-code-solutions)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/erikw/advent-of-code-solutions)](#)
 [![Languages Used](https://img.shields.io/badge/Languages-Ruby,%20JavaScript,%20Python-blue)](#)
-[![SLOC](https://sloc.xyz/github/erikw/advent-of-code-solutions)](#)
+[![SLOC](https://sloc.xyz/github/erikw/advent-of-code-solutions?lower=true)](#)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/erikw/advent-of-code-solutions/main)](#)
 
 My solutions to puzzles at [adventofcode.com](https://adventofcode.com/). Also check out my collected [tricks](tricks.md).
