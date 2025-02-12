@@ -61,9 +61,9 @@ pip install -r requirements.txt
 and now solve today's puzzle or a specific one
 
 ```shell
-bin/solve_day.sh
+bin/solve_day.sh       # Solve today's puzzle with default lanuage (ruby)
 bin/solve_day.sh 19/5  # 2019 day 5
-bin/solve_day.sh -l rb # Solve with language, here ruby 
+bin/solve_day.sh -l py # Solve with language, here Python
 ```
 
 
