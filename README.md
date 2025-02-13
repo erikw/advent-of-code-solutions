@@ -72,5 +72,5 @@ Update:
 * `AOC_SESSION` in local `.env` for local development.
 * `AOC_SESSION` at [Codespaces secrets](https://github.com/erikw/advent-of-code-solutions/settings/secrets/codespaces) for GitHub Codespaces development.
 * `AOC_SESSION` at [Action Secret](https://github.com/erikw/advent-of-code-solutions/settings/secrets/actions) for [.github/workflows/readme-stars.yml](.github/workflows/readme-stars.yml)
-* `SESSION` at [Vercel Envvar](https://vercel.com/erikw/adventofcode-badge/settings/environment-variables) for [stackcats/adventofcode-badge](https://github.com/stackcats/adventofcode-badge)
-  * Then [redeploy](https://vercel.com/erikw/adventofcode-badge/deployments) to restart the service.
+* `SESSION` at [Vercel Envvar](https://vercel.com/erikw/adventofcode-badge/settings/environment-variables) for [erikw/adventofcode-badge](https://github.com/erikw/adventofcode-badge)
+  * Then [redeploy](https://vercel.com/erik-westrups-projects/adventofcode-badge/deployments) to restart the service.
