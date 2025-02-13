@@ -69,7 +69,7 @@ pip install -r requirements.txt
 ```
 
 ### Solve a Puzzle
-and now solve today's puzzle or a specific one
+and now solve today's puzzle or a specific one:
 
 ```shell
 bin/solve_day.sh       # Solve today's puzzle with default lanuage (ruby)
