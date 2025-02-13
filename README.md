@@ -68,7 +68,7 @@ npm install
 pip install -r requirements.txt
 ```
 
-### Solve puzzle
+### Solve a Puzzle
 and now solve today's puzzle or a specific one
 
 ```shell
