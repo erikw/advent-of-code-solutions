@@ -35,9 +35,11 @@ HEADER
 )
 HEADERS[py]=$(cat <<'HEADER'
 #!/usr/bin/env python3
+import fileinput
 
 def main():
-	...
+    for line in fileinput.input():
+        line = line.rstrip("\n")
 
 if __name__ == '__main__':
 	main()	
