@@ -1,5 +1,5 @@
 # Advent of Code Tricks
-Some collected tricks after solving the puzzles.
+Some collected tricks after solving the puzzles. Also published as a blog post at [erikw.me/blog](https://erikw.me/blog/tech/advent-of-code-tricks/).
 
 ## Input Parsing
 * Integer scanning
