@@ -2,5 +2,10 @@
 z3
 
 # Development Tools
+autoflakes
+autoimport
 black
+ipdb
 isort
+pudb
+pylint

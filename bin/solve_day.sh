@@ -36,6 +36,7 @@ TEMPLATE
 TEMPLATE[py]=$(cat <<'TEMPLATE'
 #!/usr/bin/env python3
 import fileinput
+from pprint import pprint
 
 def main():
     for line in fileinput.input():
