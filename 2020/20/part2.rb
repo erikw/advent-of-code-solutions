@@ -81,7 +81,7 @@ def matching_face(tile, edge, edge_dir)
   false
 end
 
-# Hats off for the structure to https://www.reddit.com/r/adventofcode/comments/kgo01p/comment/ggg6k09/
+# h/t for the structure to https://www.reddit.com/r/adventofcode/comments/kgo01p/comment/ggg6k09/
 def assemble_tiles(tiles, edges, corners)
   dim = Math.sqrt(tiles.length).to_i
   img_tiles = Array.new(dim) { Array.new(dim) { [] } }

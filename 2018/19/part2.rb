@@ -6,7 +6,7 @@ require_relative 'computer'
 instructions = ARGF.each_line.map { |l| l.chomp.split }
 # puts Computer.new.execute(instructions).registers[0]
 
-# Hats off to https://www.reddit.com/r/adventofcode/comments/a7j9zc/comment/ec45g4d/
+# h/t https://www.reddit.com/r/adventofcode/comments/a7j9zc/comment/ec45g4d/
 a = instructions[22][2].to_i
 b = instructions[24][2].to_i
 n = 836 + 22 * a + b + 10_550_400

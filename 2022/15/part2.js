@@ -27,7 +27,7 @@ const sensors = coords.map(([sx, sy, bx, by]) => {
   return [[sx, sy], manhattanDist([sx, sy], [bx, by])];
 });
 
-// Hats off to
+// h/t
 // * https://www.reddit.com/r/adventofcode/comments/zmcn64/comment/j0b90nr/
 // * https://imgur.com/gzLuUgF
 const coeffAscendingLines = new Set();

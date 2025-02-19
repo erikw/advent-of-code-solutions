@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
-# Hats off to https://www.reddit.com/r/adventofcode/comments/a8s17l/comment/ecdcbin/
+# h/t https://www.reddit.com/r/adventofcode/comments/a8s17l/comment/ecdcbin/
 require 'z3'
 
 ORIGIN = [0, 0, 0]
