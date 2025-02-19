@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Hats off to https://github.com/mebeim/aoc/blob/master/2021/README.md#day-24---arithmetic-logic-unit
+# h/t https://github.com/mebeim/aoc/blob/master/2021/README.md#day-24---arithmetic-logic-unit
 
 MODNUM_LEN = 14
 

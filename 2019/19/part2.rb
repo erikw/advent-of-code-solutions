@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Hats off to https://www.reddit.com/r/adventofcode/comments/ecogl3/comment/fbdmn5n/?utm_source=share&utm_medium=web2x&context=3
+# h/t https://www.reddit.com/r/adventofcode/comments/ecogl3/comment/fbdmn5n/?utm_source=share&utm_medium=web2x&context=3
 # Algorithm:
 # * Fit the SHIP_DIM * SHIP_DIM square by moving it diagonally down.
 # x

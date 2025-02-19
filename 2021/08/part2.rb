@@ -14,7 +14,7 @@ DIGIT_MAP = {
   '9' => 'abcdfg'       # Len = 6
 }
 
-# Hats off to https://www.reddit.com/r/adventofcode/comments/rbj87a/comment/hnpad75/?utm_source=share&utm_medium=web2x&context=3
+# h/t https://www.reddit.com/r/adventofcode/comments/rbj87a/comment/hnpad75/?utm_source=share&utm_medium=web2x&context=3
 
 count_map = DIGIT_MAP.map(&:last).join.chars.group_by(&:itself).map { |k, v| [k, v.length] }.to_h
 countpattern2digit = DIGIT_MAP.map do |digit, pattern|

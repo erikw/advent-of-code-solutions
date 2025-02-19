@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Hats off to https://www.reddit.com/r/adventofcode/comments/ee0rqi/comment/fbnifwk/
+# h/t https://www.reddit.com/r/adventofcode/comments/ee0rqi/comment/fbnifwk/
 
 NO_CARDS = 119_315_717_514_047
 NO_SHUFFLES = 101_741_582_076_661

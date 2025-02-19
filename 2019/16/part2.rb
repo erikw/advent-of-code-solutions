@@ -8,7 +8,7 @@ INPUT_REPEAT = 10_000
 BASE_PATTERN = [0, 1, 0, -1]
 OFFSET_LEN = 7
 
-# Hats off to https://www.reddit.com/r/adventofcode/comments/ebf5cy/comment/fb4awi4/?utm_source=share&utm_medium=web2x&context=3
+# h/t https://www.reddit.com/r/adventofcode/comments/ebf5cy/comment/fb4awi4/?utm_source=share&utm_medium=web2x&context=3
 # The key insights are
 # * we can skip computing values before the offset
 # * The offset is so large, that to calculate each digit in a phase is just the sum in that unitriangular matrix.

@@ -44,7 +44,7 @@ compressed = ARGF.readline.chomp.chars
 # end
 
 # Recurse on individual parts and multiply the repeat.
-# Hats off to https://www.reddit.com/r/adventofcode/comments/5hbygy/comment/daz2o0d/
+# h/t https://www.reddit.com/r/adventofcode/comments/5hbygy/comment/daz2o0d/
 def decompressed_len(str, cache = {})
   unless cache.key? str
     pos = str.join.index(MARKER)
