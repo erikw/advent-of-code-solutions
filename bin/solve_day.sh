@@ -17,23 +17,23 @@ Options:
 datefmt\t\t yy/d, yy/dd, yyyy/dd. Default: today's date.
 EOF
 
-declare -A HEADERS
-HEADERS[rb]=$(cat <<'HEADER'
+declare -A TEMPLATE
+TEMPLATE[rb]=$(cat <<'TEMPLATE'
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-HEADER
+TEMPLATE
 )
-HEADERS[js]=$(cat <<'HEADER'
+TEMPLATE[js]=$(cat <<'TEMPLATE'
 #!/usr/bin/env node
 "use strict";
 
 import { readFileSync } from "node:fs";
 
 const input = readFileSync(process.argv[2]).toString().trimEnd().split("\n");
-HEADER
+TEMPLATE
 )
-HEADERS[py]=$(cat <<'HEADER'
+TEMPLATE[py]=$(cat <<'TEMPLATE'
 #!/usr/bin/env python3
 import fileinput
 
@@ -43,7 +43,7 @@ def main():
 
 if __name__ == '__main__':
 	main()	
-HEADER
+TEMPLATE
 )
 
 enter_day() {
@@ -60,7 +60,7 @@ enter_day() {
 	touch "${files[@]}"
 	chmod u+x *.${file_ext}
 	for f in *.${file_ext}; do
-		echo "${HEADERS[$file_ext]}" > $f
+		echo "${TEMPLATE[$file_ext]}" > $f
 	done
 }
 
