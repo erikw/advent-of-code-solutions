@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 
 group :development do
   gem 'pry-byebug', '~> 3.9'
-  gem 'rubocop', '~> 1.18', require: false
-  gem 'solargraph', require: false
+  gem 'rubocop', '~> 1.73', require: false
+  gem 'solargraph', '~> 0.52', require: false
 end
 
 gem 'algorithms', '~> 1.0'
