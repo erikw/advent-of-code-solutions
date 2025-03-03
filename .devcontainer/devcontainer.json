@@ -1,0 +1,15 @@
+{
+	"features": {
+		"ghcr.io/devcontainers-extra/features/apt-get-packages:1": {
+			"version": "latest",
+			"packages": "z3" // Keep in sync with Brewfile
+		}
+	},
+	"postCreateCommand": "bash scripts/devcontainer_postCreateCommand.sh",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+			]
+		}
+	}
+}
