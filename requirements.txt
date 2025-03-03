@@ -4,3 +4,5 @@ z3
 # Development Tools
 black
 isort
+pytest
+mypy
