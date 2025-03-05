@@ -9,6 +9,11 @@
 [![SLOC](https://sloc.xyz/github/erikw/advent-of-code-solutions?lower=true)](#)
 [![GitHub last commit (branch)](https://img.shields.io/github/last-commit/erikw/advent-of-code-solutions/main)](#)
 
+<p align="center">
+    <!-- Ref: https://dev.to/azure/adding-a-github-codespace-button-to-your-readme-5f6l -->
+    <a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=433747676" title="Open in GitHub Codespaces" ><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg"></a>
+</p>
+
 My solutions to puzzles at [adventofcode.com](https://adventofcode.com/). Also check out my collected [tricks](tricks.md).
 
 
