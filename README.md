@@ -14,6 +14,7 @@
     <a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=433747676" title="Open in GitHub Codespaces" ><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg"></a>
 </p>
 <br>
+
 My solutions to puzzles at [adventofcode.com](https://adventofcode.com/). Also check out my collected [tricks](tricks.md).
 
 
