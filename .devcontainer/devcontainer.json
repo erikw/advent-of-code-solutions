@@ -2,7 +2,7 @@
 	"features": {
 		"ghcr.io/devcontainers-extra/features/apt-get-packages:1": {
 			"version": "latest",
-			"packages": "z3" // Keep in sync with Brewfile
+			"packages": "octave z3" // Keep in sync with Brewfile
 		}
 	},
 	"postCreateCommand": "bash scripts/devcontainer_postCreateCommand.sh",
@@ -11,7 +11,10 @@
 			"extensions": [
 				"ms-python.isort",
 				"ms-python.black-formatter"
-			]
+			],
+			"extensions.exclude": [
+				"GitHub.copilot"
+			  ]
 		}
 	}
 }
