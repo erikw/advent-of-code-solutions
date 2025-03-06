@@ -6,3 +6,8 @@ octave-workspace
 
 # JavaScript
 node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
