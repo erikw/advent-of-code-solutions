@@ -9,12 +9,10 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-python.isort",
-				"ms-python.black-formatter"
-			],
-			"extensions.exclude": [
-				"GitHub.copilot"
-			  ]
+				"GitHub.copilot": false,
+				"ms-python.black-formatter": true,
+				"ms-python.isort": true
+			]
 		}
 	}
 }
