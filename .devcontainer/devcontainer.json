@@ -9,9 +9,9 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"GitHub.copilot": false,
-				"ms-python.black-formatter": true,
-				"ms-python.isort": true
+				"-GitHub.copilot",
+				"ms-python.black-formatter",
+				"ms-python.isort"
 			]
 		}
 	}
