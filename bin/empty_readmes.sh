@@ -1,5 +1,5 @@
-#!/usr/bin/env sh
-# Find READMEs that are empty.
+#!/usr/bin/env bash
+# Find READMEs that are empty, because sometimes I forget to paste in the instructions.
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 . $SCRIPT_DIR/lib.sh
