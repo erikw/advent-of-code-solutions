@@ -1,10 +1,14 @@
 {
-	"features": {
-		"ghcr.io/devcontainers-extra/features/apt-get-packages:1": {
-			"version": "latest",
-			"packages": "octave z3" // Keep in sync with Brewfile
-		}
-	},
+	"build": {
+        "dockerfile": "Dockerfile"
+      },
+	// "features": {
+		// "ghcr.io/devcontainers-extra/features/apt-get-packages:1": {
+		// // NOTE moved to Dockerfile to utilize docker build cache.
+		// 	"version": "latest",
+		// 	"packages": "octave z3" // Keep in sync with Brewfile
+		// }
+	// },
 	"postCreateCommand": "bash scripts/devcontainer_postCreateCommand.sh",
 	"customizations": {
 		"vscode": {
