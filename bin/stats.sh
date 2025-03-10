@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Assumption: a README.txt means a solved puzzle.
 
+ESC_BOLD="\033[1m"
+ESC_REST="\033[0m"
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 . $SCRIPT_DIR/lib.sh
 cd_git_root
@@ -13,7 +16,7 @@ nbr_solved() {
 	find "$path" -name README.txt -exec printf %c {} + | wc -c | tr -d ' '
 }
 
-printf "Number of solved puzzle days:\n"
+printf "Number of solved puzzle ${ESC_BOLD}days${ESC_REST}:\n"
 years=$(find . -maxdepth 1 -type d -regex "\./*[0-9]*" | grep -oE "[0-9]+" | sort)
 for year in $years; do
 	solved=$(nbr_solved $year)
