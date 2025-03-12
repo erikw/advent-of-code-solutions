@@ -89,9 +89,9 @@ bin/solve_day.sh -l py # Solve with language, here Python
 
 > [!TIP]
 > The default language could be set with an envvar, e.g. with dotenv in a `.env` file which is also read by `bin/solve_day.sh`:
-. ```shell
-. echo "AOC_LANG=py" >> .env
-. ```
+> ```shell
+> echo "AOC_LANG=py" >> .env
+> ```
 
 
 ## Session Cookie Expired?
