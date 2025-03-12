@@ -43,7 +43,7 @@ def main():
         line = line.rstrip("\n")
 
 if __name__ == '__main__':
-	main()	
+	main()
 TEMPLATE
 )
 
@@ -68,7 +68,7 @@ enter_day() {
 # Load .env if it exist.
 # Ref: https://www.cicoria.com/loading-env-dotenv-using-bash-or-zsh/
 load_dotenv() {
-	test -f .env || return	
+	test -f .env || return
 	set -o allexport; source .env; set +o allexport
 }
 
@@ -90,8 +90,12 @@ fetch_input() {
 }
 
 
+. $SCRIPT_DIR/lib.sh
+cd_git_root
+load_dotenv
 
-arg_lang="rb"
+# Arg parsing
+arg_lang="${AOC_LANG:-rb}" # Can be set in .env or in shell env.
 while getopts ":l:h?" opt; do
 	case "$opt" in
 		l) arg_lang="$OPTARG";;
@@ -100,7 +104,6 @@ while getopts ":l:h?" opt; do
 	esac
 done
 shift $(($OPTIND - 1))
-
 
 year=$(date +%Y)
 day=$(date +%d)
@@ -113,14 +116,10 @@ if [ $# -eq 1 ]; then
 	test ${#day}  -eq 2 || day="0$day"
 fi
 
+# File setup
 files=(README.txt input input1.0 output1.0)
 files+=("part1.${arg_lang}")
 files+=("part2.${arg_lang}")
-
-
-. $SCRIPT_DIR/lib.sh
-cd_git_root
-load_dotenv
 enter_day $year $day $arg_lang files
 fetch_input $year $(echo $day | bc)
 

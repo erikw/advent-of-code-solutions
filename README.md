@@ -26,7 +26,7 @@ My solutions to puzzles at [adventofcode.com](https://adventofcode.com/). Also c
 "-_/}__             `}-'_/`-, /`-,( _,,.{-,_(__,,,.(
   [(_.-'`--,__   ____/`-,.(,-`}-'_,>___\/`-, >|`---\
   [(__\___\  _`-(--...(..-'_`./`-,/(--,,.(  //    / >
-  |_______/-'    >`---\ / (   `{    >`---\ 
+  |_______/-'    >`---\ / (   `{    >`---\
   __|___|__)    / \  / \  /`--/<   / \   /|
                          /  \/  \
 ```
@@ -86,6 +86,12 @@ bin/solve_day.sh       # Solve today's puzzle with default lanuage (ruby)
 bin/solve_day.sh 19/5  # 2019 day 5
 bin/solve_day.sh -l py # Solve with language, here Python
 ```
+
+> [!TIP]
+> The default language could be set with an envvar, e.g. with dotenv in a `.env` file which is also read by `bin/solve_day.sh`:
+. ```shell
+. echo "AOC_LANG=py" >> .env
+. ```
 
 
 ## Session Cookie Expired?
