@@ -80,7 +80,7 @@ pip install -r requirements.txt
 ```
 
 ### Session Cookie
-Fetch your [Aoc Session Cookie](https://github.com/wimglenn/advent-of-code-wim/issues/1) and store as an envvar or in `.env` as `$AOC_SESSION`.
+Fetch your [AoC Session Cookie](https://github.com/wimglenn/advent-of-code-wim/issues/1) and store as an envvar or in `.env` as `$AOC_SESSION`.
 
 ### Solve a Puzzle
 
