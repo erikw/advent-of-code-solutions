@@ -1,3 +1,4 @@
 {
-    "github.copilot.editor.enableAutoCompletions": false
+    "github.copilot.editor.enableAutoCompletions": false,
+    "chat.commandCenter.enabled": false,
 }
