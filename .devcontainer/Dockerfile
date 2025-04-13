@@ -3,4 +3,4 @@ FROM mcr.microsoft.com/devcontainers/universal:2
 
 # Keep in sync with Brewfile.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install octave z3
+    && apt-get -y install octave z3 multitime
