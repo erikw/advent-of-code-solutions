@@ -10,7 +10,8 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": "${fileDirname}/input1.0"
+            "cwd": "${fileDirname}",
+            "args": "input1.0"
         },
         {
             "name": "Python Debugger: Current File with File 'input'",
@@ -18,7 +19,8 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": "${fileDirname}/input"
+            "cwd": "${fileDirname}",
+            "args": "input"
         },
         {
             "name": "Python Debugger: Current File with Arguments",
@@ -26,6 +28,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
+            "cwd": "${fileDirname}",
             "args": "${command:pickArgs}"
         },
     ]
