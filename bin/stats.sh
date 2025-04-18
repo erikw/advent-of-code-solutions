@@ -11,7 +11,7 @@ cd_git_root
 nbr_solved() {
 	local path="./$1" # Unify so that path always starts with ./, so cut below works.
 
-	# Ref: https://stackoverflow.com/a/69326159/265508
+	# sort -u: account for the fact that a puzzle part can be solved in multiple languages. 
 	stars=$(find "$path" -regex '.*/part[12]\.\w+$' -print | cut -d. -f2 | sort -u | wc -l)
 
 	# Day 25 only as part1, part2 for free.
