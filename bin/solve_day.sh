@@ -60,9 +60,10 @@ enter_day() {
 
 	touch "${files[@]}"
 	chmod u+x *.${file_ext}
-	for f in *.${file_ext}; do
-		echo "${TEMPLATE[$file_ext]}" > $f
-	done
+	# for f in *.${file_ext}; do
+	# 	echo "${TEMPLATE[$file_ext]}" > $f
+	# done
+	echo "${TEMPLATE[$file_ext]}" > part1.${file_ext}
 }
 
 # Load .env if it exist.
