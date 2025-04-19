@@ -92,7 +92,9 @@ def main():
 
     cycle_start = hashes[hash_cycle]
     cycle_len = cycle - cycle_start
-    cycle += cycle_len * ((TOTAL_CYCLES - cycle_start) // cycle_len - 1)
+
+    # cycle += cycle_len * ((TOTAL_CYCLES - cycle_start) // cycle_len - 1)
+    cycle = TOTAL_CYCLES - (TOTAL_CYCLES - cycle_start) % cycle_len
 
     while cycle < TOTAL_CYCLES:
         tilt_cycle(platform)
