@@ -126,7 +126,9 @@ fetch_input $year $(echo $day | bc)
 
 
 if [ "$CODESPACES" = true ]; then
-	code --wait part1.${arg_lang} input input1.0 output1.0 part2.${arg_lang} README.txt
+	# code --wait part1.${arg_lang} input input1.0 output1.0 part2.${arg_lang} README.txt
+	code part1.${arg_lang} input input1.0 output1.0 part2.${arg_lang} README.txt
+	$SHELL # Spawn subshell in 20yy/mm
 else
 	if [ -n "${TMUX+x}" ]; then
 		tmux split-window -h
