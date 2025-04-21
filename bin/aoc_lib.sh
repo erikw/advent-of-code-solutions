@@ -86,3 +86,13 @@ aoc_create_readme() {
 	echo "$content" > README.md
 
 }
+
+# Create year/day directory and cd into it.
+aoc_create_enter() {
+	local year="$1"
+	local day="$2"
+
+	local path="$year/$day"
+	mkdir -p $path
+	cd "$path"
+}
