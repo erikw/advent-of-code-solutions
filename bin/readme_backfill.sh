@@ -10,7 +10,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 IFS= read -rd '' USAGE <<EOF || :
 Backfill README.md for all days. Run this after updating the README.md template.
-Usage: $ ${SCRIPT_NAME}
+Usage: $ ${SCRIPT_NAME} -h |
 EOF
 
 # shellcheck source=bin/aoc_lib.sh
