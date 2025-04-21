@@ -16,7 +16,6 @@ aoc_load_dotenv() {
 	set -o allexport; source .env; set +o allexport
 }
 
-# TODO fetch input1.x from problem description's all <pre><code>...
 aoc_fetch_input() {
 	local year=$1
 	local day=$(echo $2 | bc) # Strip leading 0

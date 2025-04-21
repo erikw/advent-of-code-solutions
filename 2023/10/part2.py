@@ -59,7 +59,6 @@ def tile(grid, node_pos):
         return grid[row][col]
 
 
-# TODO make helper for the pos zipping
 def neighbors_pipe_of(grid, node):
     valid_neighbors = []
     for step in NEIGHBOR_DIRECTIONS[tile(grid, node)]:

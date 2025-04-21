@@ -94,7 +94,7 @@ def clear_doors_path(map, path, _doors, _keys, keys_collected)
   path.each do |pos|
     next unless SYM_DOOR.match(map[pos])
 
-    unless keys_collected.include?(map[pos].downcase) # TODO: remove
+    unless keys_collected.include?(map[pos].downcase) # TODO remove
       require 'byebug'; byebug # rubocop:disable Style/Semicolon
     end
     map[pos] = SYM_OPEN
