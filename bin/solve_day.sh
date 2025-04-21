@@ -118,7 +118,7 @@ if [ $# -eq 1 ]; then
 fi
 
 # File setup
-files=(README.txt input input1.0 output1.0)
+files=(README.txt input input1.0 output1.0 output2.0)
 files+=("part1.${arg_lang}")
 files+=("part2.${arg_lang}")
 enter_day $year $day $arg_lang files
