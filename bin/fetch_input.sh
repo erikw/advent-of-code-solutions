@@ -10,7 +10,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 IFS= read -rd '' USAGE <<EOF || :
 Fetch input for a given year and day.
-Usage: $ ${SCRIPT_NAME} [ datefmt ]
+Usage: $ ${SCRIPT_NAME} -h | [ datefmt ]
 
 Options:
 datefmt\t\t yy/d, yy/dd, yyyy/dd. Default: today's date.
