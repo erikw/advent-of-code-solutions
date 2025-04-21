@@ -7,7 +7,6 @@ set -o pipefail
 
 SCRIPT_NAME=${0##*/}
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-cd "$SCRIPT_DIR"
 
 IFS= read -rd '' USAGE <<EOF || :
 Solve a puzzle day.
@@ -59,9 +58,7 @@ enter_day() {
 	files+=("part1.${arg_lang}")
 	files+=("part2.${arg_lang}")
 
-	path="$year/$day"
-	mkdir -p $path
-	cd "$path"
+	aoc_create_enter "$year" "$day"
 
 	touch "${files[@]}"
 	chmod u+x *.${file_ext}
@@ -73,7 +70,7 @@ enter_day() {
 }
 
 
-. $SCRIPT_DIR/aoc_lib.sh
+. "$SCRIPT_DIR/aoc_lib.sh"
 aoc_init_script
 
 # Arg parsing

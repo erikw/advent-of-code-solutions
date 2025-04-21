@@ -11,7 +11,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 ESC_BOLD="\033[1m"
 ESC_REST="\033[0m"
 
-. $SCRIPT_DIR/aoc_lib.sh
+. "$SCRIPT_DIR/aoc_lib.sh"
 aoc_init_script
 
 cloc=false
