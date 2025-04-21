@@ -16,7 +16,10 @@ aoc_cd_git_root() {
 # Ref: https://www.cicoria.com/loading-env-dotenv-using-bash-or-zsh/
 aoc_load_dotenv() {
 	test -f .env || return
-	set -o allexport; source .env; set +o allexport
+	set -o allexport
+	# shellcheck source=../.env
+	source .env
+	set +o allexport
 }
 
 

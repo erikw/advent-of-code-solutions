@@ -17,7 +17,7 @@ datefmt\t\t yy/d, yy/dd, yyyy/dd. Default: today's date.
 EOF
 
 
-# shellcheck source=bin/aoc_lib.sh
+# shellcheck source=aoc_lib.sh
 . "$SCRIPT_DIR/aoc_lib.sh"
 aoc_init_script
 

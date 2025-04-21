@@ -72,7 +72,7 @@ enter_day() {
 }
 
 
-# shellcheck source=bin/aoc_lib.sh
+# shellcheck source=aoc_lib.sh
 . "$SCRIPT_DIR/aoc_lib.sh"
 aoc_init_script
 
@@ -110,4 +110,5 @@ fi
 aoc_cd_git_root # Get back again, to run git commands etc.
 "$SCRIPT_DIR"/stats.sh
 git status
-printf "\n\ngit add %s && git commit -m \"Add %s ${arg_lang}\" && git fetch && git rebase && git push && tig\n" "$path" "$path"
+path="${year}/${day}"
+printf "\n\ngit add %s && git commit -m \"Add %s %s\" && git fetch && git rebase && git push && tig\n" "$path" "$path" "$arg_lang"
