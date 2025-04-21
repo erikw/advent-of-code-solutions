@@ -2,6 +2,8 @@
 # TODO run shellcheck on all bin/*.sh
 # TODO add shellcheck github action. use -x flag for shellcheck  to follow sources. Same for templates repo
 # TODO add bin/ to PATH in CODESPACES
+# TODO create_readme.txt script
+# TODO backfill with runcreate_readme.txt
 
 set -o nounset
 set -o pipefail
