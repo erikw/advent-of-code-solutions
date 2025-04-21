@@ -74,8 +74,8 @@ aoc_fetch_input() {
 # Create README.md for current day.
 aoc_create_readme() {
 	local year day0 day url_base url
-	year=$1
-	day0=$2
+	year="$1"
+	day0="$2"
 	day=$(echo "$day0" | bc)
 
 	# TODO prevent creating README if already existing? wait until I've backfilled.
