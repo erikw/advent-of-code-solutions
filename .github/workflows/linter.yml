@@ -7,11 +7,14 @@ on:
     paths:
       - '**.sh'
       - '.github/workflows/linter.yml'
+    paths-ignore:
+      - 'README.md'
   pull_request:
     branches: main
     paths:
       - '**.sh'
       - '.github/workflows/linter.yml'
+      - 'README.md'
 
 permissions: {}
 

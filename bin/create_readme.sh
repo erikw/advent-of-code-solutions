@@ -9,7 +9,7 @@ SCRIPT_NAME=${0##*/}
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 IFS= read -rd '' USAGE <<EOF || :
-Fetch input for a given year and day.
+Create README.md for a given year and day.
 Usage: $ ${SCRIPT_NAME} [ datefmt ]
 
 Options:
@@ -40,5 +40,5 @@ year=$(aoc_parse_year "$@")
 day=$(aoc_parse_day "$@")
 
 aoc_create_enter "$year" "$day"
-aoc_fetch_input "$year" "$day"
-printf "Fetched %d/%s/input\n" "$year" "$day" # Print day as %s to preserve leading 0.
+aoc_create_readme "$year" "$day"
+printf "Created %d/%s/README.md\n" "$year" "$day" # Print day as %s to preserve leading 0.
