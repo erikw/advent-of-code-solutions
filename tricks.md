@@ -189,7 +189,7 @@ to get side-by-side comparison between expected (column 1) and actual (column 2)
     * select puzzle to solve: no arguments mean's today's puzzle, or argument like `20/7` to solve puzzle  2020-07
     * create a new directory for the selected puzzle day
     * downloads the `input` for the selected puzzle day
-    * populate empty source files, README.txt etc for the puzzle day
+    * populate empty source files, README.md etc for the puzzle day
     * `$ chmod o+x` on the executables
     * opens up a tmux split pane with my editor + shell to execute and debug in
     * open my editor with the right tabs and split windows
