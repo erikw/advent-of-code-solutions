@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# TODO run shellcheck on all bin/*.sh
 
 set -o nounset
 set -o pipefail
@@ -47,12 +48,15 @@ if __name__ == '__main__':
 TEMPLATE
 )
 
+# Prepare directory and files for day, and cd into the directory.
 enter_day() {
-	local year=$1
-	local day=$2
-	local file_ext=$3
-	local files_arrayname=$4[@]
-	local files=("${!files_arrayname}")
+	local year="$1"
+	local day="$2"
+	local file_ext="$3"
+
+	local files=(input1.0 output1.0 output2.0)
+	files+=("part1.${arg_lang}")
+	files+=("part2.${arg_lang}")
 
 	path="$year/$day"
 	mkdir -p $path
@@ -60,12 +64,12 @@ enter_day() {
 
 	touch "${files[@]}"
 	chmod u+x *.${file_ext}
-	# for f in *.${file_ext}; do
-	# 	echo "${TEMPLATE[$file_ext]}" > $f
-	# done
 	echo "${TEMPLATE[$file_ext]}" > part1.${file_ext}
-}
 
+
+	aoc_fetch_input $year $day
+	# TODO create README with lib func
+}
 
 
 . $SCRIPT_DIR/aoc_lib.sh
@@ -82,37 +86,14 @@ while getopts ":l:h?" opt; do
 done
 shift $(($OPTIND - 1))
 
-aoc_parse_year() {
-	year=$(date +%Y)
-	if [ $# -eq 1 ]; then
-		ym=(${1//\// })  # Format: yyyy/dd
-		year=${ym[0]}
-
-		test ${#year} -eq 4 || year="20$year"
-	fi
-	echo "$year"
-}
-
 year=$(aoc_parse_year $*)
-day=$(date +%d)
-if [ $# -eq 1 ]; then
-	ym=(${1//\// })  # Format: yyyy/dd
-	day=${ym[1]}
-	test ${#day}  -eq 2 || day="0$day"
-fi
+day=$(aoc_parse_day $*)
 
-# File setup
-# TODO no need to edit README.md anymore, only autocreate it.
-files=(README.md input input1.0 output1.0 output2.0)
-files+=("part1.${arg_lang}")
-files+=("part2.${arg_lang}")
-enter_day $year $day $arg_lang files
-aoc_fetch_input $year $day
+enter_day $year $day $arg_lang
 
 
 if [ "$CODESPACES" = true ]; then
-	# code --wait part1.${arg_lang} input input1.0 output1.0 part2.${arg_lang} README.md
-	code part1.${arg_lang} input input1.0 output1.0 part2.${arg_lang} README.md
+	code part1.${arg_lang} input1.0 output1.0 input output2.0 part2.${arg_lang}
 	$SHELL # Spawn subshell in 20yy/mm
 else
 	if [ -n "${TMUX+x}" ]; then
@@ -121,12 +102,11 @@ else
 	fi
 
 	# vim alias not set to nvim, assume $EDITOR is a proper editor (=vi-like).
-	$EDITOR -c "tabedit part1.${arg_lang} | sp input | tabedit input1.0 | sp output1.0 | tabedit part2.${arg_lang} | normal 2gt " README.md
+	$EDITOR -c "sp input | tabedit input1.0 | sp output1.0 | tabedit part2.${arg_lang} | normal 2gt " part1.${arg_lang}
 fi
 
 
 aoc_cd_git_root # Get back again, to run git commands etc.
 $SCRIPT_DIR/stats.sh
-
 git status
 printf "\n\ngit add %s && git commit -m \"Add %s ${arg_lang}\" && git fetch && git rebase && git push && tig\n" "$path" "$path"
