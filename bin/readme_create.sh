@@ -23,7 +23,7 @@ aoc_init_script
 
 
 # Arg parsing
-while getopts ":l:h?" opt; do
+while getopts ":h?" opt; do
 	case "$opt" in
 		:) echo "Option -$OPTARG requires an argument." >&2; exit 1;;
 		h|?|*) echo -e "$USAGE"; exit 0;;
