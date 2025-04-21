@@ -16,6 +16,7 @@ aoc_load_dotenv() {
 	set -o allexport; source .env; set +o allexport
 }
 
+# Fetch input, unless present (to prevent DOS).
 aoc_fetch_input() {
 	local year=$1
 	local day=$(echo $2 | bc) # Strip leading 0
@@ -32,4 +33,27 @@ aoc_fetch_input() {
 	fi
 	# Include contact method in user agent as requested by @topaz: https://www.reddit.com/r/adventofcode/comments/z9dhtd/please_include_your_contact_info_in_the_useragent/
 	curl --remote-name --remote-header-name --silent --fail -A 'https://erikw.me/contact' --cookie "session=$AOC_SESSION" "$url"
+}
+
+
+aoc_parse_year() {
+	local year=$(date +%Y)
+	if [ $# -eq 1 ]; then
+		local ym=(${1//\// })  # Format: yyyy/dd
+		year=${ym[0]}
+
+		test ${#year} -eq 4 || year="20$year"
+	fi
+	echo "$year"
+}
+
+
+aoc_parse_day() {
+	local day=$(date +%d)
+	if [ $# -eq 1 ]; then
+		local ym=(${1//\// })  # Format: yyyy/dd
+		day=${ym[1]}
+		test ${#day} -eq 2 || day="0$day"
+	fi
+	echo "$day"
 }
