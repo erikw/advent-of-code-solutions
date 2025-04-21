@@ -1,6 +1,9 @@
 .env
 octave-workspace
 
+# Not allowed to share publicly.
+input
+
 # Ruby
 .byebug_history
 
