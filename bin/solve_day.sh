@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# TODO add bin/ to PATH in CODESPACES
-# 	TODO IF SO adding to PATH, prefix all scripts with aoc_
 # TODO NO command works with no arguments, should default to today's date. Hmm butit's not december. Maybe detect and exit then!
 
 set -o nounset
