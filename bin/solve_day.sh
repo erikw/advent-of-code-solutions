@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-# TODO run shellcheck on all bin/*.sh
-# TODO add shellcheck github action. use -x flag for shellcheck  to follow sources. Same for templates repo
 # TODO add bin/ to PATH in CODESPACES
-# TODO create_readme.txt script
 # TODO backfill with runcreate_readme.txt
 # TODO prefix all scripts with aoc_
 # TODO NO command works with no arguments, should default to today's date. Hmm butit's not december. Maybe detect and exit then!

@@ -11,6 +11,6 @@ TARGET=README.md
 
 # shellcheck source=bin/aoc_lib.sh
 . "$SCRIPT_DIR/aoc_lib.sh"
-cd_git_root
+aoc_init_script
 
 git ls-files | grep "$TARGET" | xargs -I {} sh -c 'wc -l {}' | grep "^\s*0\s" | awk '{print $2}'
