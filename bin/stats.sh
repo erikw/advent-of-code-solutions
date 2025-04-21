@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Dependencies: cloc (optional)
 # Assumption: a part[1]2.* file means that part is considered solved.
 
 ESC_BOLD="\033[1m"
@@ -7,6 +8,11 @@ ESC_REST="\033[0m"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 . $SCRIPT_DIR/lib.sh
 cd_git_root
+
+cloc=false
+if [ "$#" -eq 1 ] && [ "$1" = "-c" ]; then
+	cloc=true
+fi
 
 nbr_solved() {
 	local path="./$1" # Unify so that path always starts with ./, so cut below works.
@@ -20,6 +26,11 @@ nbr_solved() {
 
 	echo "$stars"
 }
+
+if [ "$cloc" = "true" ]; then
+	cloc --quiet --hide-rate --exclude-dir=$(tr '\n' ',' < .clocignore)  --exclude-list-file=.clocignore_files .
+	echo
+fi
 
 printf "Collected stars per year:\n"
 years=$(find . -maxdepth 1 -type d -regex "\./*[0-9]*" | grep -oE "[0-9]+" | sort)
