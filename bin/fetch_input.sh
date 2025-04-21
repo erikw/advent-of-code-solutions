@@ -23,7 +23,7 @@ aoc_init_script
 
 
 # Arg parsing
-while getopts ":l:h?" opt; do
+while getopts ":h?" opt; do
 	case "$opt" in
 		:) echo "Option -$OPTARG requires an argument." >&2; exit 1;;
 		h|?|*) echo -e "$USAGE"; exit 0;;
@@ -31,13 +31,8 @@ while getopts ":l:h?" opt; do
 done
 shift $((OPTIND - 1))
 
-if [ $# -ne 1 ]; then
-	echo -e "$USAGE"
-	exit 1
-fi
-
-year=$(aoc_parse_year "$@")
-day=$(aoc_parse_day "$@")
+year=$(aoc_parse_year "$@") || exit
+day=$(aoc_parse_day "$@") || exit
 
 aoc_create_enter "$year" "$day"
 aoc_fetch_input "$year" "$day"

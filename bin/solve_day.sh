@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# TODO NO command works with no arguments, should default to today's date. Hmm butit's not december. Maybe detect and exit then!
+# Solve puzzle for a year and day, or default to today's date. Create all files, download inputs, open text editor etc.
 
 set -o nounset
 set -o pipefail
@@ -85,8 +85,8 @@ while getopts ":l:h?" opt; do
 done
 shift $((OPTIND - 1))
 
-year=$(aoc_parse_year "$@")
-day=$(aoc_parse_day "$@")
+year=$(aoc_parse_year "$@") || exit
+day=$(aoc_parse_day "$@") || exit
 
 enter_day "$year" "$day" "$arg_lang"
 
