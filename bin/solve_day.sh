@@ -118,7 +118,8 @@ if [ $# -eq 1 ]; then
 fi
 
 # File setup
-files=(README.txt input input1.0 output1.0 output2.0)
+# TODO no need to edit README.md anymore, only autocreate it.
+files=(README.md input input1.0 output1.0 output2.0)
 files+=("part1.${arg_lang}")
 files+=("part2.${arg_lang}")
 enter_day $year $day $arg_lang files
@@ -126,8 +127,8 @@ fetch_input $year $(echo $day | bc)
 
 
 if [ "$CODESPACES" = true ]; then
-	# code --wait part1.${arg_lang} input input1.0 output1.0 part2.${arg_lang} README.txt
-	code part1.${arg_lang} input input1.0 output1.0 part2.${arg_lang} README.txt
+	# code --wait part1.${arg_lang} input input1.0 output1.0 part2.${arg_lang} README.md
+	code part1.${arg_lang} input input1.0 output1.0 part2.${arg_lang} README.md
 	$SHELL # Spawn subshell in 20yy/mm
 else
 	if [ -n "${TMUX+x}" ]; then
@@ -136,7 +137,7 @@ else
 	fi
 
 	# vim alias not set to nvim, assume $EDITOR is a proper editor (=vi-like).
-	$EDITOR -c "tabedit part1.${arg_lang} | sp input | tabedit input1.0 | sp output1.0 | tabedit part2.${arg_lang} | normal 2gt " README.txt
+	$EDITOR -c "tabedit part1.${arg_lang} | sp input | tabedit input1.0 | sp output1.0 | tabedit part2.${arg_lang} | normal 2gt " README.md
 fi
 
 
