@@ -2,6 +2,10 @@
 # Find READMEs that are empty, because sometimes I forget to paste in the instructions.
 # TODO archive this once solve_day.sh automatically creates the README...
 
+set -o nounset
+set -o pipefail
+[[ "${TRACE-0}" =~ ^1|t|y|true|yes$ ]] && set -o xtrace
+
 TARGET=README.md
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )

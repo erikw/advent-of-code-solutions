@@ -2,6 +2,10 @@
 # Dependencies: cloc (optional)
 # Assumption: a part[1]2.* file means that part is considered solved.
 
+set -o nounset
+set -o pipefail
+[[ "${TRACE-0}" =~ ^1|t|y|true|yes$ ]] && set -o xtrace
+
 ESC_BOLD="\033[1m"
 ESC_REST="\033[0m"
 
@@ -15,7 +19,7 @@ if [ "$#" -eq 1 ] && [ "$1" = "-c" ]; then
 fi
 
 nbr_solved() {
-	local path="./$1" # Unify so that path always starts with ./, so cut below works.
+	local path="./${1:-.}" # Unify so that path always starts with ./, so cut below works.
 
 	# sort -u: account for the fact that a puzzle part can be solved in multiple languages. 
 	stars=$(find "$path" -regex '.*/part[12]\.\w+$' -print | cut -d. -f2 | sort -u | wc -l)
