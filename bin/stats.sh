@@ -6,11 +6,10 @@ set -o nounset
 set -o pipefail
 [[ "${TRACE-0}" =~ ^1|t|y|true|yes$ ]] && set -o xtrace
 
-ESC_BOLD="\033[1m"
-ESC_REST="\033[0m"
-
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+ESC_BOLD="\033[1m"
+ESC_REST="\033[0m"
 
 . $SCRIPT_DIR/aoc_lib.sh
 aoc_init_script
