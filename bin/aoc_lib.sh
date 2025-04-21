@@ -25,26 +25,32 @@ aoc_load_dotenv() {
 
 # Fetch year from $*, or default to this year's year.
 aoc_parse_year() {
-	local date="$1" # Format: yyyy/dd
+	local date="${1:-}" # Format: yyyy/dd
 	local year ym
 	year=$(date +%Y)
 	if [ $# -eq 1 ]; then
 		IFS="/" read -ra ym <<< "$date"
 		year=${ym[0]}
 		test ${#year} -eq 4 || year="20$year"
+	elif [ "$(date +%m)" != 12 ]; then
+		echo "A bit too eager? It's not december yet." >&2
+		exit 12
 	fi
 	echo "$year"
 }
 
 # Fetch day from $*, or default to today's day.
 aoc_parse_day() {
-	local date="$1" # Format: yyyy/dd
+	local date="${1:-}" # Format: yyyy/dd
 	local day ym
 	day=$(date +%d)
 	if [ $# -eq 1 ]; then
 		IFS="/" read -ra ym <<< "$date"
 		day=${ym[1]}
 		test ${#day} -eq 2 || day="0$day"
+	elif [ "$(date +%m)" != 12 ]; then
+		echo "A bit too eager? It's not december yet." >&2
+		exit 12
 	fi
 	echo "$day"
 }
