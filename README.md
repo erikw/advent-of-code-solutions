@@ -93,6 +93,11 @@ bin/solve_day.sh 19/5      # 2019 day 5
 bin/solve_day.sh -l py     # Solve with language, here Python
 ```
 
+To fetch `input` for an already solved problem:
+```shell
+bin/fetch_input.sh yy/mm
+```
+
 > [!TIP]
 > The default language could be set with an envvar, e.g. with dotenv in a `.env` file which is also read by `bin/solve_day.sh`:
 > ```shell
