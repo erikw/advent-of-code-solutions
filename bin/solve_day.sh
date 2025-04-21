@@ -68,7 +68,7 @@ enter_day() {
 
 
 	aoc_fetch_input $year $day
-	# TODO create README with lib func
+	aoc_create_readme $year $day
 }
 
 

@@ -8,6 +8,7 @@
     "terminal.integrated.initialHint": false,
     "workbench.editor.empty.hint": "hidden",
     "cSpell.words": [
+        "adventofcode",
         "BSLASH",
         "multitime"
     ],

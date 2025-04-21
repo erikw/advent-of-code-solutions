@@ -16,6 +16,30 @@ aoc_load_dotenv() {
 	set -o allexport; source .env; set +o allexport
 }
 
+
+# Fetch year from $*, or default to this year's year.
+aoc_parse_year() {
+	local year=$(date +%Y)
+	if [ $# -eq 1 ]; then
+		local ym=(${1//\// })  # Format: yyyy/dd
+		year=${ym[0]}
+
+		test ${#year} -eq 4 || year="20$year"
+	fi
+	echo "$year"
+}
+
+# Fetch day from $*, or default to today's day.
+aoc_parse_day() {
+	local day=$(date +%d)
+	if [ $# -eq 1 ]; then
+		local ym=(${1//\// })  # Format: yyyy/dd
+		day=${ym[1]}
+		test ${#day} -eq 2 || day="0$day"
+	fi
+	echo "$day"
+}
+
 # Fetch input, unless present (to prevent DOS).
 aoc_fetch_input() {
 	local year=$1
@@ -35,25 +59,30 @@ aoc_fetch_input() {
 	curl --remote-name --remote-header-name --silent --fail -A 'https://erikw.me/contact' --cookie "session=$AOC_SESSION" "$url"
 }
 
+# Create README.md for current day.
+aoc_create_readme() {
+	local year=$1
+	local day0=$2
+	local day=$(echo $day0 | bc)
 
-aoc_parse_year() {
-	local year=$(date +%Y)
-	if [ $# -eq 1 ]; then
-		local ym=(${1//\// })  # Format: yyyy/dd
-		year=${ym[0]}
+	# TODO prevent creating README if already existing? wait until I've backfilled.
 
-		test ${#year} -eq 4 || year="20$year"
-	fi
-	echo "$year"
-}
+	local url_base="adventofcode.com/${year}/day/${day}"
+	local url="https://${url_base}"
 
+	read -rd '' content <<-MD || :
+	# Advent of Code - ${year} Day ${day}
+	Here are my solutions to this puzzle.
 
-aoc_parse_day() {
-	local day=$(date +%d)
-	if [ $# -eq 1 ]; then
-		local ym=(${1//\// })  # Format: yyyy/dd
-		day=${ym[1]}
-		test ${#day} -eq 2 || day="0$day"
-	fi
-	echo "$day"
+	* Problem description: [${url_base}](${url})
+	* Input: [${url_base}/input](${url}/input)
+
+	Fetch input by setting \`\$AOC_SESSION\` and then:
+	\`\`\`bash
+	curl -OJLsb session=\$AOC_SESSION ${url_base}/input
+	\`\`\`
+	MD
+
+	echo "$content" > README.md
+
 }
