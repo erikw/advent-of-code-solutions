@@ -63,12 +63,12 @@ enter_day() {
 	aoc_create_enter "$year" "$day"
 
 	touch "${files[@]}"
-	chmod u+x *.${file_ext}
-	echo "${TEMPLATE[$file_ext]}" > part1.${file_ext}
+	chmod u+x ./*."${file_ext}"
+	echo "${TEMPLATE[$file_ext]}" > part1."${file_ext}"
 
 
-	aoc_fetch_input $year $day
-	aoc_create_readme $year $day
+	aoc_fetch_input "$year" "$day"
+	aoc_create_readme "$year" "$day"
 }
 
 
@@ -90,11 +90,11 @@ shift $((OPTIND - 1))
 year=$(aoc_parse_year "$@")
 day=$(aoc_parse_day "$@")
 
-enter_day $year $day $arg_lang
+enter_day "$year" "$day" "$arg_lang"
 
 
 if [ "$CODESPACES" = true ]; then
-	code part1.${arg_lang} input1.0 output1.0 input output2.0 part2.${arg_lang}
+	code part1."${arg_lang}" input1.0 output1.0 input output2.0 part2."${arg_lang}"
 	$SHELL # Spawn subshell in 20yy/mm
 else
 	if [ -n "${TMUX+x}" ]; then
@@ -103,11 +103,11 @@ else
 	fi
 
 	# vim alias not set to nvim, assume $EDITOR is a proper editor (=vi-like).
-	$EDITOR -c "sp input | tabedit input1.0 | sp output1.0 | tabedit part2.${arg_lang} | normal 2gt " part1.${arg_lang}
+	$EDITOR -c "sp input | tabedit input1.0 | sp output1.0 | tabedit part2.${arg_lang} | normal 2gt " part1."${arg_lang}"
 fi
 
 
 aoc_cd_git_root # Get back again, to run git commands etc.
-$SCRIPT_DIR/stats.sh
+"$SCRIPT_DIR"/stats.sh
 git status
 printf "\n\ngit add %s && git commit -m \"Add %s ${arg_lang}\" && git fetch && git rebase && git push && tig\n" "$path" "$path"
