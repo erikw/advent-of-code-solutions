@@ -7,6 +7,17 @@
     "inlineChat.lineNaturalLanguageHint": false,
     "terminal.integrated.initialHint": false,
     "workbench.editor.empty.hint": "hidden",
+
+    "terminal.integrated.env.linux": {
+        // Add bin/ to path.
+        // NOPE this is working, code(1) is not available after.
+        // Ref: https://stackoverflow.com/q/74554169/265508
+        // Ref: https://github.com/microsoft/vscode/issues/178577
+        // Ref:https://github.com/microsoft/vscode/issues/186244
+        // TODO If there is a way in the future to acomplish this: prefix all scripts in bin/ with aoc_ for <tab> completion.
+        // "PATH": "${workspaceFolder}/bin:${env:PATH}",
+    },
+
     "cSpell.words": [
         "adventofcode",
         "BSLASH",
