@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Backfill README.md files. Run this when changing the template in aoc_create_readme()
 
 set -o nounset
 set -o pipefail
