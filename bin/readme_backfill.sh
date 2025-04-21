@@ -8,9 +8,26 @@ set -o pipefail
 SCRIPT_NAME=${0##*/}
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+IFS= read -rd '' USAGE <<EOF || :
+Backfill README.md for all days. Run this after updating the README.md template.
+Usage: $ ${SCRIPT_NAME}
+EOF
+
 # shellcheck source=bin/aoc_lib.sh
 . "$SCRIPT_DIR/aoc_lib.sh"
 aoc_init_script
+
+
+
+# Arg parsing
+while getopts ":h?" opt; do
+	case "$opt" in
+		:) echo "Option -$OPTARG requires an argument." >&2; exit 1;;
+		h|?|*) echo -e "$USAGE"; exit 0;;
+	esac
+done
+shift $((OPTIND - 1))
+
 
 paths=$(find . -maxdepth 2 -type d -regex "\./*[0-9]+/[0-9]+" | sort | sed -e 's|./||')
 for path in $paths; do
