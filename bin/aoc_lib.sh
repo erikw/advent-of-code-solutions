@@ -83,6 +83,7 @@ aoc_create_readme() {
 	url_base="adventofcode.com/${year}/day/${day}"
 	url="https://${url_base}"
 
+	# NOTE remember to run readme_backfill.sh after changing the template below.
 	read -rd '' content <<-MD || :
 	# Advent of Code - ${year} Day ${day}
 	Here are my solutions to this puzzle.
