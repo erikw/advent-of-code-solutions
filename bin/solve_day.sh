@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # TODO run shellcheck on all bin/*.sh
+# TODO add shellcheck github action. use -x flag for shellcheck  to follow sources. Same for templates repo
+# TODO add bin/ to PATH in CODESPACES
 
 set -o nounset
 set -o pipefail
@@ -70,6 +72,7 @@ enter_day() {
 }
 
 
+# shellcheck source=bin/aoc_lib.sh
 . "$SCRIPT_DIR/aoc_lib.sh"
 aoc_init_script
 
@@ -82,10 +85,10 @@ while getopts ":l:h?" opt; do
 		h|?|*) echo -e "$USAGE"; exit 0;;
 	esac
 done
-shift $(($OPTIND - 1))
+shift $((OPTIND - 1))
 
-year=$(aoc_parse_year $*)
-day=$(aoc_parse_day $*)
+year=$(aoc_parse_year "$@")
+day=$(aoc_parse_day "$@")
 
 enter_day $year $day $arg_lang
 
