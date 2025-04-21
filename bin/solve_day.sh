@@ -74,7 +74,7 @@ enter_day() {
 }
 
 
-# shellcheck source=aoc_lib.sh
+# shellcheck source=bin/aoc_lib.sh
 . "$SCRIPT_DIR/aoc_lib.sh"
 aoc_init_script
 

@@ -9,7 +9,7 @@ set -o pipefail
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 TARGET=README.md
 
-# shellcheck source=aoc_lib.sh
+# shellcheck source=bin/aoc_lib.sh
 . "$SCRIPT_DIR/aoc_lib.sh"
 cd_git_root
 
