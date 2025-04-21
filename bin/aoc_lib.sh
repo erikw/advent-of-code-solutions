@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# Shared helpers for AoC scripts.
+
 # Initialize a main script for AoC.
 aoc_init_script() {
 	aoc_cd_git_root
@@ -6,7 +9,7 @@ aoc_init_script() {
 
 # cd into the git root dir.
 aoc_cd_git_root() {
-	cd "$(git rev-parse --show-toplevel)"
+	cd "$(git rev-parse --show-toplevel)" || exit 7
 }
 
 # Load .env if it exist.
@@ -19,11 +22,12 @@ aoc_load_dotenv() {
 
 # Fetch year from $*, or default to this year's year.
 aoc_parse_year() {
-	local year=$(date +%Y)
+	local date="$1" # Format: yyyy/dd
+	local year ym
+	year=$(date +%Y)
 	if [ $# -eq 1 ]; then
-		local ym=(${1//\// })  # Format: yyyy/dd
+		IFS="/" read -ra ym <<< "$date"
 		year=${ym[0]}
-
 		test ${#year} -eq 4 || year="20$year"
 	fi
 	echo "$year"
@@ -31,9 +35,11 @@ aoc_parse_year() {
 
 # Fetch day from $*, or default to today's day.
 aoc_parse_day() {
-	local day=$(date +%d)
+	local date="$1" # Format: yyyy/dd
+	local day ym
+	day=$(date +%d)
 	if [ $# -eq 1 ]; then
-		local ym=(${1//\// })  # Format: yyyy/dd
+		IFS="/" read -ra ym <<< "$date"
 		day=${ym[1]}
 		test ${#day} -eq 2 || day="0$day"
 	fi
@@ -42,11 +48,14 @@ aoc_parse_day() {
 
 # Fetch input, unless present (to prevent DOS).
 aoc_fetch_input() {
-	local year=$1
-	local day=$(echo $2 | bc) # Strip leading 0
+	local year day0 day url_fmt url
+	year="$1"
+	day0="$2"
+	day=$(echo "$day0" | bc)
 
-	local url_fmt="https://adventofcode.com/%d/day/%d/input"
-	local url="$(printf "$url_fmt" $year $day)"
+	url_fmt="https://adventofcode.com/%d/day/%d/input"
+	# shellcheck disable=SC2059
+	url="$(printf "$url_fmt" "$year" "$day")"
 
 	test -e input && return
 
@@ -61,14 +70,15 @@ aoc_fetch_input() {
 
 # Create README.md for current day.
 aoc_create_readme() {
-	local year=$1
-	local day0=$2
-	local day=$(echo $day0 | bc)
+	local year day0 day url_base url
+	year=$1
+	day0=$2
+	day=$(echo "$day0" | bc)
 
 	# TODO prevent creating README if already existing? wait until I've backfilled.
 
-	local url_base="adventofcode.com/${year}/day/${day}"
-	local url="https://${url_base}"
+	url_base="adventofcode.com/${year}/day/${day}"
+	url="https://${url_base}"
 
 	read -rd '' content <<-MD || :
 	# Advent of Code - ${year} Day ${day}
@@ -93,6 +103,6 @@ aoc_create_enter() {
 	local day="$2"
 
 	local path="$year/$day"
-	mkdir -p $path
-	cd "$path"
+	mkdir -p "$path"
+	cd "$path" || exit 6
 }
