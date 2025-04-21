@@ -1,5 +1,4 @@
 // Common JavaScript helpers
-// TODO add vim fold markers?
 // NOTE arrow functions does not bind 'this': https://www.w3schools.com/js/js_arrow_function.asp
 //
 // Import like this:

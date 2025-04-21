@@ -68,9 +68,6 @@ def matching_face(tile, edge, edge_dir)
   2.times do
     4.times do
       tile_edges = edges_of(tile)
-      # TODO: should use real edges and not ID here, probably?
-      #  input1.0 finds no monsters then, but input finds 2 more than before
-      # tile_edges = edges_of_real(tile)
       return tile if tile_edges[edge_dir] == edge
 
       tile = rotate_cw(tile)
@@ -183,11 +180,6 @@ def identified_monsters(img, sea_monster)
   2.times do
     4.times do
       monsters = search_sea_monsters(img, sea_monster)
-      # TODO: problem is that I only find 6 monsters for input, py finds 41
-      #        my image has fewer # than py's, at the rotation where monsters are found.
-      #        dimensions are same
-      #        NOPE number of hashes are correct, but some of my tiles are not flip/rotated right! the tiles are in right place though
-      #        I have same tile numbers arrangement as py, but transposed!
       if monsters > 0
         print_image(img)
         return monsters

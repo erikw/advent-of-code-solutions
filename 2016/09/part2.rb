@@ -64,4 +64,4 @@ end
 
 puts decompressed_len(compressed)
 
-# NOTE: coolest algo is probably https://www.reddit.com/r/adventofcode/comments/5hbygy/comment/dazentu/
+# NOTE coolest algo is probably https://www.reddit.com/r/adventofcode/comments/5hbygy/comment/dazentu/
