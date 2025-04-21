@@ -66,34 +66,10 @@ enter_day() {
 	echo "${TEMPLATE[$file_ext]}" > part1.${file_ext}
 }
 
-# Load .env if it exist.
-# Ref: https://www.cicoria.com/loading-env-dotenv-using-bash-or-zsh/
-load_dotenv() {
-	test -f .env || return
-	set -o allexport; source .env; set +o allexport
-}
-
-# TODO fetch input1.x from problem description's all <pre><code>...
-fetch_input() {
-	local year=$1
-	local day=$2
-
-	local url_fmt="https://adventofcode.com/%d/day/%d/input"
-	local url="$(printf "$url_fmt" $year $day)"
-
-	if [ -z "${AOC_SESSION+x}" ]; then
-		printf "\$AOC_SESSION is not set. Fetch the 'session' cookie value from your browser and put it in to .env:\n" >&2
-		printf '$ echo AOC_SESSION=value > .env\n' >&2
-		exit 2
-	fi
-	# Include contact method in user agent as requested by @topaz: https://www.reddit.com/r/adventofcode/comments/z9dhtd/please_include_your_contact_info_in_the_useragent/
-	curl --remote-name --remote-header-name --silent --fail -A 'https://erikw.me/contact' --cookie "session=$AOC_SESSION" "$url"
-}
 
 
-. $SCRIPT_DIR/lib.sh
-cd_git_root
-load_dotenv
+. $SCRIPT_DIR/aoc_lib.sh
+aoc_init_script
 
 # Arg parsing
 arg_lang="${AOC_LANG:-rb}" # Can be set in .env or in shell env.
@@ -106,14 +82,22 @@ while getopts ":l:h?" opt; do
 done
 shift $(($OPTIND - 1))
 
-year=$(date +%Y)
+aoc_parse_year() {
+	year=$(date +%Y)
+	if [ $# -eq 1 ]; then
+		ym=(${1//\// })  # Format: yyyy/dd
+		year=${ym[0]}
+
+		test ${#year} -eq 4 || year="20$year"
+	fi
+	echo "$year"
+}
+
+year=$(aoc_parse_year $*)
 day=$(date +%d)
 if [ $# -eq 1 ]; then
 	ym=(${1//\// })  # Format: yyyy/dd
-	year=${ym[0]}
 	day=${ym[1]}
-
-	test ${#year} -eq 4 || year="20$year"
 	test ${#day}  -eq 2 || day="0$day"
 fi
 
@@ -123,7 +107,7 @@ files=(README.md input input1.0 output1.0 output2.0)
 files+=("part1.${arg_lang}")
 files+=("part2.${arg_lang}")
 enter_day $year $day $arg_lang files
-fetch_input $year $(echo $day | bc)
+aoc_fetch_input $year $day
 
 
 if [ "$CODESPACES" = true ]; then
@@ -141,8 +125,8 @@ else
 fi
 
 
-cd_git_root
-bin/stats.sh
+aoc_cd_git_root # Get back again, to run git commands etc.
+$SCRIPT_DIR/stats.sh
 
 git status
 printf "\n\ngit add %s && git commit -m \"Add %s ${arg_lang}\" && git fetch && git rebase && git push && tig\n" "$path" "$path"

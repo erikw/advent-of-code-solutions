@@ -10,8 +10,10 @@ ESC_BOLD="\033[1m"
 ESC_REST="\033[0m"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-. $SCRIPT_DIR/lib.sh
-cd_git_root
+
+
+. $SCRIPT_DIR/aoc_lib.sh
+aoc_init_script
 
 cloc=false
 if [ "$#" -eq 1 ] && [ "$1" = "-c" ]; then
