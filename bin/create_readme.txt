@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Fetch input file to a given year and day.
+# Create README.md for a given year and day.
 
 set -o nounset
 set -o pipefail

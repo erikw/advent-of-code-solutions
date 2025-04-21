@@ -17,7 +17,7 @@ aoc_cd_git_root() {
 aoc_load_dotenv() {
 	test -f .env || return
 	set -o allexport
-	# shellcheck source=../.env
+	# shellcheck source=/dev/null
 	source .env
 	set +o allexport
 }

@@ -20,7 +20,7 @@ Options:
 -c invoke cloc(1) as well.
 EOF
 
-# shellcheck source=aoc_lib.sh
+# shellcheck source=bin/aoc_lib.sh
 . "$SCRIPT_DIR/aoc_lib.sh"
 aoc_init_script
 
