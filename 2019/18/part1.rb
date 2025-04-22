@@ -6,7 +6,7 @@
 # 1. Shortest-path to every ey we can discover, entering doors that we have keeys though (replace door with open space when enter first time)
 # 2. On each path to key available
 #    * Backtrack each path. On each path, remove collected keys and doors entered
-#    * recurse down and get steps to end, or notall found
+#    * recurse down and get steps to end, or not all found
 # 3. Select shortest of these and move these number of steps and move to this key
 
 require 'lazy_priority_queue'
