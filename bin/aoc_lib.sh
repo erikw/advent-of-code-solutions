@@ -115,10 +115,10 @@ aoc_create_instructions_url() {
 	url="https://adventofcode.com/${year}/day/${day}"
 
 	# NOTE remember to run readme_backfill.sh after changing the template below.
-	read -rd '' content <<-URL || :
+	read -rd '' content <<-URL_FILE || :
 	[InternetShortcut]
 	URL = ${url}
-	URL
+	URL_FILE
 
 	echo "$content" > instructions.url
 }
