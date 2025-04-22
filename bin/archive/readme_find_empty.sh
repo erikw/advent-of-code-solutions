@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Find READMEs that are empty, because sometimes I forget to paste in the instructions.
-# TODO archive this once solve_day.sh automatically creates the README...
 
 set -o nounset
 set -o pipefail
