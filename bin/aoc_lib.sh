@@ -84,8 +84,6 @@ aoc_create_readme() {
 	day0="$2"
 	day=$(echo "$day0" | bc)
 
-	# TODO prevent creating README if already existing? wait until I've backfilled.
-
 	url_base="adventofcode.com/${year}/day/${day}"
 	url="https://${url_base}"
 
@@ -104,8 +102,27 @@ aoc_create_readme() {
 	MD
 
 	echo "$content" > README.md
-
 }
+
+
+# Create instructions.url for current day.
+aoc_create_instructions_url() {
+	local year day0 day url
+	year="$1"
+	day0="$2"
+	day=$(echo "$day0" | bc)
+
+	url="https://adventofcode.com/${year}/day/${day}"
+
+	# NOTE remember to run readme_backfill.sh after changing the template below.
+	read -rd '' content <<-URL || :
+	[InternetShortcut]
+	URL = ${url}
+	URL
+
+	echo "$content" > instructions.url
+}
+
 
 # Create year/day directory and cd into it.
 aoc_create_enter() {

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Backfill README.md files. Run this when changing the template in aoc_create_readme()
+# Backfill README.md and instructions.url files. Run this when changing the template in aoc_create_readme()
 
 set -o nounset
 set -o pipefail
@@ -9,7 +9,7 @@ SCRIPT_NAME=${0##*/}
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 IFS= read -rd '' USAGE <<EOF || :
-Backfill README.md for all days. Run this after updating the README.md template.
+Backfill README.md and instructions.url for all days. Run this after updating the README.md template.
 Usage: $ ${SCRIPT_NAME} -h |
 EOF
 
@@ -37,6 +37,7 @@ for path in $paths; do
 	day=${ym[1]}
 
 	aoc_create_readme "$year" "$day"
+	aoc_create_instructions_url "$year" "$day"
 	printf "Created README.md in %s\n" "$path"
 	cd ../..
 done
