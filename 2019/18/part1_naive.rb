@@ -87,14 +87,14 @@ def backtrack_path(prev, source, target)
   path
 end
 
-# This is removed in part1.rb as it's only purpose wat to clear out doors after
-# entering them, but actually we can just leave the doors in the map an enter
+# This is removed in part1.rb as it's only purpose was to clear out doors after
+# entering them, but actually we can just leave the doors in the map and enter
 # them later. No need to backtrack the paths all the time!
 def clear_doors_path(map, path, _doors, _keys, keys_collected)
   path.each do |pos|
     next unless SYM_DOOR.match(map[pos])
 
-    unless keys_collected.include?(map[pos].downcase) # TODO remove
+    unless keys_collected.include?(map[pos].downcase)
       require 'byebug'; byebug # rubocop:disable Style/Semicolon
     end
     map[pos] = SYM_OPEN
