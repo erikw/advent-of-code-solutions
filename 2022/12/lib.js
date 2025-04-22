@@ -49,7 +49,6 @@ export const dijkstra = (grid, source, target) => {
   const dist = new DefaultMap(() => Infinity, [[source.key(), 0]]);
   const prev = new Map();
 
-  // TODO problem: can't insert same item again in queue. Or is this problem? File bug report.
   var pq = new PriorityQueue({ [source.key()]: dist.get(source.key()) });
 
   while (!pq.isEmpty()) {
