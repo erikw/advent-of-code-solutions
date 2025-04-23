@@ -141,7 +141,7 @@ aoc_create_input_script() {
 	# Make sure \$AOC_SESSION is exported before running this script.
 
 	curl --remote-name --remote-header-name --silent --fail -A 'https://erikw.me/contact' --cookie "session=\$AOC_SESSION" "$url"
-	test "$?" -eq 0 && echo "Fetched input" || echo "Failed to fetch input" && exit 1
+	test "\$?" -eq 0 && echo "Fetched input" && exit 0 || echo "Failed to fetch input" && exit 1
 	SCRIPT
 
 	echo "$content" > fetch_input.sh
