@@ -65,6 +65,12 @@ See also:
 brew bundle install
 ```
 
+#### Debian/Ubuntu
+```shell
+xargs sudo apt-get -y install < apt-packages.txt
+```
+
+
 #### Ruby
 ```shell
 bundle install
