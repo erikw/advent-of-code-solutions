@@ -2,4 +2,4 @@
 # Make sure $AOC_SESSION is exported before running this script.
 
 curl --remote-name --remote-header-name --silent --fail -A 'https://erikw.me/contact' --cookie "session=$AOC_SESSION" "https://adventofcode.com/2016/day/6/input"
-test "0" -eq 0 && echo "Fetched input" || echo "Failed to fetch input" && exit 1
+test "$?" -eq 0 && echo "Fetched input" && exit 0 || echo "Failed to fetch input" && exit 1
