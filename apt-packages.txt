@@ -1,4 +1,6 @@
+# APT packages to install.
+# Keep in sync with Brewfile and Dockerfile.
 octave
 multitime
-shellcheck
+shellcheck # For linter.yml
 z3
