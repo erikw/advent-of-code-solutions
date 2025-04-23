@@ -8,3 +8,5 @@ Fetch input by exporting `$AOC_SESSION` in your shell and then:
 ```bash
 curl -OJLsb session=$AOC_SESSION adventofcode.com/2020/day/5/input
 ```
+
+or run `fetch_input.sh` in this directory.
