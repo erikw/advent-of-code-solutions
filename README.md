@@ -87,7 +87,9 @@ pip install -r requirements.txt
 ```
 
 ### Session Cookie
-Fetch your [AoC Session Cookie](https://github.com/wimglenn/advent-of-code-wim/issues/1) and store as an envvar or in `.env` export as `$AOC_SESSION`.
+Fetch your [AoC Session Cookie](https://github.com/wimglenn/advent-of-code-wim/issues/1) and set it up as an environment variable by either:
+* putting it a [`.env`](https://dotenvx.com/docs/env-file) file in the repo's root dir as `AOC_SESSION=...`
+* export in your shell ('s startup file) as `export AOC_SESSION=...`.
 
 ### Solve a Puzzle
 
