@@ -1,10 +1,10 @@
 # Advent of Code - 2020 Day 24
 Here are my solutions to this puzzle.
 
-* Problem description: [adventofcode.com/2020/day/24](https://adventofcode.com/2020/day/24)
+* Problem instructions: [adventofcode.com/2020/day/24](https://adventofcode.com/2020/day/24)
 * Input: [adventofcode.com/2020/day/24/input](https://adventofcode.com/2020/day/24/input)
 
-Fetch input by setting `$AOC_SESSION` and then:
+Fetch input by exporting `$AOC_SESSION` in your shell and then:
 ```bash
 curl -OJLsb session=$AOC_SESSION adventofcode.com/2020/day/24/input
 ```

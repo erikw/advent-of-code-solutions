@@ -1,10 +1,10 @@
 # Advent of Code - 2022 Day 3
 Here are my solutions to this puzzle.
 
-* Problem description: [adventofcode.com/2022/day/3](https://adventofcode.com/2022/day/3)
+* Problem instructions: [adventofcode.com/2022/day/3](https://adventofcode.com/2022/day/3)
 * Input: [adventofcode.com/2022/day/3/input](https://adventofcode.com/2022/day/3/input)
 
-Fetch input by setting `$AOC_SESSION` and then:
+Fetch input by exporting `$AOC_SESSION` in your shell and then:
 ```bash
 curl -OJLsb session=$AOC_SESSION adventofcode.com/2022/day/3/input
 ```
