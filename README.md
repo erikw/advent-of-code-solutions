@@ -67,7 +67,7 @@ brew bundle install
 
 #### Debian/Ubuntu
 ```shell
-xargs sudo apt-get -y install < apt-packages.txt
+sed 's/#.*$//' < apt-packages.txt | xargs sudo apt-get -y install
 ```
 
 
