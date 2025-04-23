@@ -99,6 +99,8 @@ aoc_create_readme() {
 	\`\`\`bash
 	curl -OJLsb session=\$AOC_SESSION ${url_base}/input
 	\`\`\`
+
+	or run \`fetch_input.sh\` in this directory.
 	MD
 
 	echo "$content" > README.md
