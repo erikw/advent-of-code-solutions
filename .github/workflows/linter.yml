@@ -12,7 +12,6 @@ on:
     paths:
       - '**.sh'
       - '.github/workflows/linter.yml'
-      - 'README.md'
 
 permissions: {}
 
