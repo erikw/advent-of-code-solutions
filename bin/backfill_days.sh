@@ -18,6 +18,20 @@ datefmt\t\t yy/d, yy/dd, yyyy/dd. Default: backfill all days.
 EOF
 
 
+backfill_day() {
+	local year="$1"
+	local day="$2"
+
+	aoc_create_enter "$year" "$day" # Might not exist yet, as compared to backfill_days_all().
+
+	aoc_create_readme "$year" "$day"
+	aoc_create_instructions_url "$year" "$day"
+	aoc_create_input_script "$year" "$day"
+
+	printf "Backfilled %d/%s\n" "$year" "$day" # Print day as %s to preserve leading 0.
+}
+
+
 backfill_days_all() {
 	paths=$(find . -maxdepth 2 -type d -regex "\./*[0-9]+/[0-9]+" | sort | sed -e 's|./||')
 	for path in $paths; do
@@ -28,20 +42,11 @@ backfill_days_all() {
 
 		aoc_create_readme "$year" "$day"
 		aoc_create_instructions_url "$year" "$day"
+		aoc_create_input_script "$year" "$day"
+
 		printf "Backfilled %s\n" "$path"
 		cd ../..
 	done
-}
-
-
-backfill_day() {
-	local year="$1"
-	local day="$2"
-
-	aoc_create_enter "$year" "$day"
-	aoc_create_readme "$year" "$day"
-	aoc_create_instructions_url "$year" "$day"
-	printf "Backfilled %d/%s\n" "$year" "$day" # Print day as %s to preserve leading 0.
 }
 
 

@@ -92,10 +92,10 @@ aoc_create_readme() {
 	# Advent of Code - ${year} Day ${day}
 	Here are my solutions to this puzzle.
 
-	* Problem description: [${url_base}](${url})
+	* Problem instructions: [${url_base}](${url})
 	* Input: [${url_base}/input](${url}/input)
 
-	Fetch input by setting \`\$AOC_SESSION\` and then:
+	Fetch input by exporting \`\$AOC_SESSION\` in your shell and then:
 	\`\`\`bash
 	curl -OJLsb session=\$AOC_SESSION ${url_base}/input
 	\`\`\`
@@ -121,6 +121,29 @@ aoc_create_instructions_url() {
 	URL_FILE
 
 	echo "$content" > instructions.url
+}
+
+
+# Create fetch_input.sh for current day.
+aoc_create_input_script() {
+	local year day0 day url
+	year="$1"
+	day0="$2"
+	day=$(echo "$day0" | bc)
+
+	url="https://adventofcode.com/${year}/day/${day}/input"
+
+	# NOTE remember to run backfill_days.sh after changing the template below.
+	read -rd '' content <<-SCRIPT || :
+	#!/usr/bin/env sh
+	# Make sure \$AOC_SESSION is exported before running this script.
+
+	curl --remote-name --remote-header-name --silent --fail -A 'https://erikw.me/contact' --cookie "session=\$AOC_SESSION" "$url"
+	test "$?" -eq 0 && echo "Fetched input" || echo "Failed to fetch input" && exit 1
+	SCRIPT
+
+	echo "$content" > fetch_input.sh
+	chmod 744 fetch_input.sh
 }
 
 
