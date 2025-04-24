@@ -66,8 +66,7 @@ enter_day() {
 
 
 	aoc_fetch_input "$year" "$day"
-	aoc_create_readme "$year" "$day"
-	aoc_create_instructions_url "$year" "$day"
+	aoc_create_boilerplates "$year" "$day"
 }
 
 
