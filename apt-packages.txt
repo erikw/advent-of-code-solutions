@@ -1,5 +1,6 @@
 # APT packages to install.
 # Keep in sync with Brewfile and Dockerfile.
+direnv
 octave
 multitime
 shellcheck # For linter.yml
