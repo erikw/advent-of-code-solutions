@@ -149,6 +149,19 @@ aoc_create_input_script() {
 }
 
 
+# Create boilerplate files for a year/day.
+# NOTE only generate files that should be checked in here. Especially not
+# aoc_fetch_input as the backfill script should not spam curl(1)s.
+aoc_create_boilerplates() {
+	local year="$1"
+	local day="$2"
+
+	aoc_create_readme "$year" "$day"
+	aoc_create_instructions_url "$year" "$day"
+	aoc_create_input_script "$year" "$day"
+}
+
+
 # Create year/day directory and cd into it.
 aoc_create_enter() {
 	local year="$1"
