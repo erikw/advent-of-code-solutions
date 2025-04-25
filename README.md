@@ -12,15 +12,10 @@
 [![Lint](https://github.com/erikw/advent-of-code-solutions/actions/workflows/linter.yml/badge.svg)](https://github.com/erikw/advent-of-code-solutions/actions/workflows/linter.yml)
 <p align="center">
     <!-- Ref: https://dev.to/azure/adding-a-github-codespace-button-to-your-readme-5f6l -->
-    <a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=433747676" title="Open in GitHub Codespaces" ><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg"></a>
+    <a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=433747676" title="Open in GitHub Codespaces" ><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg" width="20%"></a>
 </p>
-<br>
 
-My solutions to puzzles at [adventofcode.com](https://adventofcode.com/). Also check out my collected [tricks](tricks.md).
-
-
-
-
+<!--
 ```perl
                                       `}-'       `}-'
  ___                    `}-' `}-'  ____/`-,  _____/`-,
@@ -31,6 +26,13 @@ My solutions to puzzles at [adventofcode.com](https://adventofcode.com/). Also c
   __|___|__)    / \  / \  /`--/<   / \   /|
                          /  \/  \
 ```
+-->
+<p align="center"><img src="img/banner1.png" alt="AoC Banner" width="75%" /></p>
+
+
+My solutions to puzzles at [adventofcode.com](https://adventofcode.com/). Also check out my collected [tricks](tricks.md).
+
+
 
 See also:
 * [erikw/hackerrank-solutions](https://github.com/erikw/hackerrank-solutions/)
