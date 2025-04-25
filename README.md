@@ -30,7 +30,7 @@
 <p align="center"><img src="img/banner1.png" alt="AoC Banner" width="75%" /></p>
 
 
-My solutions to puzzles at [adventofcode.com](https://adventofcode.com/). Also check out my collected [tricks](tricks.md).
+My solutions to puzzles at [adventofcode.com](https://adventofcode.com/). Also check out my collected [tricks ✨](tricks.md).
 
 
 
