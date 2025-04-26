@@ -22,6 +22,14 @@
         "adventofcode",
         "BSLASH",
         "cloc",
-        "multitime"
+        "csym",
+        "dcount",
+        "multitime",
+        "ndir",
+        "ndist",
+        "npos",
+        "nprev",
+        "pdir",
+        "ppos"
     ],
 }

@@ -1,4 +1,5 @@
 # Runtime Dependencies
+termcolor
 z3-solver
 
 # Development Tools
