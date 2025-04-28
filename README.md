@@ -12,7 +12,7 @@
 [![Lint](https://github.com/erikw/advent-of-code-solutions/actions/workflows/linter.yml/badge.svg)](https://github.com/erikw/advent-of-code-solutions/actions/workflows/linter.yml)
 <p align="center">
     <!-- Ref: https://dev.to/azure/adding-a-github-codespace-button-to-your-readme-5f6l -->
-    <a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=433747676" title="Open in GitHub Codespaces" ><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg" width="20%"></a>
+    <a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=433747676" title="Open in GitHub Codespaces" ><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg" width="25%"></a>
 </p>
 
 <!--
