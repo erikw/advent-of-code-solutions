@@ -6,7 +6,7 @@
 		// "ghcr.io/devcontainers-extra/features/apt-get-packages:1": {
 		// // NOTE moved to Dockerfile to utilize docker build cache. But it's actually unclear if this will be faster than the apt-get-packages feature, as it might also utilize overlay filesystem.
 		// 	"version": "latest",
-		// 	"packages": "octave z3 multitime" // Keep in sync with Brewfile, apt-packages.txt
+		// 	"packages": ["octave", "z3", "multitime"] // Keep in sync with Brewfile, apt-packages.txt
 		// }
 	// },
 	"postCreateCommand": "bash scripts/devcontainer_postCreateCommand.sh",
