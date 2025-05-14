@@ -1,4 +1,4 @@
-# Keep in sync with apt-packages.txt, Dockerfile.
+# Keep in sync with apt-packages.txt, devcontainer.json
 brew 'direnv'
 brew 'multitime'
 brew 'octave'

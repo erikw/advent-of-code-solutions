@@ -1,5 +1,5 @@
 # APT packages to install.
-# Keep in sync with Brewfile and Dockerfile.
+# Keep in sync with Brewfile, devcontainer.json
 direnv
 octave
 multitime
