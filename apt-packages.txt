@@ -1,7 +1,8 @@
 # APT packages to install.
 # Keep in sync with Brewfile, devcontainer.json
 direnv
-octave
+graphviz
 multitime
+octave
 shellcheck # For linter.yml
 z3

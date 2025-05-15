@@ -198,6 +198,7 @@ to get side-by-side comparison between expected (column 1) and actual (column 2)
   * Python users have a lot of [helper libs](https://pypi.org/search/?q=advent&o=) to automate e.g. input download, parsing and even solution submission.
 
 ## Misc
+* It's a good idea during development to output the state of the program in the same format as the puzzle description. This could be for example single lines of state, or to print every snapshot of the progress of some algorithm on a grid system. Having the same format as the puzzle description makes comparision with given examples easy!
 * Constraint solver
   * Is the problem too hard to solve? Let someone else do it: [Z3](https://github.com/Z3Prover/Z3).
   * Examples: [2018/10](2018/23/part2.rb)

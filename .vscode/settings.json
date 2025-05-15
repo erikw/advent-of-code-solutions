@@ -30,6 +30,7 @@
         "npos",
         "nprev",
         "pdir",
-        "ppos"
+        "ppos",
+        "pprev"
     ],
 }
