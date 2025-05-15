@@ -1,4 +1,6 @@
 # Runtime Dependencies
+graphviz
+python-mermaid
 termcolor
 z3-solver
 

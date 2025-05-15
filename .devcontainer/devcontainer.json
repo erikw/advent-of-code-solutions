@@ -5,6 +5,7 @@
 			"packages": [
 				"cloc",
 				"direnv",
+				"graphviz",
 				"multitime",
 				"octave",
 				"shellcheck",
