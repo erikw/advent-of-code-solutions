@@ -19,18 +19,24 @@
     },
 
     "cSpell.words": [
+        "adjm",
         "adventofcode",
         "BSLASH",
         "cloc",
         "csym",
         "dcount",
         "multitime",
+        "ncol",
         "ndir",
         "ndist",
+        "nidx",
         "npos",
         "nprev",
+        "nrow",
         "pdir",
         "ppos",
-        "pprev"
+        "pprev",
+        "starte",
+        "Vandermonde"
     ],
 }

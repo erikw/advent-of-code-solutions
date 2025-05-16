@@ -1,7 +1,9 @@
 # Runtime Dependencies
 graphviz
+numpy
 python-mermaid
 termcolor
+scipy
 z3-solver
 
 # Development Tools
