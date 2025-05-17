@@ -81,15 +81,15 @@ def overlaps_xy(brick_a, brick_b):
     overlap_x = a_x1 <= b_x1 <= a_x2 or b_x1 <= a_x2 <= b_x2
     overlap_y = a_y1 <= b_y1 <= a_y2 or b_y1 <= a_y2 <= b_y2
 
-    if overlap_x and overlap_y:
-        print(f"Brick {brick_a[2]} overlaps in xy-plane brick {brick_b[2]}")
-    else:
-        print(f"Brick {brick_a[2]} DOES NOT overlaps in xy-plane brick {brick_b[2]}")
+    # if overlap_x and overlap_y:
+        # print(f"Brick {brick_a[2]} overlaps in xy-plane brick {brick_b[2]}")
+    # else:
+        # print(f"Brick {brick_a[2]} DOES NOT overlaps in xy-plane brick {brick_b[2]}")
 
     return overlap_x and overlap_y
 
 def fall(bricks_by_z, brick):
-    print("### Trying to fall:", brick)
+    # print("### Trying to fall:", brick)
     (_x1, _y1, z1), (_x2, _y2, z2), _name = brick
     z_min = min(z1, z2)
     if z_min == 1:
@@ -101,7 +101,7 @@ def fall(bricks_by_z, brick):
 
     brick[0][2] -= 1
     brick[1][2] -= 1
-    print("Fell one step")
+    # print("Fell one step")
     return True
 
 def settle_bricks(bricks):
@@ -119,13 +119,13 @@ def settle_bricks(bricks):
 
     for brick in sorted(bricks, key=lambda b: min(b[0][2], b[1][2])):
         bricks_by_z = group_bricks_by_z(bricks)
-        print("## This brick starts falling:", brick)
+        # print("## This brick starts falling:", brick)
         while fall(bricks_by_z, brick):
             pass
-        print("## Landed at:", brick)
-        print("## Current state")
-        print_bricks(bricks)
-        print()
+        # print("## Landed at:", brick)
+        # print("## Current state")
+        # print_bricks(bricks)
+        # print()
 
 
 
