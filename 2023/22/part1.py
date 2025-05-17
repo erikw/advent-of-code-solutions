@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# 534 too high
 import fileinput
 from pprint import pprint
 from collections import defaultdict
@@ -12,7 +13,7 @@ def read_bricks():
     for i, line in enumerate(fileinput.input()):
         brick = tuple(list(map(int, p.split(","))) for p in line.rstrip("\n").split("~"))
         brick = [list(map(int, p.split(","))) for p in line.rstrip("\n").split("~")]
-        brick.extend(chr(i + ord('A')))
+        brick.append(i)
         bricks.append(brick)
     return bricks
 
@@ -20,7 +21,7 @@ def read_bricks():
 def group_bricks_by_z(bricks):
     bricks_by_z = defaultdict(list)
     for brick in bricks:
-        p1, p2, _name = brick
+        p1, p2, _id = brick
         z_min, z_max = min(p1[2], p2[2]), max(p1[2], p2[2])
         for z in range(z_min, z_max + 1):
             bricks_by_z[z].append(brick)
@@ -33,6 +34,12 @@ def extract_coordinate(bricks, axis):
     a_len = max(az) - min(az) + 1
     return az, a_min, a_max, a_len
 
+
+def id2name(id):
+    return chr(id + ord('A'))
+
+def brick_name(brick):
+    return id2name(brick[2])
 
 def print_bricks_side(bricks, axis):
     _ss, s_min, s_max, s_len = extract_coordinate(bricks, axis)
@@ -59,7 +66,7 @@ def print_bricks_side(bricks, axis):
                 case 0:
                     line.append(SYM_EMPTY)
                 case 1:
-                    line.append(bricks_present[0])
+                    line.append(id2name(bricks_present[0]))
                 case _:
                     line.append(SYM_HIDDEN)
         line.append(f" {z}")
@@ -75,22 +82,22 @@ def print_bricks(bricks):
     print_bricks_side(bricks, 1)
 
 def overlaps_xy(brick_a, brick_b):
-    (a_x1, a_y1, _a_z1), (a_x2, a_y2, _a_z2), _a_name = brick_a
-    (b_x1, b_y1, _b_z1), (b_x2, b_y2, _b_z2), _b_name = brick_b
+    (a_x1, a_y1, _a_z1), (a_x2, a_y2, _a_z2), _a_id = brick_a
+    (b_x1, b_y1, _b_z1), (b_x2, b_y2, _b_z2), _b_id = brick_b
 
     overlap_x = a_x1 <= b_x1 <= a_x2 or b_x1 <= a_x2 <= b_x2
     overlap_y = a_y1 <= b_y1 <= a_y2 or b_y1 <= a_y2 <= b_y2
 
     # if overlap_x and overlap_y:
-        # print(f"Brick {brick_a[2]} overlaps in xy-plane brick {brick_b[2]}")
+        # print(f"Brick {brick_name(brick_a)} overlaps in xy-plane brick {brick_name(brick_b)}")
     # else:
-        # print(f"Brick {brick_a[2]} DOES NOT overlaps in xy-plane brick {brick_b[2]}")
+        # print(f"Brick {brick_name(brick_a)} DOES NOT overlaps in xy-plane brick {brick_name(brick_b)}")
 
     return overlap_x and overlap_y
 
 def fall(bricks_by_z, brick):
     # print("### Trying to fall:", brick)
-    (_x1, _y1, z1), (_x2, _y2, z2), _name = brick
+    (_x1, _y1, z1), (_x2, _y2, z2), _id = brick
     z_min = min(z1, z2)
     if z_min == 1:
         return False
@@ -109,14 +116,6 @@ def settle_bricks(bricks):
     ys, y_min, y_max, y_len = extract_coordinate(bricks, 1)
     zs, z_min, z_max, z_len = extract_coordinate(bricks, 2)
 
-    # bricks_by_z = group_bricks_by_z(bricks)
-    # for z in sorted(bricks_by_z): # For bricks occupying more than one z coordinate, it will be processed multiple times. Chose better DS, just simple sorted list?
-    #     if z == 1:
-    #         continue
-    #     for brick in bricks_by_z[z]:
-    #         while fall(bricks, brick):
-    #             pass
-
     for brick in sorted(bricks, key=lambda b: min(b[0][2], b[1][2])):
         bricks_by_z = group_bricks_by_z(bricks)
         # print("## This brick starts falling:", brick)
@@ -128,6 +127,33 @@ def settle_bricks(bricks):
         # print()
 
 
+def disintegration_safe(bricks):
+    bricks_by_z = group_bricks_by_z(bricks)
+
+    brick_supported_by = defaultdict(int) # brick_id -> int(nbr bricks it is supported by)
+    for brick in bricks:
+        (x1, y1, z1), (x2, y2, z2), id = brick
+        z_min = min(z1, z2)
+        if z_min == 1:
+            continue
+
+        for brick_below in bricks_by_z[z_min - 1]:
+            if overlaps_xy(brick, brick_below):
+                brick_supported_by[id] += 1
+
+    safe_bricks = []
+    for brick in bricks:
+        (x1, y1, z1), (x2, y2, z2), id = brick
+        z_max = max(z1, z2)
+        safe = True
+        for brick_above in bricks_by_z[z_max + 1]:
+            if overlaps_xy(brick, brick_above) and brick_supported_by[brick_above[2]] == 1:
+                safe = False
+                break
+        if safe:
+            safe_bricks.append(brick)
+    return safe_bricks
+
 
 def main():
     bricks = read_bricks()
@@ -136,6 +162,10 @@ def main():
     settle_bricks(bricks)
     print("\n==== After settling:")
     print_bricks(bricks)
+
+    bricks_safe = disintegration_safe(bricks)
+    pprint(bricks_safe)
+    print(len(bricks_safe))
 
 if __name__ == '__main__':
 	main()
