@@ -134,9 +134,6 @@ def disintegration_safe(bricks):
     for brick in bricks:
         (x1, y1, z1), (x2, y2, z2), id = brick
         z_min = min(z1, z2)
-        if z_min == 1:
-            continue
-
         for brick_below in bricks_by_z[z_min - 1]:
             if overlaps_xy(brick, brick_below):
                 brick_supported_by[id] += 1
