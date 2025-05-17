@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# 534 too high
 import fileinput
 from pprint import pprint
 from collections import defaultdict
@@ -84,18 +83,12 @@ def overlaps_xy(brick_a, brick_b):
     (a_x1, a_y1, _a_z1), (a_x2, a_y2, _a_z2), _a_id = brick_a
     (b_x1, b_y1, _b_z1), (b_x2, b_y2, _b_z2), _b_id = brick_b
 
-    overlap_x = a_x1 <= b_x1 <= a_x2 or b_x1 <= a_x2 <= b_x2
-    overlap_y = a_y1 <= b_y1 <= a_y2 or b_y1 <= a_y2 <= b_y2
-
-    # if overlap_x and overlap_y:
-        # print(f"Brick {brick_name(brick_a)} overlaps in xy-plane brick {brick_name(brick_b)}")
-    # else:
-        # print(f"Brick {brick_name(brick_a)} DOES NOT overlaps in xy-plane brick {brick_name(brick_b)}")
+    overlap_x = a_x1 <= b_x1 <= a_x2 or b_x1 <= a_x1 <= b_x2
+    overlap_y = a_y1 <= b_y1 <= a_y2 or b_y1 <= a_y1 <= b_y2
 
     return overlap_x and overlap_y
 
 def fall(bricks_by_z, brick):
-    # print("### Trying to fall:", brick)
     (_x1, _y1, z1), (_x2, _y2, z2), _id = brick
     z_min = min(z1, z2)
     if z_min == 1:
@@ -107,23 +100,13 @@ def fall(bricks_by_z, brick):
 
     brick[0][2] -= 1
     brick[1][2] -= 1
-    # print("Fell one step")
     return True
 
 def settle_bricks(bricks):
-    xs, x_min, x_max, x_len = extract_coordinate(bricks, 0)
-    ys, y_min, y_max, y_len = extract_coordinate(bricks, 1)
-    zs, z_min, z_max, z_len = extract_coordinate(bricks, 2)
-
     for brick in sorted(bricks, key=lambda b: min(b[0][2], b[1][2])):
         bricks_by_z = group_bricks_by_z(bricks)
-        # print("## This brick starts falling:", brick)
         while fall(bricks_by_z, brick):
             pass
-        # print("## Landed at:", brick)
-        # print("## Current state")
-        # print_bricks(bricks)
-        # print()
 
 
 def disintegration_safe(bricks):
@@ -153,16 +136,13 @@ def disintegration_safe(bricks):
 
 def main():
     bricks = read_bricks()
-    print_bricks(bricks)
+    # print_bricks(bricks)
 
     settle_bricks(bricks)
-    print("\n==== After settling:")
-    print_bricks(bricks)
+    # print("\n==== After settling:")
+    # print_bricks(bricks)
 
     bricks_safe = disintegration_safe(bricks)
-    # pprint(bricks_safe)
-    print([id2name(b[2]) for b in bricks_safe])
-    pprint(len(bricks))
     print(len(bricks_safe))
 
 if __name__ == '__main__':
