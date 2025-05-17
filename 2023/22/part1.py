@@ -9,7 +9,6 @@ SYM_HIDDEN = "?"
 
 def read_bricks():
     bricks = []
-    # for line in fileinput.input():
     for i, line in enumerate(fileinput.input()):
         brick = tuple(list(map(int, p.split(","))) for p in line.rstrip("\n").split("~"))
         brick = [list(map(int, p.split(","))) for p in line.rstrip("\n").split("~")]
@@ -161,7 +160,9 @@ def main():
     print_bricks(bricks)
 
     bricks_safe = disintegration_safe(bricks)
-    pprint(bricks_safe)
+    # pprint(bricks_safe)
+    print([id2name(b[2]) for b in bricks_safe])
+    pprint(len(bricks))
     print(len(bricks_safe))
 
 if __name__ == '__main__':
