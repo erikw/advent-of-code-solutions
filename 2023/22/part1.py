@@ -108,10 +108,7 @@ def settle_bricks(bricks):
         while fall(bricks_by_z, brick):
             pass
 
-
-def disintegration_safe(bricks):
-    bricks_by_z = group_bricks_by_z(bricks)
-
+def calc_brick_supported_by(bricks, bricks_by_z):
     brick_supported_by = defaultdict(int) # brick_id -> int(nbr bricks it is supported by)
     for brick in bricks:
         (x1, y1, z1), (x2, y2, z2), id = brick
@@ -119,6 +116,12 @@ def disintegration_safe(bricks):
         for brick_below in bricks_by_z[z_min - 1]:
             if overlaps_xy(brick, brick_below):
                 brick_supported_by[id] += 1
+    return brick_supported_by
+
+
+def disintegration_safe(bricks):
+    bricks_by_z = group_bricks_by_z(bricks)
+    brick_supported_by = calc_brick_supported_by(bricks, bricks_by_z)
 
     safe_bricks = []
     for brick in bricks:

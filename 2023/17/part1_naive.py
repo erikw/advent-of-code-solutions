@@ -95,7 +95,7 @@ def dir_count(pos, prev, dir):
 # heat_map[B].
 # https://en.wikipedia.org/wiki/Constrained_Shortest_Path_First
 def constrained_dijkstra(heat_map, rows, cols, pos_start, pos_end):
-    que = PriorityQueue() # TODO make a heapq version for comparison
+    que = PriorityQueue()
     dist = defaultdict(lambda: float('inf')) # pos -> dist
     prev = defaultdict(lambda: (None, None)) # pos -> (prev_pos, direction_prev_pos_to_pos)
     visited = set()
