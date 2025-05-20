@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# h/t https://www.reddit.com/r/adventofcode/comments/kimluc/comment/ggrzza7/?utm_source=share&utm_medium=web2x&context=3
+# h/t https://www.reddit.com/r/adventofcode/comments/kimluc/comment/ggrzza7/
 # The array cups has index being the cup label and the value is the clock-wise next neighbour.
 
 require 'set'

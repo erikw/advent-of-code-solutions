@@ -112,7 +112,7 @@ def read_seeds_maps():
     return (seeds, maps)
 
 
-# h/t https://www.reddit.com/r/adventofcode/comments/18b4b0r/comment/kc291gz/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+# h/t https://www.reddit.com/r/adventofcode/comments/18b4b0r/comment/kc291gz/
 def main():
     seed_ranges, maps = read_seeds_maps()
     ranges = [(r[0], r[0] + r[1]) for r in seed_ranges]

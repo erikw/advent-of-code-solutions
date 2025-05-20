@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Props to https://www.reddit.com/r/adventofcode/comments/3y1s7f/comment/cy9sqq2/?utm_source=share&utm_medium=web2x&context=3
+# Props to https://www.reddit.com/r/adventofcode/comments/3y1s7f/comment/cy9sqq2/
 def min_quantum_packing(packages, groups)
   group_size = packages.sum / groups
   (1..packages.length).each do |len|

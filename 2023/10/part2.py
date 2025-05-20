@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# h/t https://www.reddit.com/r/adventofcode/comments/18evyu9/comment/kcqmhwk/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+# h/t https://www.reddit.com/r/adventofcode/comments/18evyu9/comment/kcqmhwk/
 import fileinput
 
 PIPE_NORTH_SOUTH = "|"

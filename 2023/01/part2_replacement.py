@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import fileinput
 
-# h/t https://www.reddit.com/r/adventofcode/comments/1883ibu/comment/kbielt0/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+# h/t https://www.reddit.com/r/adventofcode/comments/1883ibu/comment/kbielt0/
 TEXT_DIGITS = {
     "one": "one1one",
     "two": "two2two",

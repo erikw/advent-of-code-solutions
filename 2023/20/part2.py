@@ -54,7 +54,7 @@ def read_module_configuration():
 
 def find_min_presses(mod_conf):
     """
-    # h/t https://www.reddit.com/r/adventofcode/comments/18mmfxb/comment/ke5a5fc/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+    # h/t https://www.reddit.com/r/adventofcode/comments/18mmfxb/comment/ke5a5fc/
     # With manual analysis of output from mermaid.py, it is concluded that for my input:
     # * rx is connected as: [&lr, &nl, &vr, &gt] -> &jq -> rx
     # * further it can be seen that those earlier 4 conjunctions all go to a different sub graph, namely the 4 subgraphs branching from module broadcaster.

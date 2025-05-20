@@ -58,7 +58,7 @@ end
 # end
 # end
 
-# h/t https://www.reddit.com/r/adventofcode/comments/rjpf7f/comment/hp58zmu/?utm_source=share&utm_medium=web2x&context=3
+# h/t https://www.reddit.com/r/adventofcode/comments/rjpf7f/comment/hp58zmu/
 def orient(orient_idx, x, y, z)
   case orient_idx
   when 0

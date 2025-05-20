@@ -37,6 +37,7 @@
         "pdir",
         "ppos",
         "pprev",
+        "rint",
         "starte",
         "Vandermonde"
     ],

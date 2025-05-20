@@ -71,7 +71,7 @@ def expand_map(map, pos_start, max_steps):
 def main():
     map, pos_start = read_map()
 
-    # h/t https://www.reddit.com/r/adventofcode/comments/18nevo3/comment/keao6r4/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+    # h/t https://www.reddit.com/r/adventofcode/comments/18nevo3/comment/keao6r4/
     # As STEPS = 202300 * len(map) + 65
     # or: 26501365 = 202300 * 131 + 65
     n = STEPS // len(map) # 202300
