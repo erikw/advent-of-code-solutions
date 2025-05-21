@@ -53,7 +53,7 @@ if [ "$arg_cloc" = true ]; then
 	echo
 fi
 
-printf "Collected stars per year:\n"
+printf "🎅 Collected stars per year:\n"
 years=$(find . -maxdepth 1 -type d -regex "\./*[0-9]*" | grep -oE "[0-9]+" | sort)
 for year in $years; do
 	solved=$(nbr_solved "$year")
