@@ -56,7 +56,9 @@ enter_day() {
 
 	local files=(input1.0 output1.0 output2.0)
 	files+=("part1.${arg_lang}")
-	files+=("part2.${arg_lang}")
+	if "$day" != 25; then
+		files+=("part2.${arg_lang}")
+	fi
 
 	git switch -c "$year/$day"  # This could cause issues, let's see.......
 	aoc_create_enter "$year" "$day"
@@ -93,7 +95,9 @@ enter_day "$year" "$day" "$arg_lang"
 
 
 if [ "$CODESPACES" = true ]; then
-	code part1."${arg_lang}" input1.0 output1.0 input output2.0 part2."${arg_lang}"
+	test "$day" == 25 && p2="" || p2="output2.0 part2.${arg_lang}"
+
+	code part1."${arg_lang}" input1.0 output1.0 input "$p2"
 	$SHELL # Spawn subshell in 20yy/mm
 else
 	if [ -n "${TMUX+x}" ]; then
@@ -101,8 +105,9 @@ else
 		tmux last-pane
 	fi
 
+	test "$day" == 25 && p2="" || p2="| tabedit part2.${arg_lang}"
 	# vim alias not set to nvim, assume $EDITOR is a proper editor (=vi-like).
-	$EDITOR -c "sp input | tabedit input1.0 | sp output1.0 | tabedit part2.${arg_lang} | normal 2gt " part1."${arg_lang}"
+	$EDITOR -c "sp input | tabedit input1.0 | sp output1.0 $p2 | normal 2gt " part1."${arg_lang}"
 fi
 
 
