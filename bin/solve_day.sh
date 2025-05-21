@@ -60,7 +60,7 @@ enter_day() {
 		files+=("part2.${arg_lang}")
 	fi
 
-	git switch -c "$year/$day"  # This could cause issues, let's see.......
+	# git switch -c "$year/$day"  # This could cause issues. Yup it did, let's not do!
 	aoc_create_enter "$year" "$day"
 
 	touch "${files[@]}"
