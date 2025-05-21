@@ -42,8 +42,8 @@ nbr_solved() {
 	stars=$(find "$path" -regex '.*/part[12]\.\w+$' -print | cut -d. -f2 | sort -u | wc -l)
 
 	# Day 25 only as part1, part2 for free.
-	xmas_day_stars=$(find "$path" -regex '.*/25/part[12]\.\w+$' | cut -d. -f2 | sort -u | wc -l)
-	((stars+=xmas_day_stars))
+	stars_d25=$(find "$path" -regex '.*/25/part1\.\w+$' | cut -d. -f2 | sort -u | wc -l)
+	((stars+=stars_d25))
 
 	echo "$stars"
 }
