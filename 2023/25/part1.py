@@ -53,30 +53,27 @@ def visualize(edges):
 
 # Ref: https://en.wikipedia.org/wiki/Minimum_cut
 # Ref: https://en.wikipedia.org/wiki/Karger%27s_algorithm
-def kargers_algorithm(adjacency_dict):
-    adj = deepcopy(adjacency_dict)
+def kargers_algorithm(edges_multigraph):
+    edges_contracted = deepcopy(edges_multigraph)
     merges = defaultdict(int)
 
-    while len(adj) > 2:
-        node_keep = random.choice(list(adj))
-        node_remove = random.choice(list(adj[node_keep]))
+    while len(edges_contracted) > 2:
+        node_keep = random.choice(list(edges_contracted))
+        node_remove = random.choice(list(edges_contracted[node_keep]))
 
-        merges[node_keep] += 1 + merges[node_remove]
-        del merges[node_remove]
+        merges[node_keep] += 1 + merges.pop(node_remove, 0)
 
-        for node_n in adj[node_remove]:
-            nbr_edges = adj[node_n][node_remove]
-            del adj[node_n][node_remove]
+        for node_n in edges_contracted[node_remove]:
+            nbr_edges = edges_contracted[node_n].pop(node_remove)
 
             if node_n != node_keep:
-                adj[node_n][node_keep] += nbr_edges
-                adj[node_keep][node_n] += nbr_edges
+                edges_contracted[node_n][node_keep] += nbr_edges
+                edges_contracted[node_keep][node_n] += nbr_edges
 
-        del adj[node_remove]
+        del edges_contracted[node_remove]
 
-    cut = sum(count for edges in adj.values() for count in edges.values()) / 2
-    # The node itself is not counted in the merged stats.
-    component_sizes = [1 + c for c in merges.values()]
+    cut = sum(count for edges in edges_contracted.values() for count in edges.values()) / 2
+    component_sizes = [1 + c for c in merges.values()] # The node itself is not counted in the merged stats.
     return cut, component_sizes
 
 
