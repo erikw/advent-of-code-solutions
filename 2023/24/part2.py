@@ -97,6 +97,7 @@ and get the rock's initial position at x_r = x[0], y_r = x[1], x_z = x[2]!
 import fileinput
 import re
 import sys
+from itertools import combinations, permutations
 
 import numpy as np
 
@@ -104,7 +105,7 @@ import numpy as np
 SPLIT_PATTERN = re.compile(r", | @ ")
 
 # Found by investigation...
-ACCEPTABLE_MATRIX_CONDITION = 5000000000000
+ACCEPTABLE_MATRIX_CONDITION = 900000000000
 
 def read_trajectories():
     trajectories = []
@@ -124,21 +125,23 @@ def cross_product_matrix(vector):
 def trajectory_collides_all(trajectories):
     # Due to nasty floating point rounding (off-by-2 !), let's search for a Matrix with acceptable condition (= less likely to get rounding errors) by trying different pairs of trajectories.
     # Using np.float128 (together with scipy.linalg.solve() as numpy's does not deal with float128) did not help. Also it did not help to shift all x,y,z values in tr1,tr2,tr3 with the minimum of their values.
-    i = 0
-    while i  < len(trajectories) - 2:
-        tr1, tr2, tr3 = trajectories[i:i+3]
+    acceptable = False
+    for trs in combinations(trajectories, 3):
+        for tr1, tr2, tr3 in permutations(trs):
 
-        A1 = cross_product_matrix(tr1[1]) - cross_product_matrix(tr2[1])
-        A2 = cross_product_matrix(tr2[0]) - cross_product_matrix(tr1[0])
-        A3 = cross_product_matrix(tr1[1]) - cross_product_matrix(tr3[1])
-        A4 = cross_product_matrix(tr3[0]) - cross_product_matrix(tr1[0])
-        A = np.block([[A1, A2], [A3, A4]])
+            A1 = cross_product_matrix(tr1[1]) - cross_product_matrix(tr2[1])
+            A2 = cross_product_matrix(tr2[0]) - cross_product_matrix(tr1[0])
+            A3 = cross_product_matrix(tr1[1]) - cross_product_matrix(tr3[1])
+            A4 = cross_product_matrix(tr3[0]) - cross_product_matrix(tr1[0])
+            A = np.block([[A1, A2], [A3, A4]])
 
-        if np.linalg.cond(A) <= ACCEPTABLE_MATRIX_CONDITION:
-            break
-        i += 1
+            if np.linalg.cond(A) <= ACCEPTABLE_MATRIX_CONDITION:
+                acceptable = True
+                break
+        if acceptable:
+             break
 
-    if i == len(trajectories) - 2:
+    if not acceptable:
          sys.exit("No coefficient matrix with acceptable condition could be found.")
 
     b1 = -np.cross(tr1[0], tr1[1]) + np.cross(tr2[0], tr2[1])
