@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Backfill boilerplate files for like README.md, instructions.url etc. for a given year and day.
+# Backfill boilerplate files like README.md, instructions.url etc. for a given year and day.
 # NOTE Run this when changing the template in aoc_create_readme()
 # NOTE Make sure this script does not call aoc_fetch_input(), as it should not spam curl(1) to AoC server.
 
