@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 # Shared helpers for AoC scripts.
 
+
+# Remove leading zeroes from a number
+# The 10# prefix tells bash to treat the number as base-10, which automatically removes leading zeroes.
+__aoc_strip_leading_zeroes() {
+	local num="$1"
+	echo $((10#$num))
+}
+
 # Initialize a main script for AoC.
 aoc_init_script() {
 	aoc_cd_git_root
@@ -60,7 +68,7 @@ aoc_fetch_input() {
 	local year day0 day url_fmt url
 	year="$1"
 	day0="$2"
-	day=$(echo "$day0" | bc)
+	day=$(__aoc_strip_leading_zeroes "$day0")
 
 	url_fmt="https://adventofcode.com/%d/day/%d/input"
 	# shellcheck disable=SC2059
@@ -82,7 +90,7 @@ aoc_create_readme() {
 	local year day0 day url_base url
 	year="$1"
 	day0="$2"
-	day=$(echo "$day0" | bc)
+	day=$(__aoc_strip_leading_zeroes "$day0")
 
 	url_base="adventofcode.com/${year}/day/${day}"
 	url="https://${url_base}"
@@ -112,7 +120,7 @@ aoc_create_instructions_url() {
 	local year day0 day url
 	year="$1"
 	day0="$2"
-	day=$(echo "$day0" | bc)
+	day=$(__aoc_strip_leading_zeroes "$day0")
 
 	url="https://adventofcode.com/${year}/day/${day}"
 
@@ -131,7 +139,7 @@ aoc_create_input_script() {
 	local year day0 day url
 	year="$1"
 	day0="$2"
-	day=$(echo "$day0" | bc)
+	day=$(__aoc_strip_leading_zeroes "$day0")
 
 	url="https://adventofcode.com/${year}/day/${day}/input"
 
