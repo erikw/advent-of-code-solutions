@@ -30,7 +30,8 @@ backfill_day() {
 
 
 backfill_days_all() {
-	paths=$(find . -maxdepth 2 -type d -regex "\./*[0-9]+/[0-9]+" | sort | sed -e 's|./||')
+	# Regex written to work for both GNU/BSD find meaning e.g. `+` quantifier can't be used.
+	paths=$(find . -maxdepth 2 -type d -regex '\./20[0-9][0-9]/[0-9][0-9]*' | sort | sed -e 's|./||')
 	for path in $paths; do
 		cd "$path" || exit
 

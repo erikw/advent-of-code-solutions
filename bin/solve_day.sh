@@ -56,7 +56,7 @@ enter_day() {
 
 	local files=(input1.0 output1.0 output2.0)
 	files+=("part1.${arg_lang}")
-	if "$day" != 25; then
+	if [ "$day" != 25 ]; then
 		files+=("part2.${arg_lang}")
 	fi
 
@@ -94,7 +94,7 @@ day=$(aoc_parse_day "$@") || exit
 enter_day "$year" "$day" "$arg_lang"
 
 
-if [ "$CODESPACES" = true ]; then
+if [ "${CODESPACES:-}" = true ]; then
 	test "$day" == 25 && p2="" || p2="output2.0 part2.${arg_lang}"
 
 	code part1."${arg_lang}" input1.0 output1.0 input "$p2"
