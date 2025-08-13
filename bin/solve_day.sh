@@ -94,7 +94,7 @@ day=$(aoc_parse_day "$@") || exit
 enter_day "$year" "$day" "$arg_lang"
 
 
-if [ "$CODESPACES" = true ]; then
+if [ "${CODESPACES:-}" = true ]; then
 	test "$day" == 25 && p2="" || p2="output2.0 part2.${arg_lang}"
 
 	code part1."${arg_lang}" input1.0 output1.0 input "$p2"
