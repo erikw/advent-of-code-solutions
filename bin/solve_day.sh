@@ -56,7 +56,7 @@ enter_day() {
 
 	local files=(input1.0 output1.0 output2.0)
 	files+=("part1.${arg_lang}")
-	if "$day" != 25; then
+	if [ "$day" != 25 ]; then
 		files+=("part2.${arg_lang}")
 	fi
 

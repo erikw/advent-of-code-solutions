@@ -38,6 +38,11 @@ aoc_parse_year() {
 	year=$(date +%Y)
 	if [ $# -eq 1 ]; then
 		IFS="/" read -ra ym <<< "$date"
+		if (( ${#ym[@]} != 2 )); then
+			echo "Could not parse year." >&2
+			exit 7
+		fi
+
 		year=${ym[0]}
 		test ${#year} -eq 4 || year="20$year"
 	elif [ "$(date +%m)" != 12 ]; then
@@ -54,6 +59,10 @@ aoc_parse_day() {
 	day=$(date +%d)
 	if [ $# -eq 1 ]; then
 		IFS="/" read -ra ym <<< "$date"
+		if (( ${#ym[@]} != 2 )); then
+			echo "Could not parse date." >&2
+			exit 9
+		fi
 		day=${ym[1]}
 		test ${#day} -eq 2 || day="0$day"
 	elif [ "$(date +%m)" != 12 ]; then
