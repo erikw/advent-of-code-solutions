@@ -116,9 +116,9 @@ bin/fetch_input.sh yy/mm
 
 
 ## Session Cookie Expired?
-Update:
-* `AOC_SESSION` in local `.env` for local development.
-* `AOC_SESSION` in [Codespaces secrets](https://github.com/erikw/advent-of-code-solutions/settings/secrets/codespaces) for GitHub Codespaces development.
-* `AOC_SESSION` in [Action Secret](https://github.com/erikw/advent-of-code-solutions/settings/secrets/actions) for [.github/workflows/readme-stars.yml](.github/workflows/readme-stars.yml).
-* `AOC_SESSION` in [Vercel Envvar](https://vercel.com/erikw/adventofcode-badge/settings/environment-variables) for [erikw/adventofcode-badge](https://github.com/erikw/adventofcode-badge).
+Update `AOC_SESSION` in:
+*  The `.env` file for local development.
+* [Codespaces secrets](https://github.com/erikw/advent-of-code-solutions/settings/secrets/codespaces) for GitHub Codespaces development.
+* [Action Secret](https://github.com/erikw/advent-of-code-solutions/settings/secrets/actions) for [.github/workflows/readme-stars.yml](.github/workflows/readme-stars.yml).
+* [Vercel Envvar](https://vercel.com/erikw/adventofcode-badge/settings/environment-variables) for [erikw/adventofcode-badge](https://github.com/erikw/adventofcode-badge).
   * Then [redeploy](https://vercel.com/erik-westrups-projects/adventofcode-badge/deployments) to restart the service.
