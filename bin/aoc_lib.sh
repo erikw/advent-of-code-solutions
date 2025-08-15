@@ -136,7 +136,7 @@ aoc_create_instructions_url() {
 	# NOTE remember to run backfill_days.sh after changing the template below.
 	read -rd '' content <<-URL_FILE || :
 	[InternetShortcut]
-	URL = ${url}
+	URL=${url}
 	URL_FILE
 
 	echo "$content" > instructions.url
