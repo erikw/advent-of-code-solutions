@@ -12,7 +12,6 @@ autoimport
 black
 ipdb
 isort
-isort
 mypy
 pudb
 pylint
