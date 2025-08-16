@@ -2,7 +2,7 @@
 import functools
 import re
 import sys
-from typing import DefaultDict
+from collections import defaultdict
 
 from python_mermaid.diagram import Link, MermaidDiagram, Node
 
@@ -29,7 +29,7 @@ def read_network():
 # Ref: https://en.wikipedia.org/wiki/Floyd–Warshall_algorithm
 def floyd_warshall_pairwise_shortes_paths(nodes, edges, weights):
     n = len(nodes)
-    dist = DefaultDict(lambda: float("inf"))
+    dist = defaultdict(lambda: float("inf"))
 
     for u, v in edges:
         dist[u, v] = weights[u, v]
@@ -58,7 +58,7 @@ def main():
 
     # mermaid_diagram(nodes, edges)
 
-    weights = DefaultDict(lambda: 1)
+    weights = defaultdict(lambda: 1)
     dist = floyd_warshall_pairwise_shortes_paths(nodes, edges, weights)
 
     # Same as before, but try releasing an elephant at each stage to see if how it performs.
