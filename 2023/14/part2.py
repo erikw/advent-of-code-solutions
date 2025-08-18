@@ -90,7 +90,7 @@ def main():
         hash_cycle = hash_platform(platform)
         cycle += 1
 
-    # Cycle 0 is unlikely starting at the repeating loop. Thus we find the firsh hash that appears 2 times, and take the first occurrence's cycle as the loop stating point. 
+    # Cycle 0 is unlikely starting at the repeating loop. Thus we find the first hash that appears 2 times, and take the first occurrence's cycle as the loop stating point.
     cycle_start = hashes[hash_cycle]
     cycle_len = cycle - cycle_start
 
