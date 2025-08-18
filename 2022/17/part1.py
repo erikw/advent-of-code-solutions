@@ -77,7 +77,7 @@ def find_tower_height(jet_pattern):
         while True:
             # Jet push
             jet = next(jet_pattern)
-            rock_n = set()
+            rock_inserted = set()
             delta = DELTA_LEFT if jet == JET_LEFT else DELTA_RIGHT
             abort_move = False
             for c in rock:
@@ -88,24 +88,24 @@ def find_tower_height(jet_pattern):
                     and chamber[cn] == SYM_ROCK_REST
                 ):
                     abort_move = True
-                rock_n.add(cn)
+                rock_inserted.add(cn)
             dir = "left" if jet == JET_LEFT else "right"
             if abort_move:
                 dprint(f"Jet of gas pushes rock {dir}, but nothing happens:")
             else:
                 dprint(f"Jet of gas pushes rock {dir}:")
-                rock = rock_n
+                rock = rock_inserted
             print_chamber(chamber, rock)
 
             # Fall down
-            rock_n = set()
+            rock_inserted = set()
             delta = DELTA_DOWN
             abort_move = False
             for c in rock:
                 cn = c + delta
                 if cn in chamber and chamber[cn] == SYM_ROCK_REST or cn.real < 0:
                     abort_move = True
-                rock_n.add(cn)
+                rock_inserted.add(cn)
             if abort_move:
                 dprint("Rock falls 1 unit, causing it to come to rest:")
                 for c in rock:
@@ -115,7 +115,7 @@ def find_tower_height(jet_pattern):
                 break
             else:
                 dprint("Rock falls 1 unit:")
-                rock = rock_n
+                rock = rock_inserted
                 print_chamber(chamber, rock)
 
     return int(top + 1)

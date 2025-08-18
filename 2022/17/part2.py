@@ -3,7 +3,10 @@ import fileinput
 import itertools
 from collections import defaultdict
 
-DEBUG = True
+# 1600571428577 too high
+# 1600571428576 too high
+
+DEBUG = False
 
 # TOTAL_ROCKS = 2022
 TOTAL_ROCKS = 1000000000000
@@ -64,14 +67,17 @@ def find_tower_height(jet_pattern):
     )  # TODO could be a set just, no need for the value.
     top = -1
     jet_i = 0
+    seen = {}  # state -> (rock_n (when state was last seen), top at that time)
+    rock_n = 0
+    skipped = False  # TODO should be able to not do this?
+    top_skip = 0
 
-    for rock_n in range(TOTAL_ROCKS):
+    while rock_n < TOTAL_ROCKS:
         rock_i = rock_n % len(ROCKS)
         rock = ROCKS[rock_i]
         rock_d = complex(top + ROCK_PAD_BOTTOM + 1, ROCK_PAD_LEFT)
         rock = [c + rock_d for c in rock]
 
-        seen = {}  # state -> rock_n (when state was last seen)
         # key = (rock_i, jet_i % jet_l, [for each col, the top resting rock X val's difference to current top X val])
         chamber_tops = []
         for y in range(CHAMBER_WIDTH):
@@ -83,15 +89,27 @@ def find_tower_height(jet_pattern):
             chamber_tops.append(int(top - x_top))
         state = (rock_i, jet_i, tuple(chamber_tops))
 
-        dprint(state)
-        dprint(f"top = {top}")
+        dprint(type(state))
+        dprint(f"rock_n={rock_n}, top = {top}")
+        if DEBUG:
+            __import__("pprint").pprint(state)
         print_chamber(chamber)
-        if state in seen:
+        if state in seen and not skipped:
+            skipped = True
+            cycle_len = rock_n - seen[state][0]
+            top_past = seen[state][1]
+            left = TOTAL_ROCKS - rock_n
+            cycles_skip = left // cycle_len
+
             print(
-                f"Found a cycle at rock {rock_n}. State last seen at rock {seen[state]}. Cycle len of {rock_n - seen[state]}"
+                f"Found a cycle at rock {rock_n} at top {top}. State last seen at rock {seen[state][0]} with top {top_past}. Cycle len of {cycle_len}. Will skip ahead {cycles_skip} cycles, meaning adding {(top - top_past) * cycles_skip} to top"
             )
+
+            rock_n += cycle_len * cycles_skip
+            top_skip = (top - top_past) * cycles_skip
+
         else:
-            seen[state] = rock_n
+            seen[state] = (rock_n, top)
 
         # steps = 0
         while True:
@@ -100,7 +118,7 @@ def find_tower_height(jet_pattern):
             jet = jet_pattern[jet_i]
             jet_i = (jet_i + 1) % len(jet_pattern)
 
-            rock_n = set()
+            rock_inserted = set()
             delta = DELTA_LEFT if jet == JET_LEFT else DELTA_RIGHT
             abort_move = False
             for c in rock:
@@ -111,28 +129,29 @@ def find_tower_height(jet_pattern):
                     and chamber[cn] == SYM_ROCK_REST
                 ):
                     abort_move = True
-                rock_n.add(cn)
+                rock_inserted.add(cn)
             if not abort_move:
-                rock = rock_n
+                rock = rock_inserted
 
             # Fall down
-            rock_n = set()
+            rock_inserted = set()
             delta = DELTA_DOWN
             abort_move = False
             for c in rock:
                 cn = c + delta
                 if cn in chamber and chamber[cn] == SYM_ROCK_REST or cn.real < 0:
                     abort_move = True
-                rock_n.add(cn)
+                rock_inserted.add(cn)
             if abort_move:
                 for c in rock:
                     chamber[c] = SYM_ROCK_REST
-                top = max([c.real for c in chamber.keys()])
+                top = int(max([c.real for c in chamber.keys()]))
                 break
             else:
-                rock = rock_n
+                rock = rock_inserted
+        rock_n += 1
 
-    return int(top + 1)
+    return top + 1 + top_skip
 
 
 def main():
