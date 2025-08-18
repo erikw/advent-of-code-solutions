@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import fileinput
 import itertools
-from collections import defaultdict
 
 DEBUG = False
 
@@ -47,9 +46,9 @@ def print_chamber(chamber, rock=[]):
 
     chamber = chamber.copy()
     for c in rock:
-        chamber[c] = SYM_ROCK_FALL
+        chamber.add(c)
 
-    max_x = int(max(c.real for c in chamber.keys())) if chamber else 0
+    max_x = int(max(c.real for c in chamber)) if chamber else 0
     for x in range(max_x, -1, -1):
         dprint("|", end="")
         for y in range(CHAMBER_WIDTH):
@@ -59,7 +58,7 @@ def print_chamber(chamber, rock=[]):
 
 
 def find_tower_height(jet_pattern):
-    chamber = defaultdict(lambda: SYM_SPACE)
+    chamber = set()  # Coordinates [complex] for rock parts at rest.
     top = -1
 
     for rock_n in range(TOTAL_ROCKS):
@@ -85,7 +84,7 @@ def find_tower_height(jet_pattern):
                 if (
                     not (0 <= cn.imag < CHAMBER_WIDTH)
                     or cn in chamber
-                    and chamber[cn] == SYM_ROCK_REST
+                    and cn in chamber
                 ):
                     abort_move = True
                 rock_inserted.add(cn)
@@ -103,14 +102,14 @@ def find_tower_height(jet_pattern):
             abort_move = False
             for c in rock:
                 cn = c + delta
-                if cn in chamber and chamber[cn] == SYM_ROCK_REST or cn.real < 0:
+                if cn in chamber or cn.real < 0:
                     abort_move = True
                 rock_inserted.add(cn)
             if abort_move:
                 dprint("Rock falls 1 unit, causing it to come to rest:")
                 for c in rock:
-                    chamber[c] = SYM_ROCK_REST
-                top = max([c.real for c in chamber.keys()])
+                    chamber.add(c)
+                top = max([c.real for c in chamber])
                 print_chamber(chamber)
                 break
             else:
