@@ -3,10 +3,9 @@ import fileinput
 import itertools
 from collections import defaultdict
 
-DEBUG = False
+DEBUG = True
 
-# TOTAL_ROCKS = 5
-# TODO classic finding a repeating pattern of stones x jets
+# TOTAL_ROCKS = 2022
 TOTAL_ROCKS = 1000000000000
 
 CHAMBER_WIDTH = 7
@@ -39,7 +38,7 @@ def dprint(*args, **kwargs):
 
 
 def read_jet_pattern():
-    return itertools.cycle(next(fileinput.input()).rstrip("\n"))
+    return next(fileinput.input()).rstrip("\n")
 
 
 def print_chamber(chamber, rock=[]):
@@ -60,24 +59,47 @@ def print_chamber(chamber, rock=[]):
 
 
 def find_tower_height(jet_pattern):
-    chamber = defaultdict(lambda: SYM_SPACE)
+    chamber = defaultdict(
+        lambda: SYM_SPACE
+    )  # TODO could be a set just, no need for the value.
     top = -1
+    jet_i = 0
 
     for rock_n in range(TOTAL_ROCKS):
-        if rock_n == 0:
-            dprint("The first rock begins falling:")
-        else:
-            dprint("A new rock begins falling:")
-
-        rock = ROCKS[rock_n % len(ROCKS)]
+        rock_i = rock_n % len(ROCKS)
+        rock = ROCKS[rock_i]
         rock_d = complex(top + ROCK_PAD_BOTTOM + 1, ROCK_PAD_LEFT)
         rock = [c + rock_d for c in rock]
 
-        print_chamber(chamber, rock)
+        seen = {}  # state -> rock_n (when state was last seen)
+        # key = (rock_i, jet_i % jet_l, [for each col, the top resting rock X val's difference to current top X val])
+        chamber_tops = []
+        for y in range(CHAMBER_WIDTH):
+            x_top_d = max(
+                [c for c in chamber.keys() if c.imag == y] + [0], key=lambda c: c.real
+            )
+            x_top = max([c.real for c in chamber.keys() if c.imag == y] + [-1])
+            dprint(f"For y={y} the x_top={x_top}. x_top_d={x_top_d}")
+            chamber_tops.append(int(top - x_top))
+        state = (rock_i, jet_i, tuple(chamber_tops))
 
+        dprint(state)
+        dprint(f"top = {top}")
+        print_chamber(chamber)
+        if state in seen:
+            print(
+                f"Found a cycle at rock {rock_n}. State last seen at rock {seen[state]}. Cycle len of {rock_n - seen[state]}"
+            )
+        else:
+            seen[state] = rock_n
+
+        # steps = 0
         while True:
+            # steps += 1
             # Jet push
-            jet = next(jet_pattern)
+            jet = jet_pattern[jet_i]
+            jet_i = (jet_i + 1) % len(jet_pattern)
+
             rock_n = set()
             delta = DELTA_LEFT if jet == JET_LEFT else DELTA_RIGHT
             abort_move = False
@@ -90,13 +112,8 @@ def find_tower_height(jet_pattern):
                 ):
                     abort_move = True
                 rock_n.add(cn)
-            dir = "left" if jet == JET_LEFT else "right"
-            if abort_move:
-                dprint(f"Jet of gas pushes rock {dir}, but nothing happens:")
-            else:
-                dprint(f"Jet of gas pushes rock {dir}:")
+            if not abort_move:
                 rock = rock_n
-            print_chamber(chamber, rock)
 
             # Fall down
             rock_n = set()
@@ -108,16 +125,12 @@ def find_tower_height(jet_pattern):
                     abort_move = True
                 rock_n.add(cn)
             if abort_move:
-                dprint("Rock falls 1 unit, causing it to come to rest:")
                 for c in rock:
                     chamber[c] = SYM_ROCK_REST
                 top = max([c.real for c in chamber.keys()])
-                print_chamber(chamber)
                 break
             else:
-                dprint("Rock falls 1 unit:")
                 rock = rock_n
-                print_chamber(chamber, rock)
 
     return int(top + 1)
 
