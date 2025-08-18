@@ -5,10 +5,10 @@ from collections import defaultdict
 
 DEBUG = False
 
-CHAMBER_WIDTH = 7
 # TOTAL_ROCKS = 5
 TOTAL_ROCKS = 2022
 
+CHAMBER_WIDTH = 7
 ROCK_PAD_LEFT = 2
 ROCK_PAD_BOTTOM = 3
 
@@ -58,8 +58,7 @@ def print_chamber(chamber, rock=[]):
     dprint("+" + "-" * CHAMBER_WIDTH + "+\n")
 
 
-def main():
-    jet_pattern = read_jet_pattern()
+def find_tower_height(jet_pattern):
     chamber = defaultdict(lambda: SYM_SPACE)
     top = -1
 
@@ -119,7 +118,13 @@ def main():
                 rock = rock_n
                 print_chamber(chamber, rock)
 
-    print(int(top + 1))
+    return int(top + 1)
+
+
+def main():
+    jet_pattern = read_jet_pattern()
+    height = find_tower_height(jet_pattern)
+    print(height)
 
 
 if __name__ == "__main__":
