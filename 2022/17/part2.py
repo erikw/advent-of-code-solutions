@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 import fileinput
-import itertools
 from collections import defaultdict
 
+# 1600571428586 correct according to o4
 # 1600571428577 too high
 # 1600571428576 too high
+# 1600571428568 not right
+# 1600000000007 not right
+# 1595988538691 correct according to o3, o5, and is so
 
 DEBUG = False
 
@@ -94,7 +97,7 @@ def find_tower_height(jet_pattern):
         if DEBUG:
             __import__("pprint").pprint(state)
         print_chamber(chamber)
-        if state in seen and not skipped:
+        if state in seen and not skipped and seen[state][2] == 2:
             skipped = True
             cycle_len = rock_n - seen[state][0]
             top_past = seen[state][1]
@@ -102,14 +105,16 @@ def find_tower_height(jet_pattern):
             cycles_skip = left // cycle_len
 
             print(
-                f"Found a cycle at rock {rock_n} at top {top}. State last seen at rock {seen[state][0]} with top {top_past}. Cycle len of {cycle_len}. Will skip ahead {cycles_skip} cycles, meaning adding {(top - top_past) * cycles_skip} to top"
+                f"Found a cycle at rock {rock_n} at top {top}. State last seen at rock {seen[state][0]} with top {top_past}. Cycle len of {cycle_len}. Will skip ahead {cycles_skip} cycles, meaning adding {(top - top_past) * cycles_skip} to top. New rock_n={rock_n + cycle_len * cycles_skip}"
             )
 
             rock_n += cycle_len * cycles_skip
             top_skip = (top - top_past) * cycles_skip
 
+        elif state in seen and not skipped:
+            seen[state] = (rock_n, top, 2)
         else:
-            seen[state] = (rock_n, top)
+            seen[state] = (rock_n, top, 1)
 
         # steps = 0
         while True:
