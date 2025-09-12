@@ -99,7 +99,7 @@ Fetch your [AoC Session Cookie](https://github.com/wimglenn/advent-of-code-wim/i
 and now solve today's puzzle or a specific one:
 
 ```shell
-bin/solve_day.sh           # Solve today's puzzle with default lanuage (ruby)
+bin/solve_day.sh           # Solve today's puzzle with default language (ruby)
 bin/solve_day.sh 19/5      # 2019 day 5
 bin/solve_day.sh -l py     # Solve with language, here Python
 ```
@@ -110,7 +110,7 @@ bin/fetch_input.sh yy/mm
 ```
 
 > [!TIP]
-> The default language can be set with an envvar, e.g. with dotenv in a `.env` file which is also read by `bin/solve_day.sh`:
+> The default language can be set with an envvar, e.g., with dotenv in a `.env` fil,e which is also read by `bin/solve_day.sh`:
 > ```shell
 > echo AOC_LANG=py >> .env
 > ```
