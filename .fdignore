@@ -1,0 +1,2 @@
+# Unignore input from .gitignore so we can complete it.
+!input
