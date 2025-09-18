@@ -106,6 +106,7 @@ def main():
 
     if solver.check():
         model = solver.model()
+        # Re-create humn variable, so we can retreive model's value of it.
         var_humn = z3.Int(MONKEY_HUMAN)
         print(model[var_humn])
     else:
