@@ -17,3 +17,7 @@ __pycache__/
 
 # Graphviz
 *.dot
+
+# Mermaid diagrams
+*.mmd
+*.svg

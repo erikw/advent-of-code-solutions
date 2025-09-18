@@ -49,7 +49,7 @@ def floyd_warshall_pairwise_shortes_paths(nodes, edges, weights):
 def mermaid_diagram(vertices, edges):
     nodes = {v: Node(v) for v in vertices}
     links = [Link(nodes[u], nodes[v]) for u, v in edges]
-    chart = MermaidDiagram(title="Network", nodes=nodes.values(), links=links)
+    chart = MermaidDiagram(title="Network", nodes=list(nodes.values()), links=links)
     print(chart)  # Paste output at https://mermaid.live/
 
 
