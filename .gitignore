@@ -21,3 +21,12 @@ __pycache__/
 # Mermaid diagrams
 *.mmd
 *.svg
+
+
+# Test files.
+o.py
+o.rb
+o.js
+o[0-9].py
+o[0-9].rb
+o[0-9].js
