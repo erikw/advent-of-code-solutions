@@ -2,9 +2,7 @@
 import fileinput
 from collections import defaultdict
 from functools import reduce
-from pprint import pprint
 
-# ROUNDS = 1
 ROUNDS = 10
 
 SYM_ELV = "#"
@@ -59,8 +57,6 @@ def print_grove(grove, label):
 
     row_min, row_max = minmax([int(p.real) for p in grove])
     col_min, col_max = minmax([int(p.imag) for p in grove])
-    # print(row_min, row_max)
-    # print(col_min, col_max)
     for row in range(row_min, row_max + 1):
         for col in range(col_min, col_max + 1):
             pos = complex(row, col)
@@ -71,8 +67,7 @@ def print_grove(grove, label):
 
 def main():
     grove = read_input()
-    pprint(grove)
-    print_grove(grove, "Initial State")
+    # print_grove(grove, "Initial State")
     dir_start = 0
 
     for round in range(ROUNDS):
@@ -85,15 +80,11 @@ def main():
             pos_prop = None
             for dir_idx in range(len(DIRS_ORDERS)):
                 dir_deltas = DIRS_ORDERS[(dir_start + dir_idx) % len(DIRS_ORDERS)]
-                print(f"{dir_deltas=}")
                 if not any((pos_elf + d) in grove for d in dir_deltas):
                     pos_prop = pos_elf + dir_deltas[0]
                     break
             if pos_prop:
-                print("Found prop!")
                 proposals[pos_prop].append(pos_elf)
-            else:
-                print("No prop :(")
 
         # Second half; simultaneous moving
         for pos_prop, pos_elves in proposals.items():
@@ -103,10 +94,8 @@ def main():
 
         # Finally; direction rotation
         dir_start = (dir_start + 1) % len(DIRS_ORDERS)
-        # print(f"{dir_start=}")
 
-        # pprint(grove)
-        print_grove(grove, f"End of Round {round + 1}")
+        # print_grove(grove, f"End of Round {round + 1}")
 
     row_min, row_max = minmax([int(p.real) for p in grove])
     col_min, col_max = minmax([int(p.imag) for p in grove])
