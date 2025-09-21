@@ -77,14 +77,12 @@ def main():
             if not any((pos_elf + d) in grove for d in DIRS):
                 continue
 
-            pos_prop = None
             for dir_idx in range(len(DIRS_ORDERS)):
                 dir_deltas = DIRS_ORDERS[(dir_start + dir_idx) % len(DIRS_ORDERS)]
                 if not any((pos_elf + d) in grove for d in dir_deltas):
                     pos_prop = pos_elf + dir_deltas[0]
+                    proposals[pos_prop].append(pos_elf)
                     break
-            if pos_prop:
-                proposals[pos_prop].append(pos_elf)
 
         # Second half; simultaneous moving
         for pos_prop, pos_elves in proposals.items():
