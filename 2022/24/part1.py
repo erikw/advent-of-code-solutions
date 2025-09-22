@@ -119,7 +119,7 @@ def main():
         # time.sleep(0.5)
         # print_map(map, row_len, col_len, blizzards, f"Minute {mins_period}, <action>:")
 
-    # Create a residual space-time graph.
+    # Create an auxiliary space-time graph.
     edges = defaultdict(list)  # (pos, min) -> [(pos_n, min_n)]
     for min in range(mins_period):
         min_next = (min + 1) % mins_period
