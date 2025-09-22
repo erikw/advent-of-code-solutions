@@ -82,7 +82,7 @@ def cm2t(cmplx, min):
     return (int(cmplx.real), int(cmplx.imag), min)
 
 
-# Create a residual space-time graph in 3 dimensions (row, col, time).
+# Create an auxiliary space-time graph in 3 dimensions (row, col, time).
 def create_graph(
     map, row_len, col_len, blizzards_min, pos_end, mins_period, map_min_start=0
 ):
