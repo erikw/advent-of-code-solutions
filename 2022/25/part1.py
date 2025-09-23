@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import fileinput
 
+# Numeral SNAFU to arabic
 NUM_S2A = {
     "2": 2,
     "1": 1,
@@ -9,6 +10,7 @@ NUM_S2A = {
     "=": -2,
 }
 
+# Numeral arabic to SNAFU
 NUM_A2S = {
     0: "0",
     1: "1",
@@ -20,10 +22,6 @@ NUM_A2S = {
 
 def read_snafus():
     return [list(line.rstrip("\n")) for line in fileinput.input()]
-
-
-def numeral_snafu2arabic(num):
-    return NUM_S2A[num]
 
 
 def snafu2dec(snafu):
