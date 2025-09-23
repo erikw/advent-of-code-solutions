@@ -21,7 +21,7 @@ NUM_A2S = {
 
 
 def read_snafus():
-    return [list(line.rstrip("\n")) for line in fileinput.input()]
+    return [line.rstrip("\n") for line in fileinput.input()]
 
 
 def snafu2dec(snafu):
@@ -43,7 +43,7 @@ def dec2snafu(dec):
         elif r == 4:
             dec += 1
         dec //= 5
-    return list(reversed(snafu))
+    return "".join(reversed(snafu))
 
 
 def main():
@@ -54,7 +54,7 @@ def main():
         sum_dec += snafu2dec(snafu)
 
     sum_snafu = dec2snafu(sum_dec)
-    print("".join(sum_snafu))
+    print(sum_snafu)
 
 
 if __name__ == "__main__":
