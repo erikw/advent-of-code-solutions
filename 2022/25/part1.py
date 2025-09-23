@@ -9,6 +9,14 @@ NUM_S2A = {
     "=": -2,
 }
 
+NUM_A2S = {
+    0: "0",
+    1: "1",
+    2: "2",
+    3: "=",
+    4: "-",
+}
+
 
 def read_snafus():
     return [list(line.rstrip("\n")) for line in fileinput.input()]
@@ -21,7 +29,7 @@ def numeral_snafu2arabic(num):
 def snafu2dec(snafu):
     dec = 0
     for i in range(len(snafu)):
-        n = 5**i * numeral_snafu2arabic(snafu[-i - 1])
+        n = 5**i * NUM_S2A[snafu[-i - 1]]
         dec += n
     return dec
 
@@ -30,20 +38,19 @@ def dec2snafu(dec):
     snafu = []
     while dec:
         r = dec % 5
+        snafu.append(NUM_A2S[r])
+        # Add underflow
         if r == 3:
-            snafu.append("=")
-            dec += 2  # overflow
+            dec += 2
         elif r == 4:
-            snafu.append("-")
-            dec += 1  # overflow
-        else:
-            snafu.append(str(r))
+            dec += 1
         dec //= 5
     return list(reversed(snafu))
 
 
 def main():
     snaufs = read_snafus()
+
     sum_dec = 0
     for snafu in snaufs:
         sum_dec += snafu2dec(snafu)
