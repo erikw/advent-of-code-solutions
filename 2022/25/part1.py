@@ -39,7 +39,7 @@ def dec2snafu(dec):
     while dec:
         r = dec % 5
         snafu.append(NUM_A2S[r])
-        # Add underflow
+        # Add carry-over
         if r == 3:
             dec += 2
         elif r == 4:
