@@ -22,7 +22,7 @@ TEMPLATE[rb]=$(cat <<'TEMPLATE'
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-input = ARGF.readlines.map { |l| l.chomp.split }
+input = ARGF.each_line.map { |l| l.split }
 TEMPLATE
 )
 TEMPLATE[js]=$(cat <<'TEMPLATE'
