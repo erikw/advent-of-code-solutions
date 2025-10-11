@@ -1,3 +1,17 @@
 AllCops:
   TargetRubyVersion: 3.3
   UseCache: true
+
+# Disable disrupting auto corrections, as I use rubocop as an ALE fixer.
+Lint/RedundantRequireStatement:
+  Enabled: true
+  AutoCorrect: false
+Lint/UselessAssignment:
+  Enabled: true
+  AutoCorrect: false
+Lint/UnusedMethodArgument:
+  Enabled: true
+  AutoCorrect: false
+Lint/UnusedBlockArgument:
+  Enabled: true
+  AutoCorrect: false
