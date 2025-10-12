@@ -2,6 +2,10 @@ AllCops:
   TargetRubyVersion: 3.3
   UseCache: true
 
+Metrics/MethodLength:
+  Enabled: true
+  Max: 15
+
 # Disable disrupting auto corrections, as I use rubocop as an ALE fixer.
 Lint/RedundantRequireStatement:
   Enabled: true
