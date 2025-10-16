@@ -5,7 +5,7 @@ SYM_EMPTY = '.'
 
 # Returns all integer points along a directed line until the map boundary
 def directed_line_points(x, y, dx, dy, width, height)
-  points = []
+  points = [[x, y]]
   loop do
     x += dx
     y += dy
@@ -34,7 +34,6 @@ antennas_by_freq.each_value do |antennas|
     dx = (x2 - x1)
     dy = (y2 - y1)
 
-    antinodes.merge([[x1, y1], [x2, y2]])
     antinodes.merge(directed_line_points(x1, y1, -dx, -dy, width, height))
     antinodes.merge(directed_line_points(x1, y1, dx, dy, width, height))
   end
