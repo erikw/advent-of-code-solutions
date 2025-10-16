@@ -1,18 +1,17 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-def equation_values(numbers, index, cache = {})
-  return cache[index] if cache.key?(index)
-  return [] if numbers.empty? || index.negative?
-
+def equation_values(numbers, index)
   number = numbers[index]
-  cache[index] = if index.zero?
-                   [number]
-                 else
-                   equation_values(numbers, index - 1, cache).flat_map do |v|
-                     [v + number, v * number, (v.to_s + number.to_s).to_i]
-                   end
-                 end
+  if numbers.empty? || index.negative?
+    []
+  elsif index.zero?
+    [number]
+  else
+    equation_values(numbers, index - 1).flat_map do |v|
+      [v + number, v * number, (v.to_s + number.to_s).to_i]
+    end
+  end
 end
 
 def equation_possible?(target, numbers)
