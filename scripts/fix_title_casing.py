@@ -17,8 +17,8 @@ MINOR_WORDS = {
     # Conjunctions
     'and', 'but', 'or', 'nor', 'for', 'yet', 'so',
     # Prepositions
-    'of', 'in', 'to', 'from', 'with', 'on', 'at', 'by', 'for', 'from',
-    'into', 'onto', 'upon', 'with', 'within', 'without', 'through',
+    'of', 'in', 'to', 'from', 'with', 'on', 'at', 'by',
+    'into', 'onto', 'upon', 'within', 'without', 'through',
     'throughout', 'over', 'under', 'above', 'below', 'between', 'among',
     'during', 'before', 'after', 'until', 'since', 'about', 'against',
     'around', 'behind', 'beneath', 'beside', 'besides', 'beyond', 'down',
