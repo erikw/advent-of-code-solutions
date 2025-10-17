@@ -57,13 +57,15 @@ def to_title_case(text):
     for i, word in enumerate(words):
         # Always capitalize first and last word
         if i in (0, len(words) - 1):
-            result.append(word.capitalize())
+            # Capitalize first character, preserve rest
+            result.append(word[0].upper() + word[1:] if len(word) > 1 else word.upper())
         # Check if word is a minor word
         elif word.lower() in MINOR_WORDS:
             result.append(word.lower())
         # Capitalize major words
         else:
-            result.append(word.capitalize())
+            # Capitalize first character, preserve rest
+            result.append(word[0].upper() + word[1:] if len(word) > 1 else word.upper())
 
     return " ".join(result)
 
@@ -122,9 +124,9 @@ def process_markdown_file(filepath):
 
 def main():
     """Main function to process all Markdown files in _posts directory."""
-    posts_dir = Path(
-        "/home/runner/work/advent-of-code-solutions/advent-of-code-solutions/_posts"
-    )
+    # Use relative path from script location or current directory
+    script_dir = Path(__file__).parent.parent
+    posts_dir = script_dir / "_posts"
 
     if not posts_dir.exists():
         print(f"Directory {posts_dir} does not exist")
