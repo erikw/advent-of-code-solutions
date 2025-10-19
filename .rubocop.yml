@@ -5,6 +5,12 @@ AllCops:
 Metrics/MethodLength:
   Enabled: true
   Max: 15
+Metrics/PerceivedComplexity:
+  Max: 12
+Metrics/CyclomaticComplexity:
+  Max: 12
+Metrics/AbcSize:
+  Max: 25
 
 # Disable disrupting auto corrections, as I use rubocop as an ALE fixer.
 Lint/RedundantRequireStatement:
