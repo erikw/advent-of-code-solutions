@@ -1,1 +1,4 @@
 node_modules
+Session.vim
+package.json
+package-lock.json
