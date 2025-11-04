@@ -75,7 +75,8 @@ def turn_cost(dir_from, dir_to)
   SCORE_ROTATE
 end
 
-# Modified to find all shortest paths. Note: need to look att all prev[[pos_end, *dir*]] and select the one that led to the shortest path.
+# Modified to find all shortest paths.
+# Note: need to look att all prev[[pos_end, *dir*]] and select the ones that led to the shortest path, not all paths entering pos_end are a shortest path!
 def shortest_path_dijkstra(map, pos_start, dir_start, pos_end)
   node_start = [pos_start, dir_start]
   distances = Hash.new(Float::INFINITY)
@@ -137,10 +138,14 @@ end
 
 dists, prevs = shortest_path_dijkstra(map, pos_start, dir_start, pos_end)
 
-# Find the direction from which the shortest path entered pos_goal
-dir_end = NEIGHBOR_DELTAS.select { |d| dists.key?([pos_end, d]) }.min_by { |d| dists[[pos_end, d]] }
+# Find all directions that reach the end with the minimal distance
+dist_min = NEIGHBOR_DELTAS.map { |d| dists[[pos_end, d]] }.min
+dir_ends = NEIGHBOR_DELTAS.select { |d| dists[[pos_end, d]] == dist_min }
 
-paths = all_paths(prevs, pos_start, pos_end, dir_end)
+paths = []
+dir_ends.each do |dir_end|
+  paths += all_paths(prevs, pos_start, pos_end, dir_end)
+end
 
 # print_map(map, pos_start, pos_end, paths)
 
