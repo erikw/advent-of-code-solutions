@@ -57,17 +57,6 @@ def neighbour_positions(map, pos)
   NEIGHBOR_DELTAS.map { |d| [pos + d, d] }.select { |p, _d| map[p] == SYM_GROUND }
 end
 
-def turn_cost(pos_from, dir_from, dir_to)
-  dist = distances[[pos_from, dir_from]] + SCORE_STEP
-  if dir_to == dir_from
-    # nop
-  elsif dir_to * -1 == dir_from
-    dist += SCORE_ROTATE * 2
-  else
-    dist += SCORE_ROTATE
-  end
-end
-
 def turn_cost(dir_from, dir_to)
   return 0 if dir_to == dir_from
   return SCORE_ROTATE * 2 if dir_to == -dir_from
