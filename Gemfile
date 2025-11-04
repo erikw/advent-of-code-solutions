@@ -8,7 +8,8 @@ group :development do
   gem 'solargraph', '~> 0.52', require: false
 end
 
+# gem "PriorityQueue", "~> 0.1.2"  # Requires Ruby 1.8
 gem 'algorithms', '~> 1.0'
 gem 'lazy_priority_queue', '~> 0.1.1'
-# gem "PriorityQueue", "~> 0.1.2"  # Requires Ruby 1.8
+gem 'pqueue', '~> 2.1'
 gem 'z3'
