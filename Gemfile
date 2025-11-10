@@ -9,6 +9,7 @@ group :development do
 end
 
 # gem "PriorityQueue", "~> 0.1.2"  # Requires Ruby 1.8
+gem "numbers_and_words", "~> 1.0"
 gem 'algorithms', '~> 1.0'
 gem 'lazy_priority_queue', '~> 0.1.1'
 gem 'pqueue', '~> 2.1'
