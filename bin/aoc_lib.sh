@@ -92,6 +92,10 @@ aoc_fetch_input() {
 	fi
 	# Include contact method in user agent as requested by @topaz: https://www.reddit.com/r/adventofcode/comments/z9dhtd/please_include_your_contact_info_in_the_useragent/
 	curl --remote-name --remote-header-name --silent --fail -A 'https://erikw.me/contact' --cookie "session=$AOC_SESSION" "$url"
+	if [ $? -ne 0 ]; then
+		echo "Fetching input failed. \$AOC_SESSION expired?"
+		exit 9
+	fi
 }
 
 # Create README.md for current day.
