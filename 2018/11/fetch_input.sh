@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 # Make sure $AOC_SESSION is exported before running this script.
+test -f input && echo "input already exists" && exit 1
 
 curl --remote-name --remote-header-name --silent --fail -A 'https://erikw.me/contact' --cookie "session=$AOC_SESSION" "https://adventofcode.com/2018/day/11/input"
 test "$?" -eq 0 && echo "Fetched input" && exit 0 || echo "Failed to fetch input" && exit 1
