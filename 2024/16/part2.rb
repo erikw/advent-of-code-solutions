@@ -65,7 +65,7 @@ def turn_cost(dir_from, dir_to)
 end
 
 # Modified to find all shortest paths.
-# Note: need to look att all prev[[pos_end, *dir*]] and select the ones that led to the shortest path, not all paths entering pos_end are a shortest path!
+# Note: need to look at all prev[[pos_end, *dir*]] and select the ones that led to the shortest path, not all paths entering pos_end are a shortest path!
 def shortest_path_dijkstra(map, pos_start, dir_start, pos_end)
   node_start = [pos_start, dir_start]
   distances = Hash.new(Float::INFINITY)

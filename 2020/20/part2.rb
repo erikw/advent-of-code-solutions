@@ -257,8 +257,6 @@ puts water_roughness
 # water_roughness = monster_tiles
 # puts water_roughness
 
-# 2396 - too high
-# 2426 - too high
 #
 # Py:
 # found monsters  41
