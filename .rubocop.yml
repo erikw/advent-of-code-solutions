@@ -25,5 +25,7 @@ Lint/UnusedMethodArgument:
 Lint/UnusedBlockArgument:
   Enabled: true
   AutoCorrect: false
+Naming/MethodParameterName:
+  Enabled: false
 Style/CommentAnnotation: # Complains about my :-less TODO style...
   Enabled: false
