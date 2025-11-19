@@ -30,13 +30,15 @@ while getopts ":dh?" opt; do
 done
 shift $((OPTIND - 1))
 
+delete_opt=()
+[ "$arg_dry" != true ] && delete_opt=(-delete)
 
 find_opts=(
   -path "./2[0-9][0-9][0-9]/*"
   -type f
   -empty
   -print
-  $([ "$arg_dry" != true ] && echo -delete)
+  "${delete_opt[@]}"
 )
 
 find . "${find_opts[@]}"
